@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: MahniShyaganfar-AAMAS2016.aux
+The style file: abbrv.bst
+Database file #1: mshayganfar.bib.bib
+Warning--can't use both volume and number fields in hudlicka:emotinos-reasons
+You've used 20 entries,
+            2118 wiz_defined-function locations,
+            624 strings with 7262 characters,
+and the built_in function-call counts, 7214 in all, are:
+= -- 712
+> -- 295
+< -- 10
++ -- 117
+- -- 93
+* -- 477
+:= -- 1151
+add.period$ -- 64
+call.type$ -- 20
+change.case$ -- 99
+chr.to.int$ -- 0
+cite$ -- 21
+duplicate$ -- 307
+empty$ -- 608
+format.name$ -- 93
+if$ -- 1564
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 24
+newline$ -- 103
+num.names$ -- 46
+pop$ -- 122
+preamble$ -- 1
+purify$ -- 83
+quote$ -- 0
+skip$ -- 219
+stack$ -- 0
+substring$ -- 474
+swap$ -- 85
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 72
+warning$ -- 1
+while$ -- 76
+width$ -- 22
+write$ -- 225
+(There was 1 warning)
