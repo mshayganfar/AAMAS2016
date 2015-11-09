@@ -201,7 +201,8 @@ processes, as part of a new overall computational model for implementing
 collaborative robots and agents. We build primarily on the \textit{cognitive
 appraisal} theory of emotions and the \textit{SharedPlans} theory of
 collaboration to investigate the structure, fundamental processes and functions
-of emotions in a collaboration.
+of emotions in a collaboration. We have evaluated our proposed algorithms by
+conducting an online user study.
 \end{abstract}
 
 % Note that the category section should be completed after reference to the ACM Computing Classification Scheme available at
@@ -252,6 +253,34 @@ algorithms with humans' decisions we have conducted a user study using crowd
 sourcing. In Section \ref{sec:user-study} we provide the results from our user
 study.
 
+\section{Related Work}
+Our work is built on the general notions of appraisal theory, but focused on its
+application in human-robot collaboration. Computational appraisal models have
+been applied to a variety of uses including psychology, robotics, AI, and
+cognitive science. For instance, in \cite{marsella:ema-process-model} EMA is
+used to generate specific predictions about how human subjects will appraise and
+cope with emotional situations. Furthermore, appraisal theory has also been used
+in robots' decision making \cite{castro:autonomous-robot-fear}, or in their
+cognitive systems
+\cite{hudlicka:emotinos-reasons,marinier:emotion-reinforcement}. Additionally,
+in the virtual agents community, empathy and affective decision-making is a
+research topic that has received much attention in the last two decades
+\cite{scott:modeling-empathy-agent,paiva:agent-care,pontier:women-robot-men,velasquez:emotions-motivations-agents}.
+However, EMA and several other examples in artificial intelligence and robotics
+which apply appraisal theory do not focus on the dynamics of collaborative
+contexts
+\cite{adam:bdi-emotional-companion,kim:model-hri-appraisal,marsella:ema-process-model,rosenbloom:sigma-appraisal}.
+
+The computational collaboration model in our work is strongly influenced by the
+SharedPlans theory \cite{grosz:plans-discourse}. However, our algorithms are
+also compatible with other collaboration theories, e.g., Joint Intentions theory
+\cite{cohen:teamwork}, or STEAM as an hybrid collaboration theory
+\cite{tambe:flexible-teamwork}. These theories have been extensively used to
+examine and describe teamwork and collaboration. Yet, they have never been
+combined, as they are in our work. We believe a systematic integration of
+collaboration theories and appraisal theory can help us describe the underlying
+collaboration processes leading to the existing collaboration structures.
+
 \section{Affective Motivational Collaboration Theory}
 
 Affective Motivational Collaboration Theory deals with the interpretation and
@@ -275,7 +304,6 @@ which an robot can form new intentions to cope with events.
   \caption{{\fontsize{9}{9}\selectfont Computational framework based on
   Affective Motivational Collaboration Theory (arrows indicate primary
   influences between mechanisms).}}
-  \vspace*{-5mm}
   \label{fig:cpm}
 \end{figure}
 
@@ -398,7 +426,7 @@ during collaboration. Goals also drive the Motivation mechanism to generate
 required motive(s). The details about goal's attributes are also out of this
 paper's context.
 
-\vspace*{-2mm}
+\vspace*{-1mm}
 \subsubsection{Emotion Instance:}
 
 \textit{Emotions} in mental states are emotion instances that are elicited by
@@ -450,63 +478,59 @@ shifts the focus of attention during the interaction.
 \begin{figure}[tbh]
   \centering
   \includegraphics[width=0.474\textwidth]{figure/collaborationStructure-croped.pdf}
-  \caption{{\fontsize{9}{9}\selectfont Collaboration structure.}}
+  \caption{{\fontsize{9}{9}\selectfont Collaboration structure (shared plan).}}
   \label{fig:cs}
 \end{figure}
 
-Here, we briefly describe the methods which provide detail information about the
+Here, we briefly describe the methods which retrieve information about the
 collaboration structure, and are used in our algorithms to compute the values of
-appraisal variables.
+appraisal variables. In these methods, $\varepsilon_t$ is the event
+corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}. 
 
 \begin{itemize}
-  \item The \textit{recognizeGoal()} method returns the unique goal to which
-  the given event directly contributes irrespective of the event type (i.e.,
-  action, utterance, or emotional expression). If this method does not recognize
-  a goal in the plan to which the event contributes, we consider the
-  corresponding goal \textit{ambiguous} in our processes.
-  \item The \textit{topLevelGoalStatus()} method returns the status of the top
-  level goal whether it is \textit{achieved, blocked} or \textit{in progress}.
-  In our example, ``Install Solar Panels'' is the top level goal (see Figure
-  \ref{fig:cs}).
-  \item The \textit{currGoalStatus()} method returns the current goal status
-  whether it is \textit{achieved, blocked, unknown} or \textit{in progress}. In
-  our example, ``Prepare Measurement Tool'' is the current goal.
-  \item The \textit{precondStatus()} method returns the status of the
-  precondition for the given goal whether it is \textit{satisfied, unsatisfied}
-  or \textit{unknown}. For instance, the precondition for fixing a panel is
-  whether the panel is appropriately located on its frame.
-  \item The \textit{doesContribute()} method returns whether the given goal
+  \item \textit{recognizeGoal($\varepsilon_t$)} returns the unique goal to which
+  the given event (action, utterance, or emotional expression) directly
+  contributes, or \textit{ambiguous} if this method does not recognize a goal in
+  the plan.
+  \item \textit{topLevelGoalStatus($g_t$)} returns the status of the top level
+  goal whether it is \textit{achieved, blocked} or \textit{in progress}. In
+  our example, ``Install Solar Panels'' is the top level goal.
+  \item \textit{currGoalStatus($g_t$)} returns the current goal status whe\-ther
+  it is \textit{achieved, blocked, unknown} or \textit{in progress}. In our
+  example, ``Prepare Measurement Tool'' is the current (focused) goal.
+  \item \textit{precondStatus($g_t$)} returns the status of the precondition for
+  the given goal whether it is \textit{satisfied, unsatisfied} or
+  \textit{unknown}. For instance, the precondition for fixing a panel is whether
+  the panel is appropriately located on its frame.
+  \item \textit{doesContribute($g_t$)} returns whether the given goal
   contributes to another goal in the higher level of the plan hierarchy. For
   instance, an abstract (nonprimitive) goal of ``Bring Panels'' contributes to
-  the higher level goal of ``Install Solar Panels'' (see Figure \ref{fig:cs}).
-  \item The \textit{extractContributingGoals()} method returns all the
-  contributing goals of the given goal. For instance, as shown in Figure
-  \ref{fig:cs} the ``Prepare Measuring Tool'' and ``Measure Quality'' are two
-  goals contributing to the ``Check Panels'' nonprimitive goal.
-  \item The \textit{extractPredecessors()} method returns the predecessors of
-  the given goal. For instance, as shown in Figure \ref{fig:cs}, the ``Prepare
-  Measuring Tool'' goal is the predecessor of another goal called ``Measure
-  Quality''.
-  \item The \textit{extractInputs()} method returns all the required inputs for
+  the higher level goal of ``Install Solar Panels''.
+  \item \textit{extractContributingGoals($g_t$)} returns all the contributing
+  goals of the given goal. For instance, the ``Prepare Measurement Tool'' and
+  ``Measure Quality'' are two goals contributing to the ``Check Panels''
+  nonprimitive goal.
+  \item \textit{extractPredecessors($g_t$)} returns the predecessors of the
+  given goal. For instance, the ``Prepare Measurement Tool'' goal is the
+  predecessor of another goal called ``Measure Quality''.
+  \item \textit{extractInputs($g_t$)} returns all the required inputs for
   the given goal. For example, the goal ``Fix Panels'' requires inputs such as
   the \textit{welding tool} and the \textit{panel}.
-  \item The \textit{isAvailable()} method returns whether the given input is
+  \item \textit{isAvailable($g_t$)} returns whether the given input is
   available. For instance, if the \textit{welding tool} is required for the goal
   ``Fix Panels'', is it available now?
-  \item The \textit{isAchieved()} method returns whether the given goal is
-  achieved. In other words, whether all the postconditions of the given goal are
-  \textit{satisfied}.
-  \item The \textit{isFocused()} method returns whether the focus is on given
-  goal now. As shown in Figure \ref{fig:cs}, the focus is on the goal ``Prepare
-  Measuring Tool''. The focused goal is the goal that the robot currently is
-  pursuing.
-  \item The \textit{getResponsible()} method returns responsible agents of the
+  \item \textit{isAchieved($g_t$)} returns whether the given goal is achieved,
+  i.e., whether all the postconditions of the given goal are \textit{satisfied}.
+  \item \textit{isFocused($g_t$)} returns whether the focus is on given
+  goal now. The focus is on the goal ``Prepare Measurement Tool''. The focused
+  goal is the goal that the robot currently is pursuing.
+  \item \textit{getResponsible($g_t$)} returns responsible agents of the
   given goal. In a dyadic collaboration, both of the agents can be partly
   responsible for a nonprimitive goal, while each robot is responsible for one
   or more primitive goal. For instance, both the robot and the astronaut are
   responsible for the nonprimitive goal of ``Install Solar Panels'', whereas
   it is only the astronaut who is responsible for the primitive goal of
-  ``Prepare Measuring Tool''.
+  ``Prepare Measurement Tool''.
 \end{itemize}
 
 \section{Mental Graph}
@@ -527,11 +551,11 @@ one node for simplicity). These beliefs can be a combination of the robot's
 private, inferred, and mutual beliefs as well as beliefs about self, other and
 the environment. These beliefs have influence on motive formation and emotion
 elicitation processes. However, there is another node representing belief
-$b^{\varepsilon}_{t-1}$ which is the belief about the event $\varepsilon_{t-1}$
-(astronaut's utterances). As we presented in our example scenario, the
-astronaut's utterances in turn $t$-1 depict a problem in a measurement tool
-and consequently her frustration, which can lead to an unsuccessful termination
-of the collaboration. This new belief also impacts the current motive
+$b^{\varepsilon}_{t-1}$ which is the belief about the previous event
+$\varepsilon_{t-1}$. In our example scenario, the astronaut's utterances in turn
+$t$-1 concern a problem in a measurement tool and consequently her frustration,
+which can lead to unsuccessful termination of the collaboration. The belief
+about the previous event $\varepsilon_{t-1}$ also impacts the current motive
 $m^{\delta}_t$ and emotion $e^{\delta}_t$. Note that the superscript $\delta$
 used for motive $m^{\delta}_t$ and emotion $e^{\delta}_t$ indicates a specific
 value for each of these mental states that is selected from among other possible
@@ -542,7 +566,7 @@ $g_t$ (e.g., Prepare Measurement Tool).
 
 In our algorithms, we use \textit{F{\fontsize{8}{8}\selectfont
 IND}P{\fontsize{8}{8}\selectfont ATH}()} function to find the shortest path
-between two given node based on the Dijkstra algorithm. 
+between two given node. 
 
 \begin{figure}
 \begin{center}
@@ -566,7 +590,8 @@ grid,initial/.style    ={}]
 \tikzset{mystyle/.style={->,relative=false,in=0,out=60,double=black}}
 \path (B2)    edge [mystyle]   (M1); 
 \end{tikzpicture}
-\caption{{\fontsize{9}{9}\selectfont Part of robot's mental graph in turn $t$.}}
+\caption{{\fontsize{9}{9}\selectfont Abstract structure of robot's mental graph
+in turn $t$.}}
 \label{fig:mg}
 \end{center}
 \vspace*{-6mm}
@@ -579,20 +604,15 @@ grid,initial/.style    ={}]
 All of the algorithms in this section use a mental graph which is a directed
 acyclic graph constructed based on the mental states of the robot at each turn
 during the collaboration. They also use the content of the most recent event at
-each turn which includes the recognized goal associated with the event and the
-belief about the event. The goals can be associated with any type of event
-including action, utterance, or emotional expression.
-
-We found four appraisal variables, i.e., \textit{Relevance} (Algorithm
+each turn. We consider four appraisal variables to be the most important
+variables in a collaboration context, i.e., \textit{Relevance} (Algorithm
 \ref{alg:relevance}), \textit{Desirability} (Algorithm \ref{alg:desirability}),
 \textit{Expectedness} (Algorithm \ref{alg:expectedness}), and
-\textit{Controllability} (Algorithm \ref{alg:controllability}) to be the most
-important variables in a collaboration context. There are other appraisal
-variables introduced in psychological \cite{scherer:appraisal-processes} and
-computational literature \cite{gratch:domain-independent}; we do not provide
-algorithms for them in this paper. We believe most of these variables can be
-straightforwardly added to our appraisal mechanism later, e.g.,
-\textit{Perspective} (i.e., the view point from which an event is judged).
+\textit{Controllability} (Algorithm \ref{alg:controllability}). There are other
+appraisal variables introduced in psychological
+\cite{scherer:appraisal-processes} and computational literature
+\cite{gratch:domain-independent}. We believe most of these variables can be
+straightforwardly added to our appraisal mechanism later.
 
 \subsection{Relevance}
 
@@ -600,11 +620,11 @@ Relevance as an appraisal variable measures the significance of an event for the
 robot. An event can be evaluated to be relevant if it has a positive utility or
 it can causally impact a state with a positive utility
 \cite{marsella:ema-process-model}. Relevance is an important appraisal variable
-since the other appraisal dimensions are only derived for the relevant events.
+since the other appraisal variables are only computed for the relevant events.
 
 Algorithm \ref{alg:relevance} determines the relevance of the given event with
-respect to the shared goal. An event is \textit{irrelevant} if there is no
-connection between the event and the current shared goal. If there is a
+respect to the current mental state. An event is \textit{irrelevant} if there is
+no connection between the event and the current shared goal. If there is a
 connection, the relevance of the event will depend on the significance of the
 event with respect to the current collaboration status. The significance of an
 event is determined based on the utility of the event as it is also presented in
@@ -615,45 +635,15 @@ significance of the utility through a threshold. As a result, evaluating the
 relevance of the events can cause a collaborative robot to effectively respond
 only to the events which can positively impact the status of the shared goal
 without dedicating all other resources to every single event. The relevance
-process also benefits the information that the collaboration structure contains,
-e.g., shared goal.
+process also benefits from the information that the collaboration structure
+contains, e.g., shared goal.
 
-The algorithm starts by taking the belief about the current event
-($\mathit{b}_{\varepsilon_t}$) and the shared goal ($g_{t}$) associated with the
-current mental graph. After perceiving an event, it is the belief about that
-event which represents the event in robot's mental state. Continuing in line 3,
-the $g_{t}$ represents the shared goal (in the mental graph) at time (turn) $t$
-within the shared plan. Then, we find the shortest path ($\mathcal{P}$) between
-the corresponding nodes of $\mathit{b}_{\varepsilon_t}$ and $g_{t}$ in the
-mental graph. As we mentioned earlier, if there is no path between the belief
-about the current event and the active shared goal, the algorithm finds the
-event \textit{irrelevant} to the current shared goal, and terminates.
-
-However, if there is a path between $\mathit{b}_{\varepsilon_t}$ and $g_{t}$, we
-need a way to determine whether the event is relevant to the current
-collaboration status. Therefore, first, we compute the utility of the event
-$(\mathcal{U})$ such that ($0 \leq \mathcal{U} \leq 1$) based on the values of
-the attributes associated with the belief about that event
-($\mathit{b}_{\varepsilon_t}$), as well as the attributes of the motive within
-the path $\mathcal{P}$. Yet, the significance of an event in a collaborative
-environment not only is based on the utility of the event, but it is also
-influenced by the emotional state of the other collaborator. In other words, the
-relevance of a belief about an event is influenced by the perceived emotion of
-the human collaborator. The human's emotion influences the decision about the
-utility of the event in form of a threshold value ($\tau_{t}$). For instance, a
-positive expressed emotion of the human reduces the threshold value which
-consequently makes the robot find an event relevant with even a slightly
-positive utility.
-
-We compute this threshold value ($\tau_{t}$) using a Fuzzy Logic system on a
-three-dimensional space of the somatic markers associated with the other's
-expressed emotion as they are described in \cite{breazeal:sociable-robot}. In
-this space every emotion can be mapped to a vector of three values, i.e.,
-\textit{Arousal, Valence} and \textit{Stance}. The details about this process is
-out of this paper's context. Finally, we make our decision about the relevance
-of an event with respect to the human's emotional state. Consequently, an event
-can be considered \textit{irrelevant} even though there is a path between
-$\mathit{b}_{\varepsilon_t}$ and $g_{t}$.
+After perceiving an event, it is the belief about that event which represents
+the event in robot's mental state (line 2). $g_{t}$ (line 3) represents the
+shared goal (in the mental graph) at time (turn) $t$ within the shared plan.
+Then, we find the shortest path ($\mathcal{P}$) between the nodes
+$\mathit{b}_{\varepsilon_t}$ and $g_{t}$ in the mental graph. If there is no
+path, the algorithm finds the event \textit{irrelevant} and terminates.
 
 \begin{algorithm}
 	\caption{(Relevance)}
@@ -684,43 +674,39 @@ $\mathit{b}_{\varepsilon_t}$ and $g_{t}$.
 	\end{algorithmic}
 \end{algorithm}
 
+However, if there is a path between $\mathit{b}_{\varepsilon_t}$ and $g_{t}$, we
+need a way to determine whether the event is relevant. First, we compute the
+utility $(\mathcal{U})$ of the event ($0 \leq \mathcal{U} \leq 1$)
+based on the values of the attributes associated with
+$\mathit{b}_{\varepsilon_t}$, as well as the attributes of the motive within the
+path $\mathcal{P}$. The significance of an event in a collaborative environment
+is based not only on the utility of the event, but it is also influenced by the
+perceived emotion of the human collaborator. The human's emotion influences the
+decision about the utility of the event in form of a threshold value
+($\tau_{t}$). For instance, a positive expressed emotion of the human reduces
+the threshold value which consequently makes the robot find an event relevant
+with even a slightly positive utility.
+
+We compute this threshold value ($\tau_{t}$) using a Fuzzy Logic system on a
+three-dimensional space of the somatic markers associated with the other's
+expressed emotion as they are described in \cite{breazeal:sociable-robot}. In
+this space every emotion can be mapped to a vector of three values, i.e.,
+\textit{Arousal, Valence} and \textit{Stance}. The details about this process is
+out of this paper's context. Finally, we make our decision about the relevance
+of an event with respect to the human's emotional state. Consequently, an event
+can be considered \textit{irrelevant} even though there is a path between
+$\mathit{b}_{\varepsilon_t}$ and $g_{t}$.
+
+\subsection{Desirability}
+
 Desirability characterizes the value of an event to the robot in terms of
 whether the event facilitates or thwarts the collaboration goal. Desirability
 captures the valence of an event with respect to the robot's preferences
-\cite{gratch:domain-independent}. In a collaborative robot preferences are
+\cite{gratch:domain-independent}. In a collaborative robot, preferences are
 biased towards those events facilitating progress in the collaboration. An event
-is desirable if it somehow facilitates the state of the shared goal, or if it
-inhibits the state of a goal that is inconsistent with respect to the shared
-goal.
+is desirable if it facilitates the state of the shared goal, or if it inhibits
+the state of a goal that is inconsistent with respect to the shared goal.
 
-Desirability plays an important role in the overall architecture; it makes the
-processes involved in the other mechanisms (e.g., Motivation or Theory of Mind)
-and consequently the robot's mental state congruent with the collaboration
-status which is the robot's desire. Therefore, it causes the robot to dismiss
-events causing inconsistencies in the robot's collaborative behavior. Moreover,
-desirability is also crucial from the collaboration's point of view. A
-collaborative robot needs to know whether its own and the other collaborator's
-actions, utterances, and emotional expressions are desirable in terms of their
-consistence with the status of the current shared goal. In other words, the
-collaboration mechanism uses the appraisal process of desirability to coordinate
-what the self or the other does, says, and expresses during collaboration.
-Reciprocally, the appraisal mechanism and in this case the desirability process
-use the collaboration structure to obtain their required information.
-
-Algorithm \ref{alg:desirability} provides a process in which the desirability of
-an event is computed with regard to the status of the shared goal; i.e., it
-operates based on whether and how the event changes the status of the current
-shared goal. It receives the current mental graph, $\mathcal{G}_{t}$, and the
-current event, $\varepsilon_t$, from input, and decides whether and how the
-event is desirable or undesirable. First, the algorithm checks the status of the
-collaboration's top level goal (lines 2 to 6), and if the the top level goal is
-still in progress, it continues by checking the status of the current shared
-goal (lines 7 to 13). If any of the top level and current shared goals are
-achieved in these two steps, the robot interprets the event as a desirable one.
-However, if any of these goals are blocked, the event will be considered
-undesirable by the robot.
-
-\vspace*{-2mm}
 \begin{algorithm}
 	\caption{(Desirability)}
 	\label{alg:desirability}
@@ -728,21 +714,22 @@ undesirable by the robot.
 		\Function{IsEventDesirable}{{\fontsize{8.5}{9}\selectfont MentalGraph} 
 		$\mathcal{G}_{t}$, {\fontsize{8.5}{9}\selectfont Event $\varepsilon_t$}}
 			\Statex
-			\If {(\textit{topLevelGoalStatus()} = {\fontsize{8}{8}\selectfont ACHIEVED})}
-				\State \Return {{\fontsize{8}{8}\selectfont HIGHEST-DESIRABLE}}
-			\ElsIf {(\textit{topLevelGoalStatus()} = {\fontsize{8}{8}\selectfont
+			\If {(\textit{topLevelGoalStatus($g_{t}$)} = {\fontsize{8}{8}\selectfont
+			ACHIEVED})} \State \Return {{\fontsize{8}{8}\selectfont HIGHEST-DESIRABLE}}
+			\ElsIf {(\textit{topLevelGoalStatus($g_{t}$)} = {\fontsize{8}{8}\selectfont
 			BLOCKED})} \State \Return {{\fontsize{8}{8}\selectfont HIGHEST-UNDESIRABLE}}
-			\ElsIf {(\textit{topLevelGoalStatus()} = {\fontsize{7.4}{8}\selectfont
+			\ElsIf {(\textit{topLevelGoalStatus($g_{t}$)} = {\fontsize{7.4}{8}\selectfont
 			INPROGRESS})}
 				\Statex
-				\If {(\textit{currGoalStatus()} = {\fontsize{8}{8}\selectfont ACHIEVED})}
-					\State \Return {{\fontsize{8}{8}\selectfont HIGH-DESIRABLE}}
-				\ElsIf {(\textit{currGoalStatus()} = {\fontsize{8}{8}\selectfont BLOCKED})}
-					\State \Return {{\fontsize{8}{8}\selectfont HIGH-UNDESIRABLE}}
-				\ElsIf {(\textit{currGoalStatus()} = {\fontsize{8}{8}\selectfont
+				\If {(\textit{currGoalStatus($g_{t}$)} = {\fontsize{8}{8}\selectfont
+				ACHIEVED})} \State \Return {{\fontsize{8}{8}\selectfont HIGH-DESIRABLE}}
+				\ElsIf {(\textit{currGoalStatus($g_{t}$)} = {\fontsize{8}{8}\selectfont
+				BLOCKED})} \State \Return {{\fontsize{8}{8}\selectfont HIGH-UNDESIRABLE}}
+				\ElsIf {(\textit{currGoalStatus($g_{t}$)} = {\fontsize{8}{8}\selectfont
 				INPROGRESS})}
 					\State \Return {{\fontsize{8}{8}\selectfont MEDIUM-DESIRABLE}}
-				\ElsIf {(\textit{currGoalStatus()} = {\fontsize{8}{8}\selectfont UNKNOWN})}
+				\ElsIf {(\textit{currGoalStatus($g_{t}$)} = {\fontsize{8}{8}\selectfont
+				UNKNOWN})}
 					\Statex
 					\State $\mathit{g}_{\varepsilon_t} \gets
 					\textit{recognizeGoal}{(\varepsilon_t)}$
@@ -778,7 +765,33 @@ undesirable by the robot.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-3mm}
+Desirability plays an important role in the overall architecture; it makes the
+processes involved in the other mechanisms (e.g., Motivation and Theory of
+Mind), and consequently the robot's mental state, congruent with the
+collaboration status which is the robot's desire. Therefore, it causes the robot
+to dismiss events causing inconsistencies in the robot's collaborative behavior.
+Moreover, desirability is also crucial from the collaboration's point of view. A
+collaborative robot needs to know whether its own and the other collaborator's
+actions, utterances, and emotional expressions are desirable in terms of their
+consistence with the status of the current shared goal. In other words, the
+collaboration mechanism uses the appraisal process of desirability to coordinate
+what the self or the other does, says, and expresses during collaboration.
+Reciprocally, the appraisal mechanism and in this case the desirability process
+use the collaboration structure to obtain their required information.
+
+Algorithm \ref{alg:desirability} provides a process in which the desirability of
+an event is computed with regard to the status of the shared goal; i.e., it
+operates based on whether and how the event changes the status of the current
+shared goal. It receives the current mental graph, $\mathcal{G}_{t}$, and the
+current event, $\varepsilon_t$, and decides whether and how the event is
+desirable or undesirable. First, the algorithm checks the status of the
+collaboration's top level goal (lines 2 to 6), and if the the top level goal is
+still in progress, it continues by checking the status of the current shared
+goal (lines 7 to 13). If any of the top level and current shared goals are
+achieved in these two steps, the robot interprets the event as a desirable one.
+However, if any of these goals are blocked, the event will be considered
+undesirable by the robot.
+
 The algorithm continues in the case of an unknown status of the current shared
 goal, and checks whether the precondition(s) of the associated goal with the
 current event, $\mathit{g}_{\varepsilon_t}$, are satisfied (lines 17 to 21).
@@ -788,7 +801,7 @@ instance, a satisfied precondition of a future goal is still desirable for the
 robot to some extent. Note that the robot also checks the ambiguity of the
 associated goal with the current event (line 15). An ambiguous goal is a goal
 which is not recognized in the robot's plan, and it is undesirable for the
-robot. After all, if the preconditions of the associated goal with the current
+robot. Finally, if the preconditions of the associated goal with the current
 event are unknown, the robot checks whether this goal,
 $\mathit{g}_{\varepsilon_t}$, contributes to the current shared goal,
 $\mathit{g}_{t}$ (lines 22 to 25). As a result a contributing goal will obtain a
@@ -865,8 +878,7 @@ event.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-2mm}
-In algorithm \ref{alg:expectedness} we provide the process of the expectedness
+In Algorithm \ref{alg:expectedness} we provide the process of the expectedness
 based on the shared plan and status of the shared goal. The key point in this
 algorithm is the status of the current shared goal ($\mathit{g}_{t}$) and its
 relationship with the goal associated with the current event 
@@ -1167,36 +1179,7 @@ controllability value of the event.
 	\end{algorithmic}
 \end{algorithm}
 
-\section{Related Work}
-Our work is built on the general notion of appraisal theory while it is focused
-on its application in human-robot collaboration. Computational appraisal models
-have been applied to a variety of uses including contributions to psychology,
-robotics, AI, and Cognitive Science. For instance, in
-\cite{marsella:ema-process-model} EMA is used to generate specific predictions
-about how human subjects will appraise and cope with emotional situations.
-Furthermore, appraisal theory has also been used in robots' decision making
-\cite{castro:autonomous-robot-fear}, or in their cognitive systems
-\cite{hudlicka:emotinos-reasons,marinier:emotion-reinforcement}. Additionally,
-in the virtual agents community, empathy and affective decision-making is a
-research topic that has received much attention in the last two decades
-\cite{velasquez:emotions-motivations-agents,paiva:agent-care,scott:modeling-empathy-agent,pontier:women-robot-men}.
-However, EMA and several other examples in artificial intelligence and robotics
-which apply appraisal theory do not focus on the dynamics of collaborative
-contexts
-\cite{marsella:ema-process-model,kim:model-hri-appraisal,adam:bdi-emotional-companion,rosenbloom:sigma-appraisal}.
-
-The computational collaboration model in our work is closely influenced by the
-SharedPlans theory \cite{grosz:plans-discourse}. However, our algorithms are
-also compatible with other collaboration theories, e.g., Joint Intentions theory
-\cite{cohen:teamwork}, or STEAM as an hybrid collaboration theory
-\cite{tambe:flexible-teamwork}. These theories have been extensively used to
-examine and describe teamwork and collaboration. Yet, they have never been
-combined, as they are in our work. We believe a systematic integration of
-collaboration theories and some theories like appraisal theory can help us
-describe the underlying collaboration processes leading to the existing
-collaboration structures.
-
-\section{User Study}
+\section{Evaluation}
 \label{sec:user-study}
 
 \begin{table}
