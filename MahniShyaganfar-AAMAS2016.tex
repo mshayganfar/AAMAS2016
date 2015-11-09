@@ -275,6 +275,7 @@ which an robot can form new intentions to cope with events.
   \caption{{\fontsize{9}{9}\selectfont Computational framework based on
   Affective Motivational Collaboration Theory (arrows indicate primary
   influences between mechanisms).}}
+  \vspace*{-5mm}
   \label{fig:cpm}
 \end{figure}
 
@@ -302,6 +303,7 @@ task. The \textit{Theory of Mind} mechanism infers a model of the other's
 anticipated mental state. The self progressively updates this model during the
 collaboration.
 
+\vspace*{-1mm}
 \subsection{Mental States}
 \label{sec:mental-states}
 
@@ -314,10 +316,11 @@ operates with the following mental states: beliefs, intentions, motives, goals
 and emotion instances. These mental states possess attributes, each of which
 provides a discriminating and unique interpretation of the related cognitive
 entities. The self uses these attributes whenever there is an arbitration in the
-internal cognitive processes. We provide more details about the attributes of
-beliefs and motives in this paper, since they are used in our appraisal
-algorithms.
+internal cognitive processes. We only describe the attributes of beliefs and
+motives in this paper, since they are used in our appraisal algorithms. We do
+not provide the way we compute the attributes' values, due to the limited space.
 
+\vspace*{-2mm}
 \subsubsection{Belief:}
 
 \textit{Beliefs} are a crucial part of the mental states. We have two different
@@ -345,6 +348,7 @@ attribute that pertains to how easily the self becomes aware of a belief. The
 \textit{persistence} of a belief refers to how resistant the belief is to
 changes.
 
+\vspace*{-2mm}
 \subsubsection{Motive:}
 
 \textit{Motives} are mental constructs which can initiate, direct and maintain
@@ -370,6 +374,7 @@ the goal and ultimately the collaboration. The \textit{failure disruptiveness}
 attribute of a motive determines how disruptive failure is to achieving the
 corresponding goal.
 
+\vspace*{-2mm}
 \subsubsection{Intention:}
 
 \textit{Intentions} are mental constructs directed at goals and future actions.
@@ -382,6 +387,7 @@ Ambivalence, Affective-Deliberative Consistency} which moderate the consistency
 between intention and behavior \cite{cooke:intention-behavior-consistency}. The
 details about these attributes are out of this paper's context.
 
+\vspace*{-2mm}
 \subsubsection{Goal:}
 
 \textit{Goals} help the robot to create and update its collaboration plan
@@ -392,7 +398,7 @@ during collaboration. Goals also drive the Motivation mechanism to generate
 required motive(s). The details about goal's attributes are also out of this
 paper's context.
 
-\vspace*{-1mm}
+\vspace*{-2mm}
 \subsubsection{Emotion Instance:}
 
 \textit{Emotions} in mental states are emotion instances that are elicited by
@@ -406,8 +412,9 @@ mental states.
 
 \section{Example Scenario}
 
-The example scenario shows a very short part of an interaction between a robot
-and an astronaut during their collaboration. Their mission is to finish
+The example scenario is part of a much larger interaction we are implementing to
+test our theory. This example shows a very short part of an interaction between
+a robot and an astronaut during their collaboration. Their mission is to finish
 installing a few solar panels together. However, the astronaut encounters a
 measurement tool problem:
 
@@ -431,26 +438,15 @@ robot will be used in section Mental Graph.
 \section{Collaboration}
 
 The Collaboration mechanism constructs a hierarchy of goals associated with
-tasks in the form of a Hierarchical Task Network (see Figure \ref{fig:cs}), and
+tasks in the form of a hierarchical task network (see Figure \ref{fig:cs}), and
 also manages and maintains the constraints and other required details of the
-collaboration specified by the plan. These details include the inputs and
-outputs of individual tasks, the \textit{preconditions} specifying whether it is
-appropriate to perform a task, and the \textit{postconditions} specifying
-whether a just-completed task was successful (i.e., whether the corresponding
-goal is achieved). Collaboration also keeps track of the focus of attention,
-which determines the salient objects, properties and relations at each point of
-the collaboration. Moreover, Collaboration has the ability to shift the focus of
-attention during the interaction. 
+collaboration including the inputs and outputs of individual tasks, the
+\textit{preconditions} (specifying whether it is appropriate to perform a task),
+and the \textit{postconditions} (specifying whether a just-completed task was
+successful). Collaboration also keeps track of the focus of attention, which
+determines the salient objects, properties and relations at each point, and
+shifts the focus of attention during the interaction.
 
-The Collaboration mechanism receives the data that affects the execution of
-individual tasks in the collaboration plan. This data is provided via the
-different elements of mental states including beliefs, intentions and goals.
-The Collaboration mechanism generates the data that is modified or created
-during execution of a plan in the form of mental states which will be used by
-other processes in our framework. For instance, the Appraisal mechanism uses
-these mental states to evaluate the events during collaboration.
-
-\vspace*{-2mm}
 \begin{figure}[tbh]
   \centering
   \includegraphics[width=0.474\textwidth]{figure/collaborationStructure-croped.pdf}
