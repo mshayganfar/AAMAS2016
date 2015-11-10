@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  9 NOV 2015 17:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  10 NOV 2015 11:49
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -592,31 +592,31 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 194.
+LaTeX Font Info:    Try loading font information for U+msa on input line 197.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 194.
+LaTeX Font Info:    Try loading font information for U+msb on input line 197.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 194.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 197.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 194.
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 197.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 194.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 197.
 
-Overfull \hbox (4.08873pt too wide) in paragraph at lines 284--284
+Overfull \hbox (4.08873pt too wide) in paragraph at lines 287--287
 []\secfnt AFFECTIVE MO-TI-VA-TIONAL COL-LAB-
  []
 
@@ -632,10 +632,10 @@ File: figure/theory-general-croped.pdf Graphic file (type pdf)
 
 <use figure/theory-general-croped.pdf>
 Package pdftex.def Info: figure/theory-general-croped.pdf used on input line 30
-3.
+6.
 (pdftex.def)             Requested size: 226.79846pt x 155.92795pt.
  [2 <./figure/theory-general-croped.pdf>]
-Overfull \hbox (4.34155pt too wide) in paragraph at lines 408--417
+Overfull \hbox (4.34155pt too wide) in paragraph at lines 411--420
 \T1/aer/m/it/9 pe-ri-ence, Cer-tainty, Am-biva-lence, Affective-Deliberative Co
 n-
  []
@@ -645,75 +645,96 @@ File: figure/collaborationStructure-croped.pdf Graphic file (type pdf)
 
 <use figure/collaborationStructure-croped.pdf>
 Package pdftex.def Info: figure/collaborationStructure-croped.pdf used on input
- line 480.
+ line 483.
 (pdftex.def)             Requested size: 238.89551pt x 128.52684pt.
 
-Overfull \hbox (1.0211pt too wide) in paragraph at lines 498--501
+Overfull \hbox (1.0211pt too wide) in paragraph at lines 501--504
 [][]\T1/aer/m/it/9 currGoalStatus($\OML/cmm/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer
 /m/n/9 re-turns the cur-rent goal sta-tus whe-
  []
 
 [3 <./figure/collaborationStructure-croped.pdf>]
-Overfull \hbox (8.70683pt too wide) in paragraph at lines 522--524
+Overfull \hbox (8.70683pt too wide) in paragraph at lines 525--527
 [][]\T1/aer/m/it/9 isAchieved($\OML/cmm/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer/m/n
 /9 re-turns whether the given goal is achieved,
  []
 
 
-Overfull \hbox (8.05876pt too wide) in paragraph at lines 527--534
+Overfull \hbox (8.05876pt too wide) in paragraph at lines 530--537
 [][]\T1/aer/m/it/9 getResponsible($\OML/cmm/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer
 /m/n/9 re-turns re-spon-si-ble agents of the given
  []
 
 [4]
-LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 715.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 718.
 
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 715.
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.25> not available
-(Font)              size <5> substituted on input line 715.
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
-(Font)              size <8> substituted on input line 715.
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
+(Font)              size <7> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.25> not available
-(Font)              size <5> substituted on input line 715.
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.75> not available
+(Font)              size <5> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 715.
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.25> not available
-(Font)              size <5> substituted on input line 715.
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <8.5> not available
-(Font)              size <8> substituted on input line 715.
+LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <7.5> not available
+(Font)              size <7> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <4.25> not available
-(Font)              size <5> substituted on input line 715.
+LaTeX Font Warning: Font shape `OT1/cmr/m/it' in size <3.75> not available
+(Font)              size <5> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `U/lasy/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 715.
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 718.
 
 
-LaTeX Font Warning: Font shape `U/lasy/m/n' in size <4.25> not available
-(Font)              size <5> substituted on input line 715.
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 718.
+
+
+Underfull \hbox (badness 2512) in paragraph at lines 726--731
+[] \T1/aer/bx/n/9 else if \T1/aer/m/n/8 (\T1/aer/m/it/8 topLevelGoalStatus($\OM
+L/cmm/m/it/8 g[]$\T1/aer/m/it/8 ) \T1/aer/m/n/9 = \T1/aer/m/n/7 BLOCKED\T1/aer/
+m/n/9 ) \T1/aer/bx/n/8 or
+ []
+
+
+Underfull \hbox (badness 3343) in paragraph at lines 732--737
+[] \T1/aer/bx/n/9 else if \T1/aer/m/n/8 (\T1/aer/m/it/8 topLevelGoalStatus($\OM
+L/cmm/m/it/8 g[]$\T1/aer/m/it/8 ) \T1/aer/m/n/9 = \T1/aer/m/n/7 PEND-ING\T1/aer
+/m/n/9 ) \T1/aer/bx/n/8 or
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 744--749
+[] \T1/aer/bx/n/9 else if \T1/aer/m/n/9 (\T1/aer/m/it/9 currGoalStatus($\OML/cm
+m/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer/m/n/9 = \T1/aer/m/n/7 BLOCKED\T1/aer/m/n/
+9 ) \T1/aer/bx/n/8 or
+ []
 
 [5]
 Underfull \vbox (badness 1558) has occurred while \output is active []
 
  [6]
 [7]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 1202
+LaTeX Font Info:    Try loading font information for T1+aett on input line 1195
 .
  (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -725,7 +746,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1211 ...ludegraphics[height=1in, width=1in]{fly}
+l.1204 ...ludegraphics[height=1in, width=1in]{fly}
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -734,53 +755,56 @@ If that doesn't work, type  X <return>  to quit.
 
 
 LaTeX Font Warning: Font shape `T1/aett/bx/n' undefined
-(Font)              using `T1/aett/m/n' instead on input line 1212.
+(Font)              using `T1/aett/m/n' instead on input line 1205.
 
 (./MahniShyaganfar-AAMAS2016.bbl [8]) [9
 
 ] (./MahniShyaganfar-AAMAS2016.aux)
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.75pt have occurred.
+(Font)              up to 1.25pt have occurred.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 12746 strings out of 493304
- 239389 string characters out of 6139871
- 308079 words of memory out of 5000000
- 15844 multiletter control sequences out of 15000+600000
- 83703 words of font info for 122 fonts, out of 8000000 for 9000
+ 12762 strings out of 493304
+ 239538 string characters out of 6139871
+ 307079 words of memory out of 5000000
+ 15852 multiletter control sequences out of 15000+600000
+ 87945 words of font info for 133 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,68p,467b,828s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/times/utmri8a.pfb>
-Output written on MahniShyaganfar-AAMAS2016.pdf (9 pages, 384233 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
+pfb>
+Output written on MahniShyaganfar-AAMAS2016.pdf (9 pages, 411039 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
+ 179 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
