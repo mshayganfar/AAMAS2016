@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  10 NOV 2015 14:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  10 NOV 2015 16:59
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -734,23 +734,34 @@ Underfull \vbox (badness 1558) has occurred while \output is active []
 
  [6]
 [7]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 1162
-.
- (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
-File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
-(./MahniShyaganfar-AAMAS2016.bbl) [8] [9] (./MahniShyaganfar-AAMAS2016.aux)
+Overfull \hbox (6.98329pt too wide) in paragraph at lines 1157--1162
+\T1/aer/m/n/9 the \T1/aer/m/it/9 ex-pect-ed-ness \T1/aer/m/n/9 al-go-rithm (n=3
+3) av-er-aged 78.5% (s=12.0%),
+ []
+
+
+Overfull \hbox (8.73834pt too wide) in paragraph at lines 1166--1179
+ [][][] 
+ []
+
+(./MahniShyaganfar-AAMAS2016.bbl
+Underfull \vbox (badness 2547) has occurred while \output is active []
+
+ [8])
+[9
+
+] (./MahniShyaganfar-AAMAS2016.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.25pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 12746 strings out of 493304
- 239451 string characters out of 6139871
- 308079 words of memory out of 5000000
- 15850 multiletter control sequences out of 15000+600000
- 87945 words of font info for 133 fonts, out of 8000000 for 9000
+ 12727 strings out of 493304
+ 239096 string characters out of 6139871
+ 307079 words of memory out of 5000000
+ 15832 multiletter control sequences out of 15000+600000
+ 90595 words of font info for 136 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,68p,467b,828s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -772,16 +783,15 @@ ublic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
-pfb>
-Output written on MahniShyaganfar-AAMAS2016.pdf (9 pages, 409567 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on MahniShyaganfar-AAMAS2016.pdf (9 pages, 403395 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
+ 175 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
