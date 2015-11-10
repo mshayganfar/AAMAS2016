@@ -986,29 +986,13 @@ controllability of an event (lines 8 to 11).
 	\begin{algorithmic}[1]
 		\Function{GetAgencyRatio}{Event $\varepsilon_t$}
 			\Statex
-			\State $\mathit{b}_{\varepsilon_t} \gets \Call{getBelief}{\varepsilon_t}$
-			\State $\mathit{g}_{\varepsilon_t} \gets
-			\textit{recognizeGoal}{(\varepsilon_t)}$
+			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\Statex
-			\If {$(\mathit{g}_{\varepsilon_t} =$ {\fontsize{8}{8}\selectfont
-			AMBIGUOUS}$)$} 
-				\State \Return {0.0}
-			\EndIf
+			\State $\mathcal{M}_{t} \gets \textit{getActiveMotive}{(\mathit{g}_{t})}$
 			\Statex
-			\State $\mathcal{P} \gets \Call{findPath}{\mathit{b}_{\varepsilon_t},
-			\mathit{g}_{\varepsilon_t}}$
-			\Statex
-			\If {$(\mathcal{P} \neq \emptyset)$}
-				\State
-				\State $\mathcal{M}_{\mathit{g}_{t}} \gets
-				\textit{currMotive}{(\mathcal{P})}$
-				\Statex
-				\If {$(\mathcal{M}_{\mathit{g}_{t}} \neq \emptyset)$}
-					\If {$(\mathcal{M}_{\mathit{g}_{t}}\cdot type = $
-					{{\fontsize{8}{8}\selectfont INTERNAL}}$)$} \State \Return {1.0}
-					\Else
-						\State \Return {0.0}
-					\EndIf
+			\If {$(\mathcal{M}_{t} \neq \emptyset)$}
+				\If {$(\mathcal{M}_{t}\cdot type = $
+				{{\fontsize{8}{8}\selectfont INTERNAL}}$)$} \State \Return {1.0}
 				\Else
 					\State \Return {0.0}
 				\EndIf
@@ -1060,15 +1044,10 @@ a more positive value of controllability.
 	\begin{algorithmic}[1]
 		\Function{GetAutonomyRatio}{Event $\varepsilon_t$}
 			\Statex
-			\State $\mathit{g}_{\varepsilon_t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
-			\If {$(\mathit{g}_{\varepsilon_t} =$ {\fontsize{8}{8}\selectfont
-			AMBIGUOUS}$)$} 
-				\State \Return {0.0}
-			\EndIf
+			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\Statex
 			\State $\Phi_{\mathit{g}} \gets
-			\textit{extractContributingGoals}{(\mathit{g}_{\varepsilon_t})}$
+			\textit{extractContributingGoals}{(\mathit{g}_{t})}$
 			\Statex
 			\ForAll {$\phi_{\mathit{g}}^i \in \Phi_{\mathit{g}}$}
 				\If {$(\textit{getResponsible}{(\phi_{\mathit{g}}^i)} =$
@@ -1105,16 +1084,10 @@ controllability for the current event.
 	\begin{algorithmic}[1]
 		\Function{GetSucPredecessorsRatio}{Event $\varepsilon_t$}
 			\Statex
-			\State $\mathit{g}_{\varepsilon_t} \gets
-			\textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
-			\If {$(\mathit{g}_{\varepsilon_t} =$ {\fontsize{8}{8}\selectfont
-			AMBIGUOUS}$)$} 
-				\State \Return {0.0}
-			\EndIf
+			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\Statex
 			\State $\Theta{\mathit{g}} \gets
-			\textit{extractPredecessors}{(\mathit{g}_{\varepsilon_t})}$
+			\textit{extractPredecessors}{(\mathit{g}_{t})}$
 			\Statex
 			\ForAll {$\theta_{\mathit{g}}^i \in \Theta_{\mathit{g}}$}
 				\If {$(\textit{isAchieved}{(\theta_{\mathit{g}}^i)})$}
@@ -1149,16 +1122,10 @@ controllability value of the event.
 	\begin{algorithmic}[1]
 		\Function{GetAvailableInputRatio}{Event $\varepsilon_t$}
 			\Statex
-			\State $\mathit{g}_{\varepsilon_t} \gets
-			\textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
-			\If {$(\mathit{g}_{\varepsilon_t} =$ {\fontsize{8}{8}\selectfont
-			AMBIGUOUS}$)$} 
-				\State \Return {0.0}
-			\EndIf
+			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\Statex
 			\State $\mathcal{X}_{\mathit{g}} \gets
-			\textit{extractInputs}{(\mathit{g}_{\varepsilon_t})}$
+			\textit{extractInputs}{(\mathit{g}_{t})}$
 			\Statex
 			\ForAll {$\chi_{\mathit{g}}^i \in \mathcal{X}_{\mathit{g}}$}
 				\If {$(\textit{IsAvailable}{(\chi_{\mathit{g}}^i)})$}
@@ -1198,12 +1165,6 @@ Command&A Number&Comments\\ \hline
 \texttt{{\char'134}table*}& 400& For wider tables\\ \hline\end{tabular}
 \end{table*}
 % end the environment with {table*}, NOTE not {table}!
-
-\begin{figure}
-\centering
-\includegraphics[height=1in, width=1in]{fly}
-\caption{A sample black and white graphic that has been resized with the \texttt{{\char'134}includegraphics} command.}
-\end{figure}
 
 %Note that either {\textbf{.ps}} or {\textbf{.eps}} formats are
 %used; use
