@@ -1143,22 +1143,47 @@ controllability value of the event.
 \label{sec:user-study}
 
 We conducted a between subject user study using an online crowdsourcing
-website -- CrowdFlower\footnote{http://www.crowdflower.com}.
-We compare the results with the implemented algorithms discussed in Section
+website -- CrowdFlower\footnote{http://www.crowdflower.com}. Each group
+originaly had 40 subjects. To increase the quality of our subjects' answers we
+limited the visibility of our questionnaires to a few English speaking
+countries, i.e., United States, Britain, and Australia. We also limited our
+subjects pools to those acquired highest confidence on the crowdsourcing
+website. Our questionnaires included 2 or 3 test questions (depending on the
+length) to check the sanity of the answers. We eliminated subjects providing
+wrong answers to our test questions. We also eliminated subjects with answering
+time less than 2 minutes, which we achieved based on the data from our pilot
+study. The final number of accepted subjects in each group is provided in Table
+\ref{tbl:statistics}.
+
+To minimize the background knowledge necessary, we used a simple domestic
+example of preparing a peanut butter and jelly sandwich, and a hard boiled egg
+sandwich for a hiking trip. We provided clear textual and graphical instructions
+for all four questionnaires. We also provided a brief description as well as a
+simple example for each appraisal variable, e.g., \textit{relevance}, at the end
+of the corresponding instruction. The instruction was emphasizing on subjects
+collaborating with their friend, Mary, to prepare the sandwiches. We prepared
+four different online questionnaires for the appraisal variables:
+\textit{relevance, desirability, expectedness} and \textit{controllability}.
+Each question provided three options. One option was the correct answer; another
+option was used to provide a dichotomy with the correct answer, and a third
+option was used to check whether the subjects perceived the other two options as
+the same. Figure \ref{fig:qs} shows an example of our questions. We compare the
+results with the implemented algorithms discussed in Section
 \ref{sec:appraisal-process}.
 
-To minimize the background knowledge necessary, we decided to use a simple
-domestic example of preparing a peanut butter and jelly sandwich, and a hard
-boiled egg sandwich for hiking. We provided clear textual and graphical
-instructions for all four questionnaires. We have also provided a brief
-description as well as a simple example for each appraisal variable, e.g.,
-\textit{relevance}, at the end of the corresponding instruction.
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[width=0.425\textwidth]{figure/question-sample-croped.pdf}
+  \caption{{\fontsize{9}{9}\selectfont An example question of our
+  questionnaire.}}
+  \label{fig:qs}
+\end{figure}
 
-Total number of subjects' similar answers to a) the \textit{relevance} algorithm
-(n=29) averaged 71.3\% (s=10.7\%), b) the \textit{desirability} algorithm
-(n=35) averaged 77.8\% (s=15.0\%), c) the \textit{expectedness} algorithm
-(n=33) averaged 78.5\% (s=12.0\%), and d) the \textit{controllability} algorithm
-(n=33) averaged 74.3\% (s=15.8\%).
+The total number of subjects' answers similar to a) the \textit{relevance}
+algorithm (n=29) averaged 71.3\% (s=10.7\%), b) the \textit{desirability}
+algorithm (n=35) averaged 77.8\% (s=15.0\%), c) the \textit{expectedness}
+algorithm (n=33) averaged 78.5\% (s=12.0\%), and d) the \textit{controllability}
+algorithm (n=33) averaged 74.3\% (s=15.8\%).
 
 \begin{table}
 \centering
@@ -1176,6 +1201,7 @@ Mean} & {\fontsize{7.5}{8}\selectfont Stdev} &
 {\fontsize{7.5}{8}\selectfont Controllability} & 33 & 0.743 & 0.158 & <0.001\\
 \hline
 \end{tabular}
+\label{tbl:statistics}
 \end{table}
 
 % end the environment with {table*}, NOTE not {table}!
