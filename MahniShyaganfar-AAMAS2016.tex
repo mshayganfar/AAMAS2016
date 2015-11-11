@@ -1003,6 +1003,7 @@ controllability of an event (lines 8 to 11).
 	\end{algorithmic}
 \end{algorithm}
 
+\vspace*{-3mm}
 Agency is the capacity of an individual to act independently in any given
 environment. In a collaborative environment sometimes collaborators are required
 to act independently of each other. Hence, they need to have some internal motives
@@ -1045,6 +1046,7 @@ out of this paper's context.
 	\end{algorithmic}
 \end{algorithm}
 
+\vspace*{-3mm}
 Autonomy is the ability to make decisions without the influence of others.
 Autonomy implies acting on one's own and being responsible for that. In a
 collaborative environment, tasks are delegated to the collaborators based on
@@ -1088,6 +1090,7 @@ a more positive value of controllability.
 	\end{algorithmic}
 \end{algorithm}
 
+\vspace*{-3mm}
 The structure of a shared plan accommodates the order of the required
 predecessors of a goal. Predecessors of a goal, $g$, are other goals that
 the collaborators should achieve before trying to achieve goal $g$. In Algorithm
@@ -1127,6 +1130,7 @@ controllability for the current event.
 	\end{algorithmic}
 \end{algorithm}
 
+\vspace*{-3mm}
 Inputs of a task are the required elements that the collaborators use to
 achieve the specified goal of the task. These inputs are also part of the
 structure of a shared plan. In Algorithm \ref{alg:inputs}, we extract the
@@ -1139,6 +1143,7 @@ required inputs of the goal associated with the current event. This value
 value of $\mu$ gets to 1, the more positive impact it has on the overall
 controllability value of the event.
 
+\vspace*{-3mm}
 \section{Evaluation}
 \label{sec:user-study}
 
@@ -1171,6 +1176,7 @@ provide a dichotomy with the correct answer, and a third option was used to
 check whether the subjects perceived the other two options as equal. Figure
 \ref{fig:qs} shows the example of a questions in one of our questionnaires.
 
+\vspace*{-2mm}
 \begin{figure}[tbh]
   \centering
   \includegraphics[width=0.425\textwidth]{figure/question-sample-croped.pdf}
@@ -1179,6 +1185,7 @@ check whether the subjects perceived the other two options as equal. Figure
   \label{fig:qs}
 \end{figure}
 
+\vspace*{-2mm}
 We conducted the user study to compare the results with the implemented
 algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
 each question had 3 answers. Therefore, a totally random distribution would have
@@ -1208,14 +1215,25 @@ Mean} & {\fontsize{7.5}{8}\selectfont Stdev} &
 \hline
 \end{tabular}
 \label{tbl:statistics}
+\vspace*{-7mm}
 \end{table}
 
-These results indicate that there is a similarity between human subjects'
-answers and the results from our appraisal algorithm processes. However, if
-human subjects thought exactly the same as our algorithms' decision process, the
-average number of similarity to our result would be 100\%. We believe the
-difference between these two results could be because of several reasons,
-including:
+The results indicate that our algorithms provide sufficiently accurate
+representation of human's appraisal. The \textit{p}-values obtained based on a
+one-tailed z-test (see Table \ref{tbl:statistics}) show the probability of
+human subjects' data being generated from a random set. Therefore, the very
+small \textit{p}-values indicate that data set is not random, and is in fact
+strongly inclined towards the all four appraisal algorithms.
+
+These results also indicate that there is a similarity between human subjects'
+answers and the results from our appraisal algorithm. However, if human subjects
+thought exactly the same as our algorithms' decision processes, the average
+number of similarity to our result would be 100\%. We believe the difference between
+these two results could be because of several reasons, including: a) the fact
+that we conducted our study online and had less control on our subjects, b) our
+algorithms might require further granularity, c) the difference between decision
+making processes of individuals, which can be affected by other factors such as
+their personality, gender, and culture.
 
 % end the environment with {table*}, NOTE not {table}!
 
