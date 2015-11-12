@@ -334,7 +334,6 @@ task. The \textit{Theory of Mind} mechanism infers a model of the other's
 anticipated mental state. The self progressively updates this model during the
 collaboration.
 
-\vspace*{-1mm}
 \subsection{Mental States}
 \label{sec:mental-states}
 
@@ -351,7 +350,6 @@ internal cognitive processes. We only describe the attributes of beliefs and
 motives in this paper, since they are used in our appraisal algorithms. We do
 not provide the way we compute the attributes' values, due to the limited space.
 
-\vspace*{-2mm}
 \subsubsection{Belief:}
 
 \textit{Beliefs} are a crucial part of the mental states. We have two different
@@ -379,7 +377,6 @@ attribute that pertains to how easily the self becomes aware of a belief. The
 \textit{persistence} of a belief refers to how resistant the belief is to
 changes.
 
-\vspace*{-2mm}
 \subsubsection{Motive:}
 
 \textit{Motives} are mental constructs which can initiate, direct and maintain
@@ -405,7 +402,6 @@ the goal and ultimately the collaboration. The \textit{failure disruptiveness}
 attribute of a motive determines how disruptive failure is to achieving the
 corresponding goal.
 
-\vspace*{-2mm}
 \subsubsection{Intention:}
 
 \textit{Intentions} are mental constructs directed at goals and future actions.
@@ -418,7 +414,6 @@ Ambivalence, Affective-Deliberative Consistency} which moderate the consistency
 between intention and behavior \cite{cooke:intention-behavior-consistency}. The
 details about these attributes are out of this paper's context.
 
-\vspace*{-2mm}
 \subsubsection{Goal:}
 
 \textit{Goals} help the robot to create and update its collaboration plan
@@ -429,7 +424,6 @@ during collaboration. Goals also drive the Motivation mechanism to generate
 required motive(s). The details about goal's attributes are also out of this
 paper's context.
 
-\vspace*{-1mm}
 \subsubsection{Emotion Instance:}
 
 \textit{Emotions} in mental states are emotion instances that are elicited by
@@ -449,7 +443,6 @@ a robot and an astronaut during their collaboration. Their mission is to finish
 installing a few solar panels together. However, the astronaut encounters a
 measurement tool problem:
 
-\vspace*{-1mm}
 \begin{description}
   \item \textit{\textbf{\fontsize{9pt}{12pt}\selectfont Astronaut [turn t-1]:}}
   Oh no! Finishing the quality check of our installation with this measurement
@@ -462,9 +455,7 @@ measurement tool problem:
 
 \vspace*{-1mm}
 As shown, the robot in turn $t$, acknowledges the astronaut's frustration and
-appropriately responds to her problem. We will use this example in the Mental
-Graph section to clarify some of the concepts. The underlined utterance of the
-robot will be used in section Mental Graph.
+appropriately responds to her problem.
 
 \section{Collaboration}
 
@@ -536,71 +527,6 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   ``Prepare Measurement Tool''.
 \end{itemize}
 
-\section{Mental Graph}
-\label{sec:mental-graph}
-
-In this section, we provide a graph representation of the robot's mental state
-for the turn $t$ based on our example scenario. We only illustrate a part of the
-robot's mental states in turn $t$ which is related to the event occurring based
-on the astronaut's utterances in turn $t$-1. This section is provided because
-all of our algorithms use mental graphs to compute values of appraisal
-variables.
-
-In Figure \ref{fig:mg}, we illustrate all five elements of robot's mental
-states, i.e., belief, motive, intention, goal, and emotion, and the connections
-between them. The belief node $b^{\{1,..,n\}}_{t-2}$ represents $n$ number of
-beliefs that are carried over from the robot's previous mental state (shown as
-one node for simplicity). These beliefs can be a combination of the robot's
-private, inferred, and mutual beliefs as well as beliefs about self, other and
-the environment. These beliefs have influence on motive formation and emotion
-elicitation processes. However, there is another node representing belief
-$b^{\varepsilon}_{t-1}$ which is the belief about the previous event
-$\varepsilon_{t-1}$. In our example scenario, the astronaut's utterances in turn
-$t$-1 concern a problem in a measurement tool and consequently her frustration,
-which can lead to unsuccessful termination of the collaboration. The belief
-about the previous event $\varepsilon_{t-1}$ also impacts the current motive
-$m^{\delta}_t$ and emotion $e^{\delta}_t$. Note that the superscript $\delta$
-used for motive $m^{\delta}_t$ and emotion $e^{\delta}_t$ indicates a specific
-value for each of these mental states that is selected from among other possible
-options based on an arbitration process. The motive $m^{\delta}_t$ (the need to
-acknowledge the astronaut's emotion) leads to the formation of a required
-intention $i_t$ (acknowledge astronaut's emotion) to achieve the current goal
-$g_t$ (e.g., Prepare Measurement Tool).
-
-In our algorithms, we use \textit{F{\fontsize{8}{8}\selectfont
-IND}P{\fontsize{8}{8}\selectfont ATH}()} function to find the shortest path
-between two given node. 
-
-\begin{figure}
-\begin{center}
-\begin{tikzpicture}[>=stealth',shorten >=1pt,node distance=1.75cm,on
-grid,initial/.style    ={}] 
-  \node[state]          (G)                         {$g_t$};
-  \node[state]          (I1) [above right =of G]    {$i_t$};
-  \node[state]          (E1) [below right =of G]    {$e^{\delta}_t$};
-  \node[state]          (M1) [above right =of I1]   {$m^{\delta}_t$};
-  \node[state]          (B1) [below right =of I1]   {$b^{\{1,..,n\}}_{t-2}$};
-  \node[state]          (B2) [below right =of B1]   {$b^{\varepsilon}_{t-1}$};
-\tikzset{mystyle/.style={->,double=black}}
-\tikzset{every node/.style={fill=black}} 
-\path (M1)    edge [mystyle]   (I1) 
-      (B2)    edge [mystyle]   (E1)
-      (I1)    edge [mystyle]   (G)
-      (E1)    edge [mystyle]   (G);
-\tikzset{mystyle/.style={->,dashed=black}}
-\path (B1)    edge [mystyle]   (E1) 
-      (B1)    edge [mystyle]   (M1);
-\tikzset{mystyle/.style={->,relative=false,in=0,out=60,double=black}}
-\path (B2)    edge [mystyle]   (M1); 
-\end{tikzpicture}
-\caption{{\fontsize{9}{9}\selectfont Abstract structure of robot's mental graph
-in turn $t$.}}
-\label{fig:mg}
-\end{center}
-\vspace*{-6mm}
-\end{figure}
-
-\vspace*{-2mm}
 \section{Appraisal Processes}
 \label{sec:appraisal-process}
 
@@ -652,26 +578,17 @@ path, the algorithm finds the event \textit{irrelevant} and terminates.
 	\caption{(Relevance)}
 	\label{alg:relevance}
 	\begin{algorithmic}[1]
-		\Function{IsEventRelevant}{{\fontsize{8.0}{9}\selectfont MentalGraph}
-		$\mathcal{G}_{t}$, {\fontsize{8.5}{9}\selectfont Event} $\varepsilon_t$}
+		\Function{IsEventRelevant}{Event $\varepsilon_t$}
 			\Statex
-			\State $\mathit{b}_{\varepsilon_t} \gets \Call{getBelief}{\varepsilon_t}$
-			\State $\mathit{g}_{t} \gets \textit{currGoal}{(\mathcal{G}_{t})}$
+			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\Statex
-			\State $\mathcal{P} \gets \Call{findPath}{\mathit{b}_{\varepsilon_t},
-			\mathit{g}_{t}}$
+			\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{g}_{t}}$ 
+			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathcal{G}_{t}}$
 			\Statex
-			\If {$(\mathcal{P} = \emptyset)$}
-				\State \Return {{\fontsize{8}{8}\selectfont IRRELEVANT}}
-			\Else
-				\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{b}_{\varepsilon_t},
-				\mathit{g}_{t}}$ 
-				\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathcal{G}_{t}}$
-				\If {$( \mathcal{U} \geq \tau_{t} )$}
+			\If {$( \mathcal{U} \geq \tau_{t} )$}
 				\State \Return {{\fontsize{8}{8}\selectfont RELEVANT}}
-				\Else
-					\State \Return {{\fontsize{8}{8}\selectfont IRRELEVANT}}
-				\EndIf
+			\Else
+				\State \Return {{\fontsize{8}{8}\selectfont IRRELEVANT}}
 			\EndIf
 		\EndFunction
 	\end{algorithmic}
@@ -714,8 +631,9 @@ the state of a goal that is inconsistent with respect to the shared goal.
 	\caption{(Desirability)}
 	\label{alg:desirability}
 	\begin{algorithmic}[1]
-		\Function{IsEventDesirable}{{\fontsize{7.5}{8}\selectfont
-		MentalGraph $\mathcal{G}_{t}$}, {\fontsize{7.5}{8}\selectfont Event $\varepsilon_t$}}
+		\Function{IsEventDesirable}{Event $\varepsilon_t$}
+			\Statex
+			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\Statex
 			\If {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)} =
 			{\fontsize{7}{8}\selectfont ACHIEVED})}} 
@@ -827,8 +745,7 @@ event.
 	\caption{(Expectedness)}
 	\label{alg:expectedness}
 	\begin{algorithmic}[1]
-		\Function{IsEventExpected}{{\fontsize{8}{9}\selectfont MentalGraph}
-		$\mathcal{G}_{t}$, {\fontsize{8}{9}\selectfont Event} $\varepsilon_t$}
+		\Function{IsEventExpected}{Event $\varepsilon_t$}
 			\Statex
 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\State $\mathit{g}_{top} \gets \textit{getTopGoal}{(\mathit{g}_{t})}$
@@ -882,7 +799,6 @@ $\mathit{g}_{t}$, it might be a goal in another branch in the shared plan which
 has received focus and should be achieved. In such a case, again, the event will
 be expected; otherwise we consider the event unexpected (lines 21 to 24).
 
-\vspace*{-2mm}
 \subsection{Controllability}
 
 Controllability is the extent to which an event can be influenced, and it is
@@ -982,7 +898,6 @@ controllability of an event (lines 8 to 11).
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-3mm}
 Agency is the capacity of an individual to act independently in any given
 environment. In a collaborative environment sometimes collaborators are required
 to act independently of each other. Hence, they need to have some internal motives
@@ -1068,7 +983,6 @@ a more positive value of controllability.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-3mm}
 The structure of a shared plan accommodates the order of the required
 predecessors of a goal. Predecessors of a goal, $g$, are other goals that
 the collaborators should achieve before trying to achieve goal $g$. In Algorithm
@@ -1136,14 +1050,6 @@ subjects providing wrong answers to our test questions. We also eliminated
 subjects with an answering time less than 2 minutes. The final number of
 accepted subjects in each group is provided in Table \ref{tbl:statistics}.
 
-\begin{figure}[tbh]
-  \centering
-  \includegraphics[width=0.425\textwidth]{figure/question-sample-croped.pdf}
-  \caption{{\fontsize{9}{9}\selectfont An example question from the expectedness
-  questionnaire.}}
-  \label{fig:qs}
-\end{figure}
-
 To minimize the background knowledge necessary, we used a simple domestic
 example of preparing a peanut butter and jelly sandwich, and a hard boiled egg
 sandwich for a hiking trip. We provided clear textual and graphical instructions
@@ -1160,6 +1066,14 @@ provided a distinct alternative; another option was used to provide a dichotomy
 with the first alternative, and a third option was used to check whether the
 subjects perceived the other two options as equal. Figure \ref{fig:qs} shows an
 example question from one of our questionnaires.
+
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[width=0.425\textwidth]{figure/question-sample-croped.pdf}
+  \caption{{\fontsize{9}{9}\selectfont An example question from the expectedness
+  questionnaire.}}
+  \label{fig:qs}
+\end{figure}
 
 We conducted the user study to compare the results with the implemented
 algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
@@ -1179,20 +1093,28 @@ agreement.
 \centering
 \caption{Results From Our User Study}
 \begin{tabular}{|c|c|c|c|c|} \hline
-{\fontsize{7.5}{8}\selectfont Appraisal Variables} &
-{\fontsize{7.5}{8}\selectfont \# of Subjects} & {\fontsize{8}{8}\selectfont
-Mean} & {\fontsize{7.5}{8}\selectfont Stdev} &
+{\fontsize{7.5}{8}\selectfont appraisal variables} &
+{\fontsize{7.5}{8}\selectfont \# of subjects} & {\fontsize{8}{8}\selectfont
+mean} & {\fontsize{7.5}{8}\selectfont stdev} &
 {\fontsize{7.5}{8}\selectfont\textit{p}-value}\\ \hline 
-{\fontsize{7.5}{8}\selectfont Relevance} & 29 & 0.713 & 0.107 & <0.001\\ \hline
-{\fontsize{7.5}{8}\selectfont Desirability} & 35 & 0.778 & 0.150 & <0.001\\
+{\fontsize{7.5}{8}\selectfont Relevance} & {\fontsize{7.5}{8}\selectfont 29} &
+{\fontsize{7.5}{8}\selectfont 0.713} & {\fontsize{7.5}{8}\selectfont 0.107} &
+{\fontsize{7.5}{8}\selectfont <0.001}\\ \hline {\fontsize{7.5}{8}\selectfont
+Desirability} & {\fontsize{7.5}{8}\selectfont 35} &
+{\fontsize{7.5}{8}\selectfont 0.778} & {\fontsize{7.5}{8}\selectfont 0.150} &
+{\fontsize{7.5}{8}\selectfont <0.001}\\
 \hline 
-{\fontsize{7.5}{8}\selectfont Expectedness} & 33 & 0.785 & 0.120 & <0.001\\
+{\fontsize{7.5}{8}\selectfont Expectedness} & {\fontsize{7.5}{8}\selectfont 33}
+& {\fontsize{7.5}{8}\selectfont 0.785} & {\fontsize{7.5}{8}\selectfont 0.120} &
+{\fontsize{7.5}{8}\selectfont <0.001}\\
 \hline 
-{\fontsize{7.5}{8}\selectfont Controllability} & 33 & 0.743 & 0.158 & <0.001\\
+{\fontsize{7.5}{8}\selectfont Controllability} & {\fontsize{7.5}{8}\selectfont
+33} & {\fontsize{7.5}{8}\selectfont 0.743} & {\fontsize{7.5}{8}\selectfont
+0.158} & {\fontsize{7.5}{8}\selectfont <0.001}\\
 \hline
 \end{tabular}
 \label{tbl:statistics}
-\vspace*{-7mm}
+\vspace*{-4mm}
 \end{table}
 
 The results indicate that our algorithms provide a sufficiently accurate
