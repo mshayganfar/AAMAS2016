@@ -1149,54 +1149,56 @@ controllability value of the event.
 
 We conducted a between subject user study using an online crowdsourcing
 website -- CrowdFlower\footnote{http://www.crowdflower.com}. Each group
-originaly had 40 subjects. To increase the quality of our subjects' answers, we
+originally had 40 subjects. To increase the quality of our subjects' answers, we
 limited the visibility of our questionnaires to a few English speaking
 countries, i.e., United States, Britain, and Australia. We also limited our
-subject pools to those acquired highest confidence level on the crowdsourcing
-website. Our questionnaires included 2 or 3 test questions (depending on the
-length) to check the sanity of the answers. We eliminated subjects providing
-wrong answers to our test questions. We also eliminated subjects with answering
-time less than 2 minutes, which we acquired based on the data from our pilot
-study. The final number of accepted subjects in each group is provided in Table
-\ref{tbl:statistics}.
+subject pools to those that have acquired the highest confidence level on the
+crowdsourcing website. Our questionnaires included 2 or 3 test questions
+(depending on the length) to check the sanity of the answers. We eliminated
+subjects providing wrong answers to our test questions. We also eliminated
+subjects with an answering time less than 2 minutes. The final number of
+accepted subjects in each group is provided in Table \ref{tbl:statistics}.
 
 To minimize the background knowledge necessary, we used a simple domestic
 example of preparing a peanut butter and jelly sandwich, and a hard boiled egg
 sandwich for a hiking trip. We provided clear textual and graphical instructions
-for all four questionnaires. We also provided a brief description as well as a
+for all four questionnaires. The instructions focused on hypothetical
+collaboration between the test subject and an imaginary friend, Mary; their goal
+was to prepare two sandwiches. We also provided a brief description as well as a
 simple example for each appraisal variable, e.g., \textit{relevance}, at the end
-of the corresponding instruction. The instruction was emphasizing on subjects
-collaborating with their friend, Mary, to prepare two sandwiches. We prepared
-four different online questionnaires for the appraisal variables:
-\textit{relevance, desirability, expectedness} and \textit{controllability}. All
-these questions were designed based on different parameters that we use in our
-algorithms (see Section \ref{sec:appraisal-process}). Each question provided
-three options. One option was the correct answer; another option was used to
-provide a dichotomy with the correct answer, and a third option was used to
-check whether the subjects perceived the other two options as equal. Figure
-\ref{fig:qs} shows the example of a questions in one of our questionnaires.
+of the corresponding instructions. We prepared four different online
+questionnaires for the appraisal variables: \textit{relevance, desirability,
+expectedness} and \textit{controllability}. All these questions were designed
+based on different parameters that we use in our algorithms (see Section
+\ref{sec:appraisal-process}). Each question provided three options. One option
+provided a distinct alternative; another option was used to provide a dichotomy
+with the first alternative, and a third option was used to check whether the
+subjects perceived the other two options as equal. Figure \ref{fig:qs} shows an
+example question from one of our questionnaires.
 
 \vspace*{-2mm}
 \begin{figure}[tbh]
   \centering
   \includegraphics[width=0.425\textwidth]{figure/question-sample-croped.pdf}
-  \caption{{\fontsize{9}{9}\selectfont An example question of our
-  questionnaires.}}
+  \caption{{\fontsize{9}{9}\selectfont An example question from the expectedness
+  questionnaire.}}
   \label{fig:qs}
 \end{figure}
 
 \vspace*{-2mm}
 We conducted the user study to compare the results with the implemented
 algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
-each question had 3 answers. Therefore, a totally random distribution would have
-33\% chance of being similar to our algorithms' answers. However, the average
-number indicating similarity between human subjects decisions and the output of
-our algorithms is significantly beyond the selecting by chance value for all of
-the algorithms. The total number of subjects' answers similar to a) the
-\textit{relevance} algorithm (n=29) averaged 71.3\% (s=10.7\%), b) the
-\textit{desirability} algorithm (n=35) averaged 77.8\% (s=15.0\%), c) the
-\textit{expectedness} algorithm (n=33) averaged 78.5\% (s=12.0\%), and d) the
-\textit{controllability} algorithm (n=33) averaged 74.3\% (s=15.8\%).
+each question had 3 answers. Therefore, a totally random distribution would
+result in 33\% agreement with our algorithms results. However, the average
+ratio indicating similarity between human subjects decisions and the output of
+our algorithms is significantly higher than 33\%. The total number of subjects'
+answers similar to a) the \textit{relevance} algorithm (n=29) averaged 71.3\%
+(s=10.7\%), b) the \textit{desirability} algorithm (n=35) averaged 77.8\%
+(s=15.0\%), c) the \textit{expectedness} algorithm (n=33) averaged 78.5\%
+(s=12.0\%), and d) the \textit{controllability} algorithm (n=33) averaged 74.3\%
+(s=15.8\%). It is worth noting that the human subjects agreed 100\% on some
+questions, while one some other questions there was a much lower level of
+agreement.
 
 \begin{table}
 \centering
@@ -1218,14 +1220,15 @@ Mean} & {\fontsize{7.5}{8}\selectfont Stdev} &
 \vspace*{-7mm}
 \end{table}
 
-The results indicate that our algorithms provide sufficiently accurate
+The results indicate that our algorithms provide a sufficiently accurate
 representation of human's appraisal. The \textit{p}-values obtained based on a
 one-tailed z-test (see Table \ref{tbl:statistics}) show the probability of
-human subjects' data being generated from a random set. Therefore, the very
-small \textit{p}-values indicate that data set is not random, and is in fact
-strongly inclined towards the all four appraisal algorithms.
+human subjects' data being generated from a random set. The very small
+\textit{p}-values indicate that the data set is not random; in fact, the high
+percentage of similarity shows it is strongly inclined towards the four
+appraisal algorithms.
 
-These results also indicate that there is a similarity between human subjects'
+These results indicate that there is a similarity between human subjects'
 answers and the results from our appraisal algorithm. However, if human subjects
 thought exactly the same as our algorithms' decision processes, the average
 number of similarity to our result would be 100\%. We believe the difference between
@@ -1233,7 +1236,10 @@ these two results could be because of several reasons, including: a) the fact
 that we conducted our study online and had less control on our subjects, b) our
 algorithms might require further granularity, c) the difference between decision
 making processes of individuals, which can be affected by other factors such as
-their personality, gender, and culture.
+personality, gender, and culture. While it maybe possible to achieve a higher
+level of agreement between humans and the algorithms results, these results
+indicate that the current algorithms are adequate to be used in collaboration
+context.
 
 % end the environment with {table*}, NOTE not {table}!
 
