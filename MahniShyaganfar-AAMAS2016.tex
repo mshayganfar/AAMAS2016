@@ -198,14 +198,13 @@ mshayganfar $|$ rich $|$ sidner @wpi.edu
 
 \begin{abstract}
 We have investigated the mutual influence of affective and collaborative
-processes in a cognitive theory to support the interaction between humans and
-robots or virtual agents. We have developed new algorithms for appraisal
-processes, as part of a new overall computational model for implementing
-collaborative robots and agents. We build primarily on the \textit{cognitive
-appraisal} theory of emotions and the \textit{SharedPlans} theory of
-collaboration to investigate the structure, fundamental processes and functions
-of emotions in a collaboration. We have evaluated our proposed algorithms by
-conducting an online user study.
+processes in a cognitive theory to support interaction between humans and robots
+or virtual agents. We have developed new algorithms for appraisal processes, as
+part of a new overall computational model for implementing collaborative robots
+and agents. We build primarily on the \textit{cognitive appraisal} theory of
+emotions and the \textit{SharedPlans} theory of collaboration to investigate the
+structure, fundamental processes and functions of emotions in a collaboration.
+We have evaluated our proposed algorithms by conducting an online user study.
 \end{abstract}
 
 % Note that the category section should be completed after reference to the ACM Computing Classification Scheme available at
@@ -257,7 +256,7 @@ sourcing. In Section \ref{sec:user-study} we provide the results from our user
 study.
 
 \section{Related Work}
-Our work is built on the general notions of appraisal theory, but focused on its
+Our work builds on the general notions of appraisal theory, but focused on its
 application in human-robot collaboration. Computational appraisal models have
 been applied to a variety of uses including psychology, robotics, AI, and
 cognitive science. For instance, in \cite{marsella:ema-process-model} EMA is
@@ -449,8 +448,8 @@ measurement tool problem:
   problem is so frustrating. I think we should stop now!
 
   \item \textit{\textbf{\fontsize{9pt}{12pt}\selectfont{Robot [turn t]:}}}
-  \underline{I see. This is frustrating.} But, I can help you with the
-  measurement tool and we can finish the task as originally planned.
+  I see. This is frustrating. But, I can help you with the measurement tool and
+  we can finish the task as originally planned.
 \end{description}
 
 \vspace*{-1mm}
@@ -487,14 +486,16 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   contributes, or \textit{ambiguous} if this method does not recognize a goal in
   the plan.
   \item \textit{topLevelGoalStatus($g_t$)} returns the status of the top level
-  goal whether it is \textit{achieved, blocked} or \textit{in progress}. In
-  our example, ``Install Solar Panels'' is the top level goal.
+  goal whether it is \textsc{achieved, failed, blocked, inapplicable, pending,}
+  or \textsc{in progress}.
+  In our example, ``Install Solar Panels'' is the top level goal.
   \item \textit{currGoalStatus($g_t$)} returns the current goal status whe\-ther
-  it is \textit{achieved, blocked, unknown} or \textit{in progress}. In our
-  example, ``Prepare Measurement Tool'' is the current (focused) goal.
+  it is \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
+  progress}. In our example, ``Prepare Measurement Tool'' is the current
+  (focused) goal.
   \item \textit{precondStatus($g_t$)} returns the status of the precondition for
-  the given goal whether it is \textit{satisfied, unsatisfied} or
-  \textit{unknown}. For instance, the precondition for fixing a panel is whether
+  the given goal whether it is \textsc{satisfied, unsatisfied} or
+  \textsc{unknown}. For instance, the precondition for fixing a panel is whether
   the panel is appropriately located on its frame.
   \item \textit{doesContribute($g_t$)} returns whether the given goal
   contributes to another goal in the higher level of the plan hierarchy. For
@@ -583,7 +584,7 @@ path, the algorithm finds the event \textit{irrelevant} and terminates.
 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\Statex
 			\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{g}_{t}}$ 
-			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathcal{G}_{t}}$
+			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 			\Statex
 			\If {$( \mathcal{U} \geq \tau_{t} )$}
 				\State \Return {{\fontsize{8}{8}\selectfont RELEVANT}}
@@ -637,10 +638,10 @@ the state of a goal that is inconsistent with respect to the shared goal.
 			\Statex
 			\If {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)} =
 			{\fontsize{7}{8}\selectfont ACHIEVED})}} 
-			\State \Return {{\fontsize{7}{8}\selectfont HIGH-DESIRABLE}} 
+			\State \Return {{\fontsize{7}{8}\selectfont MOST-DESIRABLE}} 
 			\ElsIf {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)}} =
 			{\fontsize{7}{8}\selectfont FAILED})} 
-			\State \Return {{\fontsize{7}{8}\selectfont HIGH-UNDESIRABLE}}
+			\State \Return {{\fontsize{7}{8}\selectfont MOST-UNDESIRABLE}}
 			\ElsIf {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)}} =
 			{\fontsize{7}{8}\selectfont BLOCKED}) \OR
 			\hspace{1mm}{\fontsize{8}{9}\selectfont
@@ -658,7 +659,7 @@ the state of a goal that is inconsistent with respect to the shared goal.
 				\State \Return {{\fontsize{7}{8}\selectfont DESIRABLE}}
 				\ElsIf {(\textit{currGoalStatus($g_{t}$)} = {\fontsize{7}{8}\selectfont
 				FAILED})} 
-				\State \Return {{\fontsize{7}{8}\selectfont HIGH-UNDESIRABLE}}
+				\State \Return {{\fontsize{7}{8}\selectfont MOST-UNDESIRABLE}}
 				\ElsIf {(\textit{currGoalStatus($g_{t}$)} = {\fontsize{7}{8}\selectfont
 				BLOCKED}) \OR 
 				\hspace{1mm}{\fontsize{8}{9}\selectfont
@@ -1060,7 +1061,7 @@ simple example for each appraisal variable, e.g., \textit{relevance}, at the end
 of the corresponding instructions. We prepared four different online
 questionnaires for the appraisal variables: \textit{relevance, desirability,
 expectedness} and \textit{controllability}. All these questions were designed
-based on different parameters that we use in our algorithms (see Section
+based on different factors that we use in our algorithms (see Section
 \ref{sec:appraisal-process}). Each question provided three options. One option
 provided a distinct alternative; another option was used to provide a dichotomy
 with the first alternative, and a third option was used to check whether the
@@ -1149,7 +1150,10 @@ context.
 
 %Acknowledgements are optional
 \section*{Acknowledgments}
-
+This work is supported by the National Science Foundation under award
+IIS-1012083. Any opinions, findings, and conclusions expressed in this material
+are those of the authors and do not necessarily reflect the views of the
+National Science Foundation.
 %
 %APPENDICES are optional
 %\balancecolumns
