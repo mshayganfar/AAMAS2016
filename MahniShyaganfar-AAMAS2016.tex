@@ -827,44 +827,23 @@ event.
 	\caption{(Expectedness)}
 	\label{alg:expectedness}
 	\begin{algorithmic}[1]
-		\Function{IsEventExpected}{{\fontsize{8.5}{9}\selectfont MentalGraph}
-		$\mathcal{G}_{t}$, {\fontsize{9}{9}\selectfont Event} $\varepsilon_t$}
+		\Function{IsEventExpected}{{\fontsize{8}{9}\selectfont MentalGraph}
+		$\mathcal{G}_{t}$, {\fontsize{8}{9}\selectfont Event} $\varepsilon_t$}
 			\Statex
-			\State $\mathit{g}_{t} \gets \textit{currGoal}{(\mathcal{G}_{t})}$
-			\State $\mathit{g}_{\varepsilon_t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
+			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
+			\State $\mathit{g}_{top} \gets \textit{getTopGoal}{(\mathit{g}_{t})}$
 			\Statex
-			\If {$(\mathit{g}_{\varepsilon_t} =$ {\fontsize{8}{8}\selectfont
-			AMBIGUOUS}$)$}
-				\State \Return {\fontsize{8}{8}\selectfont UNEXPECTED}
-			\EndIf
-			\Statex
-			\If {$(\mathit{g}_{t} = \mathit{g}_{\varepsilon_t})$}
-				\State \Return {\fontsize{8}{8}\selectfont EXPECTED}
+			\If {$(\textit{isLive}{(\mathit{g}_{t})})$}
+				\If {$(\textit{isNeccessaryFocusShift}{(\mathit{g}_{t})})$}
+					\State \Return {\fontsize{8}{8}\selectfont MOST-EXPECTED}
+				\Else
+					\State \Return {\fontsize{8}{8}\selectfont EXPECTED}
+				\EndIf
 			\Else
-				\If {$(\neg \textit{isAchieved}{(\mathit{g}_{t})})$}
+				\If {$(\textit{isPath}{(\mathit{g}_{t}, \mathit{g}_{top})})$}
 					\State \Return {\fontsize{8}{8}\selectfont UNEXPECTED}
 				\Else
-					\If {$(\neg \textit{isAchieved}{(\mathit{g}_{t}.parent)})$}
-						\If {$(\textit{{\fontsize{9}{9}\selectfont
-						 doesContribute}}(\mathit{g}_{\varepsilon_t},
-						\mathit{g}_{t}.parent))$}
-							\State \Return {\fontsize{8}{8}\selectfont EXPECTED}
-						\Else
-							\State \Return {\fontsize{8}{8}\selectfont UNEXPECTED}
-						\EndIf
-					\Else
-						\If	{$(\textit{{\fontsize{9}{9}\selectfont
-						doesContribute}}(\mathit{g}_{\varepsilon_t}, \mathit{g}_{t}))$} 
-							\State \Return {\fontsize{8}{8}\selectfont EXPECTED}
-						\Else
-							\If {$(\textit{{\fontsize{9}{9}\selectfont
-						isFocused}}(\mathit{g}_{\varepsilon_t}))$}
-								\State \Return {\fontsize{8}{8}\selectfont EXPECTED}
-							\Else
-								\State \Return {\fontsize{8}{8}\selectfont UNEXPECTED}
-							\EndIf
-						\EndIf
-					\EndIf
+					\State \Return {\fontsize{8}{8}\selectfont MOST-UNEXPECTED}
 				\EndIf
 			\EndIf
 		\EndFunction
@@ -1046,7 +1025,6 @@ out of this paper's context.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-3mm}
 Autonomy is the ability to make decisions without the influence of others.
 Autonomy implies acting on one's own and being responsible for that. In a
 collaborative environment, tasks are delegated to the collaborators based on
@@ -1130,7 +1108,6 @@ controllability for the current event.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-3mm}
 Inputs of a task are the required elements that the collaborators use to
 achieve the specified goal of the task. These inputs are also part of the
 structure of a shared plan. In Algorithm \ref{alg:inputs}, we extract the
@@ -1159,6 +1136,14 @@ subjects providing wrong answers to our test questions. We also eliminated
 subjects with an answering time less than 2 minutes. The final number of
 accepted subjects in each group is provided in Table \ref{tbl:statistics}.
 
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[width=0.425\textwidth]{figure/question-sample-croped.pdf}
+  \caption{{\fontsize{9}{9}\selectfont An example question from the expectedness
+  questionnaire.}}
+  \label{fig:qs}
+\end{figure}
+
 To minimize the background knowledge necessary, we used a simple domestic
 example of preparing a peanut butter and jelly sandwich, and a hard boiled egg
 sandwich for a hiking trip. We provided clear textual and graphical instructions
@@ -1176,16 +1161,6 @@ with the first alternative, and a third option was used to check whether the
 subjects perceived the other two options as equal. Figure \ref{fig:qs} shows an
 example question from one of our questionnaires.
 
-\vspace*{-2mm}
-\begin{figure}[tbh]
-  \centering
-  \includegraphics[width=0.425\textwidth]{figure/question-sample-croped.pdf}
-  \caption{{\fontsize{9}{9}\selectfont An example question from the expectedness
-  questionnaire.}}
-  \label{fig:qs}
-\end{figure}
-
-\vspace*{-2mm}
 We conducted the user study to compare the results with the implemented
 algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
 each question had 3 answers. Therefore, a totally random distribution would

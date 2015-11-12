@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  12 NOV 2015 11:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  12 NOV 2015 12:19
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -729,12 +729,8 @@ m/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer/m/n/9 = \T1/aer/m/n/7 BLOCKED\T1/aer/m/n/
 9 ) \T1/aer/bx/n/8 or
  []
 
-[5]
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
- [6]
-[7]
-Overfull \hbox (1.80331pt too wide) in paragraph at lines 1150--1161
+[5] [6] [7]
+Overfull \hbox (1.80331pt too wide) in paragraph at lines 1127--1138
 \T1/aer/m/n/9 naires to a few En-glish speak-ing coun-tries, i.e., United State
 s,
  []
@@ -744,31 +740,37 @@ File: figure/question-sample-croped.pdf Graphic file (type pdf)
 
 <use figure/question-sample-croped.pdf>
 Package pdftex.def Info: figure/question-sample-croped.pdf used on input line 1
-182.
+141.
 (pdftex.def)             Requested size: 214.20154pt x 129.5895pt.
 
-Overfull \hbox (6.98329pt too wide) in paragraph at lines 1189--1202
+Overfull \hbox (6.98329pt too wide) in paragraph at lines 1164--1177
 \T1/aer/m/n/9 the \T1/aer/m/it/9 ex-pect-ed-ness \T1/aer/m/n/9 al-go-rithm (n=3
 3) av-er-aged 78.5% (s=12.0%),
  []
 
 
-Overfull \hbox (8.73834pt too wide) in paragraph at lines 1206--1221
+Overfull \hbox (8.73834pt too wide) in paragraph at lines 1181--1196
  [][][] 
  []
 
-[8 <./figure/question-sample-croped.pdf>] (./MahniShyaganfar-AAMAS2016.bbl)
-[9] (./MahniShyaganfar-AAMAS2016.aux)
+(./MahniShyaganfar-AAMAS2016.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./figure/question-sample-croped.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+) [9]
+(./MahniShyaganfar-AAMAS2016.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.25pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 12734 strings out of 493304
- 239297 string characters out of 6139871
- 307095 words of memory out of 5000000
- 15838 multiletter control sequences out of 15000+600000
+ 12725 strings out of 493304
+ 239153 string characters out of 6139871
+ 308095 words of memory out of 5000000
+ 15829 multiletter control sequences out of 15000+600000
  90595 words of font info for 136 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,68p,467b,828s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -796,7 +798,7 @@ texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
 tmri8a.pfb>
-Output written on MahniShyaganfar-AAMAS2016.pdf (9 pages, 421960 bytes).
+Output written on MahniShyaganfar-AAMAS2016.pdf (9 pages, 421952 bytes).
 PDF statistics:
  193 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams
