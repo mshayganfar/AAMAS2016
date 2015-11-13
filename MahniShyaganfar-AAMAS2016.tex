@@ -515,7 +515,7 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   available. For instance, if the \textit{welding tool} is required for the goal
   ``Fix Panels'', is it available now?
   \item \textit{isAchieved($g_t$)} returns whether the given goal is achieved,
-  i.e., whether all the postconditions of the given goal are \textit{satisfied}.
+  i.e., whether all the postconditions of the given goal are \textsc{satisfied}.
   \item \textit{isFocused($g_t$)} returns whether the focus is on given
   goal now. The focus is on the goal ``Prepare Measurement Tool''. The focused
   goal is the goal that the robot currently is pursuing.
@@ -531,18 +531,18 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
 \section{Appraisal Processes}
 \label{sec:appraisal-process}
 
-All of the algorithms in this section use a mental graph which is a directed
-acyclic graph constructed based on the mental states of the robot at each turn
-during the collaboration. They also use the content of the most recent event at
-each turn. We consider four appraisal variables to be the most important
-variables in a collaboration context, i.e., \textit{Relevance} (Algorithm
-\ref{alg:relevance}), \textit{Desirability} (Algorithm \ref{alg:desirability}),
-\textit{Expectedness} (Algorithm \ref{alg:expectedness}), and
-\textit{Controllability} (Algorithm \ref{alg:controllability}). There are other
-appraisal variables introduced in psychological
-\cite{scherer:appraisal-processes} and computational literature
+We consider four appraisal variables to be the most important variables in a
+collaboration context, i.e., \textit{Relevance} (Algorithm \ref{alg:relevance}),
+\textit{Desirability} (Algorithm \ref{alg:desirability}), \textit{Expectedness}
+(Algorithm \ref{alg:expectedness}), and \textit{Controllability} (Algorithm
+\ref{alg:controllability}). There are other appraisal variables introduced in
+psychological \cite{scherer:appraisal-processes} and computational literature
 \cite{gratch:domain-independent}. We believe most of these variables can be
-straightforwardly added to our appraisal mechanism later.
+straightforwardly added to our appraisal mechanism later. All of the algorithms
+in this section use mental states of the robot (discussed in Section
+\ref{sec:mental-states}) which are formed based on the collaboration structure.
+These algorithms use the corresponding recognized goal of the most recent event
+at each turn.
 
 \subsection{Relevance}
 
@@ -553,11 +553,10 @@ it can causally impact a state with a positive utility
 since the other appraisal variables are only computed for the relevant events.
 
 Algorithm \ref{alg:relevance} determines the relevance of the given event with
-respect to the current mental state. An event is \textit{irrelevant} if there is
-no connection between the event and the current shared goal. If there is a
-connection, the relevance of the event will depend on the significance of the
-event with respect to the current collaboration status. The significance of an
-event is determined based on the utility of the event as it is also presented in
+respect to the current mental state. The relevance of the event depends on the
+significance of the event with respect to the current collaboration status.
+The significance of an event is determined based on the utility of the event as
+it is also presented in
 \cite{gratch:domain-independent,marsella:ema-process-model}. We believe although
 the utility of the event represents the significance of the event, the other
 collaborator's expressed emotion also plays a role by influencing the
@@ -567,13 +566,6 @@ only to the events which can positively impact the status of the shared goal
 without dedicating all other resources to every single event. The relevance
 process also benefits from the information that the collaboration structure
 contains, e.g., shared goal.
-
-After perceiving an event, it is the belief about that event which represents
-the event in robot's mental state (line 2). $g_{t}$ (line 3) represents the
-shared goal (in the mental graph) at time (turn) $t$ within the shared plan.
-Then, we find the shortest path ($\mathcal{P}$) between the nodes
-$\mathit{b}_{\varepsilon_t}$ and $g_{t}$ in the mental graph. If there is no
-path, the algorithm finds the event \textit{irrelevant} and terminates.
 
 \begin{algorithm}
 	\caption{(Relevance)}
@@ -587,26 +579,47 @@ path, the algorithm finds the event \textit{irrelevant} and terminates.
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 			\Statex
 			\If {$( \mathcal{U} \geq \tau_{t} )$}
-				\State \Return {{\fontsize{8}{8}\selectfont RELEVANT}}
+				\State \Return {{\fontsize{7}{8}\selectfont RELEVANT}}
 			\Else
-				\State \Return {{\fontsize{8}{8}\selectfont IRRELEVANT}}
+				\State \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
 			\EndIf
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
 
-However, if there is a path between $\mathit{b}_{\varepsilon_t}$ and $g_{t}$, we
-need a way to determine whether the event is relevant. First, we compute the
-utility $(\mathcal{U})$ of the event ($0 \leq \mathcal{U} \leq 1$)
-based on the values of the attributes associated with
-$\mathit{b}_{\varepsilon_t}$, as well as the attributes of the motive within the
-path $\mathcal{P}$. The significance of an event in a collaborative environment
-is based not only on the utility of the event, but it is also influenced by the
-perceived emotion of the human collaborator. The human's emotion influences the
-decision about the utility of the event in form of a threshold value
-($\tau_{t}$). For instance, a positive expressed emotion of the human reduces
-the threshold value which consequently makes the robot find an event relevant
-with even a slightly positive utility.
+After perceiving an event, it is the belief about that event which represents
+the event in robot's mental state. Also, the \textit{recognizeGoal} returns the
+goal ($g_{t}$) to which the current event contributes, unless it is
+\textit{ambiguous}; $g_{t}$ represents the shared goal at time (turn) $t$ within
+the shared plan. We compute the utility ($0 \leq \mathcal{U} \leq 1$) of the
+event based on the values of the attributes associated with the existing beliefs
+in the mental state, as well as the attributes of the motive associated with the
+recognized goal. We use four of the belief attributes discussed in Section
+\ref{sec:mental-states} to compute part of the utility related to beliefs: 
+
+\begin{itemize}
+  \item \textit{Strength}: The extent to which the pre and post conditions of a
+  goal and its predecessors and/or contributing goals are \textsc{satisfied} or
+  \textsc{unsatisfied} makes a belief about the goal more stronger.
+  Respectively, an \textsc{unknown} pre and post condition status of a goal and
+  its predecessors and/or contributing goals forms beliefs with lower strength.
+  \item \textit{Recency}: The extent to which a belief is related to the
+  focused goal. Beliefs related to the focused goal have the highest value of
+  recency. Beliefs related to the predecessors or ancestors of the focused goal
+  have lower value of recency.
+  \item \textit{Saliency}: Beliefs related to the goal at the top of the focus
+  stack are more salient than beliefs about any other goal in the plan, whether
+  those goals are already \textsc{achieved} or \textsc{failed}, or they will be
+  pursued to achieve in the future.
+\end{itemize}
+
+The significance of an event in a collaborative environment is based not
+only on the utility of the event, but it is also influenced by the perceived
+emotion of the human collaborator. The human's emotion influences the decision
+about the utility of the event in form of a threshold value ($\tau_{t}$). For
+instance, a positive expressed emotion of the human reduces the threshold value
+which consequently makes the robot find an event relevant with even a slightly
+positive utility.
 
 We compute this threshold value ($\tau_{t}$) using a Fuzzy Logic system on a
 three-dimensional space of the somatic markers associated with the other's
