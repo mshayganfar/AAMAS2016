@@ -350,6 +350,7 @@ motives in this paper, since they are used in our appraisal algorithms. We do
 not provide the way we compute the attributes' values, due to the limited space.
 
 \subsubsection{Belief:}
+\label{sec:belief}
 
 \textit{Beliefs} are a crucial part of the mental states. We have two different
 perspectives on categorization of beliefs. In one perspective, we categorize
@@ -377,6 +378,7 @@ attribute that pertains to how easily the self becomes aware of a belief. The
 changes.
 
 \subsubsection{Motive:}
+\label{sec:motive}
 
 \textit{Motives} are mental constructs which can initiate, direct and maintain
 goal-directed behaviors. They are created by the emotion-regulated Motivation
@@ -594,8 +596,8 @@ goal ($g_{t}$) to which the current event contributes, unless it is
 the shared plan. We compute the utility ($0 \leq \mathcal{U} \leq 1$) of the
 event based on the values of the attributes associated with the existing beliefs
 in the mental state, as well as the attributes of the motive associated with the
-recognized goal. We use four of the belief attributes discussed in Section
-\ref{sec:mental-states} to compute part of the utility related to beliefs: 
+recognized goal. We use three of the belief attributes discussed in Section
+\ref{sec:belief} to compute belief related part of the utility: 
 
 \begin{itemize}
   \item \textit{Strength}: The extent to which the pre and post conditions of a
@@ -603,33 +605,53 @@ recognized goal. We use four of the belief attributes discussed in Section
   \textsc{unsatisfied} makes a belief about the goal more stronger.
   Respectively, an \textsc{unknown} pre and post condition status of a goal and
   its predecessors and/or contributing goals forms beliefs with lower strength.
-  \item \textit{Recency}: The extent to which a belief is related to the
-  focused goal. Beliefs related to the focused goal have the highest value of
-  recency. Beliefs related to the predecessors or ancestors of the focused goal
-  have lower value of recency.
   \item \textit{Saliency}: Beliefs related to the goal at the top of the focus
-  stack are more salient than beliefs about any other goal in the plan, whether
-  those goals are already \textsc{achieved} or \textsc{failed}, or they will be
-  pursued to achieve in the future.
+  stack are more salient than beliefs related to any other goal in the plan,
+  whether those goals are already \textsc{achieved} or \textsc{failed}, or they
+  will be pursued to achieve in the future.
+  \item \textit{Persistence}: The recurrence of a belief over the passage of
+  time (turns) increases the persistence of the belief. Beliefs occuring only in
+  one turn have the lowest value of persistence.
 \end{itemize}
+
+We also use two of the motive attributes discussed in Section
+\ref{sec:motive} to compute motive related part of the utility:
+
+\begin{itemize}
+  \item \textit{Urgency}: There are two factors imapcting the urgency of
+  a motive: a) whether the goal directing the given motive is the predecessor of
+  another goal for which the other collaborator is responsible, and b) whether
+  achieving the goal directing the given motive can mitigate the other
+  collaborator's negative valenced emotion.
+  \item \textit{Importance}: A motive is important if failure of the directing
+  goal causes an impasse in the shared plan (i.e., no further goal is available
+  to achieve), or achievement of the directing goal removes an existing impasse.
+\end{itemize}
+
+We compute the utility of an event based on these five attributes. The value of
+each attribute is between 0 and 1, and we consider the same weight for each
+attribute. These weights can be learned or modified when our framework is fully
+implemented. The value of the overall utility is computed using a simple
+weighted averaging function which makes the overall value to be between 0 and 1.
 
 The significance of an event in a collaborative environment is based not
 only on the utility of the event, but it is also influenced by the perceived
 emotion of the human collaborator. The human's emotion influences the decision
-about the utility of the event in form of a threshold value ($\tau_{t}$). For
-instance, a positive expressed emotion of the human reduces the threshold value
-which consequently makes the robot find an event relevant with even a slightly
-positive utility.
-
-We compute this threshold value ($\tau_{t}$) using a Fuzzy Logic system on a
-three-dimensional space of the somatic markers associated with the other's
-expressed emotion as they are described in \cite{breazeal:sociable-robot}. In
-this space every emotion can be mapped to a vector of three values, i.e.,
-\textit{Arousal, Valence} and \textit{Stance}. The details about this process is
-out of this paper's context. Finally, we make our decision about the relevance
-of an event with respect to the human's emotional state. Consequently, an event
-can be considered \textit{irrelevant} even though there is a path between
-$\mathit{b}_{\varepsilon_t}$ and $g_{t}$.
+about the utility of the event in form of a threshold value $\tau_{t}$ (see
+Algorithm \ref{alg:relevance}). For instance, a positive expressed emotion of
+the human reduces the threshold value which consequently makes the robot find an
+event relevant with even a slightly positive utility. This threshold value
+($\tau_{t}$) is currently determined based on whether the valence of the
+human's perceived emotion is positive (e.g., happiness) or negative (e.g.,
+anger). This approach will be replaced by using a Fuzzy Logic system on a
+modified three-dimensional space of the somatic markers (to support some of the
+social emotions) associated with the human's expressed emotion as they are
+described in \cite{breazeal:sociable-robot}. In this space every emotion can be
+mapped to a vector of three values,  i.e., \textit{Arousal, Valence} and
+\textit{Stance}. The details about this process is out of this paper's context.
+Finally, we make our decision about the relevance of an event with respect to
+the human's emotional state. Consequently, an event can be considered
+\textit{irrelevant} even though the utility has a relatively positive value.
 
 \subsection{Desirability}
 
