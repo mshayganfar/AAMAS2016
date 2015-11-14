@@ -231,10 +231,10 @@ intelligent agents living in a human environment has been a persistent dream
 from science fiction books to artificial intelligence and robotics laboratories.
 Collaborative robots are becoming an integral part of humans' environment to
 accomplish their industrial and household tasks. In these environments humans
-are involved in robots' operations and decision making processes. This
+are involved in robots' operations and decision-making processes. This
 involvement of humans influences the efficiency of robots' interaction and
-performance, and makes them dependent on the humans' cognitive abilities and
-mental states.
+performance, and makes them dependent on humans' cognitive abilities and mental
+states.
 
 This work is part of a larger effort to build robots capable of generating and
 recognizing emotions in order to be better collaborators. In this paper, we
@@ -246,19 +246,20 @@ built on the foundations of the \textit{SharedPlans} theory of collaboration
 \cite{grosz:plans-discourse} and the \textit{cognitive appraisal} theory of
 emotions \cite{gratch:domain-independent}.
 
-We start by briefly introducing the Affective Motivational Collaboration Theory
-focusing on the collaboration and appraisal mechanisms as well as mental states.
-We then provide more details about the graph representation of the robot's
-mental state. Next, we describe the algorithms we developed to compute the
-value of four crucial appraisal variables. To compare the results from our
-algorithms with humans' decisions we have conducted a user study using crowd
-sourcing. In Section \ref{sec:user-study} we provide the results from our user
-study.
+After discussing related works, we briefly introduce the Affective Motivational
+Collaboration Theory, focusing on the collaboration and appraisal mechanisms as
+well as mental states. We then provide more details about the graph
+representation of the robot's mental state. Next, we describe the algorithms we
+developed to compute the value of four crucial appraisal variables. To compare
+the results from our algorithms with humans' decisions we have conducted a user
+study using crowd sourcing; the results are provided in Section
+\ref{sec:user-study}.
 
 \section{Related Work}
-Our work builds on the general notions of appraisal theory, but focused on its
-application in human-robot collaboration. Computational appraisal models have
-been applied to a variety of uses including psychology, robotics, AI, and
+
+Our work builds on the general notions of appraisal theory, but is focused on
+its application in human-robot collaboration. Computational appraisal models
+have been applied to a variety of uses including psychology, robotics, AI, and
 cognitive science. For instance, in \cite{marsella:ema-process-model} EMA is
 used to generate specific predictions about how human subjects will appraise and
 cope with emotional situations. Furthermore, appraisal theory has also been used
@@ -276,12 +277,12 @@ contexts
 The computational collaboration model in our work is strongly influenced by the
 SharedPlans theory \cite{grosz:plans-discourse}. However, our algorithms are
 also compatible with other collaboration theories, e.g., Joint Intentions theory
-\cite{cohen:teamwork}, or STEAM as an hybrid collaboration theory
-\cite{tambe:flexible-teamwork}. These theories have been extensively used to
-examine and describe teamwork and collaboration. Yet, they have never been
-combined, as they are in our work. We believe a systematic integration of
-collaboration theories and appraisal theory can help us describe the underlying
-collaboration processes leading to the existing collaboration structures.
+\cite{cohen:teamwork}, or STEAM \cite{tambe:flexible-teamwork}. These theories
+have been extensively used to examine and describe teamwork and collaboration.
+Yet, they have never been combined, as they are in our work. We believe a
+systematic integration of collaboration theories and appraisal theory can help
+us describe the underlying collaboration processes leading to the existing
+collaboration structures.
 
 \section{Affective Motivational Collaboration Theory}
 
@@ -672,6 +673,10 @@ the state of a goal that is inconsistent with respect to the shared goal.
 			\Statex
 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\Statex
+			\If {$(\mathit{g}_{t} =$ {\fontsize{7}{8}\selectfont AMBIGUOUS}$)$} 
+				\State \Return {\fontsize{7}{8}\selectfont UNDESIRABLE}
+			\EndIf
+			\Statex
 			\If {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)} =
 			{\fontsize{7}{8}\selectfont ACHIEVED})}} 
 			\State \Return {{\fontsize{7}{8}\selectfont MOST-DESIRABLE}} 
@@ -733,29 +738,33 @@ an event is computed with regard to the status of the shared goal; i.e., it
 operates based on whether and how the event changes the status of the current
 shared goal. It receives the current event, $\varepsilon_t$, and decides whether
 and how the event is \textsc{desirable} or \textsc{undesirable}. First, the
-algorithm checks the status of the collaboration's top level goal (lines 3 to
-9), and if the the top level goal is still \textsc{inprogress} or it is
+algorithm checks the ambiguity of the associated goal with the current event
+(line 3). An \textsc{ambiguous} goal is a goal which is not recognized in the
+robot's plan, and it is undesirable for a collaborative robot. Then, the
+algorithm checks the status of the collaboration's top level goal (lines 5 to
+11), and if the the top level goal is still \textsc{inprogress} or it is
 \textsc{pending}, it continues by checking the status of the current shared goal
-(lines 10 to 17). If any of the top level and current shared goals are
-\textsc{achieved} in these two steps, the robot interprets the event as a
-desirable one. However, if any of these goals are \textsc{blocked}, the event
-will be considered undesirable by the robot.
+(lines 12 to 19). If the top level shared goal is \textsc{achieved} (i.e.,
+\textsc{satisfied} postcondition), the robot interprets the event as a
+\textsc{most-desirable} one. However, if the top level goal is \textsc{failed}
+(i.e., \textsc{unsatisfied} postcondition), the event will be considered as
+\textsc{most-undesirable} by the robot.
 
-The algorithm continues in the case of an unknown status of the current shared
-goal, and checks whether the precondition(s) of the associated goal with the
-current event, $\mathit{g}_{\varepsilon_t}$, are satisfied (lines 17 to 21).
-The robot prefers the satisfied preconditions and interprets the event as
-desirable while unsatisfied preconditions are undesirable for the robot. For
-instance, a satisfied precondition of a future goal is still desirable for the
-robot to some extent. Note that the robot also checks the ambiguity of the
-associated goal with the current event (line 15). An ambiguous goal is a goal
-which is not recognized in the robot's plan, and it is undesirable for the
-robot. Finally, if the preconditions of the associated goal with the current
-event are unknown, the robot checks whether this goal,
-$\mathit{g}_{\varepsilon_t}$, contributes to the current shared goal,
-$\mathit{g}_{t}$ (lines 22 to 25). As a result a contributing goal will obtain a
-neutral desirability in comparison with a noncontributing goal which will be
-undesirable for the robot.
+The algorithm continues in the case of a \textsc{blocked} or
+\textsc{inapplicable} status of the top level goal. A goal is \textsc{blocked}
+if any of the required goals or recursively through the parent goal is not done
+and therefore this goal is \textsc{blocked} and cannot become live. And, a
+goal is \textsc{inapplicable} if either any of its predecessors are not
+\textsc{achieved}, and/or its preconditions are not \textsc{satisfied}. In
+either of these cases, the event will be marked as \textsc{undesirable}. In case
+neither of these cases are true, the algorithm checks whether the status of the
+top level goal is \textsc{pending} or \textsc{inprogress}. A goal can be
+\textsc{pending} if it is live, or if it is non-primitive, has not been started
+yet. And, only a non-primitive goal can have \textsc{inprogress} status, if it
+has been started but is not yet completed. In either of these cases, the
+algorithm continues to check the status of the current (focused) goal in the
+same way. However, in both desirable and undesirable conditions the desirability
+value will possess lower value of intensity.
 
 \subsection{Expectedness}
 
@@ -1076,17 +1085,20 @@ controllability value of the event.
 \section{Evaluation}
 \label{sec:user-study}
 
-We conducted a between subject user study using an online crowdsourcing
-website -- CrowdFlower\footnote{http://www.crowdflower.com}. Each group
-originally had 40 subjects. To increase the quality of our subjects' answers, we
-limited the visibility of our questionnaires to a few English speaking
-countries, i.e., United States, Britain, and Australia. We also limited our
-subject pools to those that have acquired the highest confidence level on the
-crowdsourcing website. Our questionnaires included 2 or 3 test questions
-(depending on the length) to check the sanity of the answers. We eliminated
-subjects providing wrong answers to our test questions. We also eliminated
-subjects with an answering time less than 2 minutes. The final number of
-accepted subjects in each group is provided in Table \ref{tbl:statistics}.
+We developed our user study to test our hypothesis that humans will provide
+similar answers as our algorithms to questions related to different factors used
+compute four appraisal variables. We conducted a between subject user study
+using an online crowdsourcing website --
+CrowdFlower\footnote{http://www.crowdflower.com}. Each group originally had 40
+subjects. To increase the quality of our subjects' answers, we limited the
+visibility of our questionnaires to a few English speaking countries, i.e.,
+United States, Britain, and Australia. We also limited our subject pools to
+those that have acquired the highest confidence level on the crowdsourcing
+website. Our questionnaires included 2 or 3 test questions (depending on the
+length) to check the sanity of the answers. We eliminated subjects providing
+wrong answers to our test questions. We also eliminated subjects with an
+answering time less than 2 minutes. The final number of accepted subjects in
+each group is provided in Table \ref{tbl:statistics}.
 
 To minimize the background knowledge necessary, we used a simple domestic
 example of preparing a peanut butter and jelly sandwich, and a hard boiled egg
@@ -1163,18 +1175,18 @@ human subjects' data being generated from a random set. The very small
 percentage of similarity shows it is strongly inclined towards the four
 appraisal algorithms.
 
-These results indicate that there is a similarity between human subjects'
-answers and the results from our appraisal algorithm. However, if human subjects
-thought exactly the same as our algorithms' decision processes, the average
-number of similarity to our result would be 100\%. We believe the difference between
-these two results could be because of several reasons, including: a) the fact
-that we conducted our study online and had less control on our subjects, b) our
-algorithms might require further granularity, c) the difference between decision
-making processes of individuals, which can be affected by other factors such as
-personality, gender, and culture. While it maybe possible to achieve a higher
-level of agreement between humans and the algorithms results, these results
-indicate that the current algorithms are adequate to be used in collaboration
-context.
+These results support our hypothesis that appraisal algorithms are acurate
+representation of humans' underlying appraisal processes during collaboration.
+However, if human subjects thought exactly the same as our algorithms' decision
+processes, the average number of similarity to our result would be 100\%. We
+believe the difference between these two results could be because of several
+reasons, including: a) the fact that we conducted our study online and had less
+control on our subjects, b) our algorithms might require further granularity, c)
+the difference between decision making processes of individuals, which can be
+affected by other factors such as personality, gender, and culture. While it
+maybe possible to achieve a higher level of agreement between humans and the
+algorithms results, these results indicate that the current algorithms are
+adequate to be used in collaboration context.
 
 % end the environment with {table*}, NOTE not {table}!
 
