@@ -552,7 +552,8 @@ Relevance as an appraisal variable measures the significance of an event for the
 robot. An event can be evaluated to be relevant if it has a positive utility or
 it can causally impact a state with a positive utility
 \cite{marsella:ema-process-model}. Relevance is an important appraisal variable
-since the other appraisal variables are only computed for the relevant events.
+since the other appraisal variables are more meaningful only for the relevant
+events.
 
 Algorithm \ref{alg:relevance} determines the relevance of the given event with
 respect to the current mental state. The relevance of the event depends on the
@@ -715,29 +716,30 @@ the state of a goal that is inconsistent with respect to the shared goal.
 Desirability plays an important role in the overall architecture; it makes the
 processes involved in the other mechanisms (e.g., Motivation and Theory of
 Mind), and consequently the robot's mental state, congruent with the
-collaboration status which is the robot's desire. Therefore, it causes the robot
-to dismiss events causing inconsistencies in the robot's collaborative behavior.
-Moreover, desirability is also crucial from the collaboration's point of view. A
-collaborative robot needs to know whether its own and the other collaborator's
-actions, utterances, and emotional expressions are desirable in terms of their
-consistence with the status of the current shared goal. In other words, the
-collaboration mechanism uses the appraisal process of desirability to coordinate
-what the self or the other does, says, and expresses during collaboration.
-Reciprocally, the appraisal mechanism and in this case the desirability process
-use the collaboration structure to obtain their required information.
+collaboration status which is a collaborative robot's desire. Therefore, it
+causes the robot to dismiss events causing inconsistencies in the robot's
+collaborative behavior. Moreover, desirability is also crucial from the
+collaboration's point of view. A collaborative robot needs to know whether its
+own and the other collaborator's actions, utterances, and emotional expressions
+are desirable in terms of their consistence with the status of the current
+shared goal. In other words, the collaboration mechanism uses the appraisal
+process of desirability to coordinate what the self or the other does, says, and
+expresses during collaboration. Reciprocally, the appraisal mechanism and in
+this case the desirability process use the collaboration structure to obtain
+their required information.
 
 Algorithm \ref{alg:desirability} provides a process in which the desirability of
 an event is computed with regard to the status of the shared goal; i.e., it
 operates based on whether and how the event changes the status of the current
-shared goal. It receives the current mental graph, $\mathcal{G}_{t}$, and the
-current event, $\varepsilon_t$, and decides whether and how the event is
-desirable or undesirable. First, the algorithm checks the status of the
-collaboration's top level goal (lines 2 to 6), and if the the top level goal is
-still in progress, it continues by checking the status of the current shared
-goal (lines 7 to 13). If any of the top level and current shared goals are
-achieved in these two steps, the robot interprets the event as a desirable one.
-However, if any of these goals are blocked, the event will be considered
-undesirable by the robot.
+shared goal. It receives the current event, $\varepsilon_t$, and decides whether
+and how the event is \textsc{desirable} or \textsc{undesirable}. First, the
+algorithm checks the status of the collaboration's top level goal (lines 3 to
+9), and if the the top level goal is still \textsc{inprogress} or it is
+\textsc{pending}, it continues by checking the status of the current shared goal
+(lines 10 to 17). If any of the top level and current shared goals are
+\textsc{achieved} in these two steps, the robot interprets the event as a
+desirable one. However, if any of these goals are \textsc{blocked}, the event
+will be considered undesirable by the robot.
 
 The algorithm continues in the case of an unknown status of the current shared
 goal, and checks whether the precondition(s) of the associated goal with the
