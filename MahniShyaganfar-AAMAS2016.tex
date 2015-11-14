@@ -795,19 +795,19 @@ event.
 		\Function{IsEventExpected}{Event $\varepsilon_t$}
 			\Statex
 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
-			\State $\mathit{g}_{top} \gets \textit{getTopGoal}{(\mathit{g}_{t})}$
+			\State $\mathit{g}_{top} \gets \textit{getTopLevelGoal}{(\mathit{g}_{t})}$
 			\Statex
 			\If {$(\textit{isLive}{(\mathit{g}_{t})})$}
 				\If {$(\textit{isNeccessaryFocusShift}{(\mathit{g}_{t})})$}
-					\State \Return {\fontsize{8}{8}\selectfont MOST-EXPECTED}
+					\State \Return {\fontsize{7}{8}\selectfont MOST-EXPECTED}
 				\Else
-					\State \Return {\fontsize{8}{8}\selectfont EXPECTED}
+					\State \Return {\fontsize{7}{8}\selectfont EXPECTED}
 				\EndIf
 			\Else
 				\If {$(\textit{isPath}{(\mathit{g}_{t}, \mathit{g}_{top})})$}
-					\State \Return {\fontsize{8}{8}\selectfont UNEXPECTED}
+					\State \Return {\fontsize{7}{8}\selectfont UNEXPECTED}
 				\Else
-					\State \Return {\fontsize{8}{8}\selectfont MOST-UNEXPECTED}
+					\State \Return {\fontsize{7}{8}\selectfont MOST-UNEXPECTED}
 				\EndIf
 			\EndIf
 		\EndFunction
@@ -817,34 +817,29 @@ event.
 In Algorithm \ref{alg:expectedness} we provide the process of the expectedness
 based on the shared plan and status of the shared goal. The key point in this
 algorithm is the status of the current shared goal ($\mathit{g}_{t}$) and its
-relationship with the goal associated with the current event 
-($\mathit{g}_{\varepsilon_t}$).  The algorithm receives the current mental
-graph, $\mathcal{G}_{t}$, and the current event, $\varepsilon_t$, from input,
-and decides whether the current event is expected. 
+relationship with the top level goal ($\mathit{g}_{_{top}}$). The algorithm
+receives the current event ($\varepsilon_t$) from input, and decides whether the
+current event is expected.
 
-First, we need to extract the goal in the current mental graph and the
-recognized goal associated with the current event. Similar to the desirability
-algorithm (Algorithm \ref{alg:desirability}), we check whether the
-$\mathit{g}_{\varepsilon_t}$ is ambiguous. In the case of ambiguity in
-$\mathit{g}_{\varepsilon_t}$, we consider the current event unexpected since an
-effective collaboration requires perceivable and unambiguous goals associated
-with the events. We continue by the comparison of the current shared goal and
-the recognized goal associated with the current event with respect to the shared
-plan. If these two goals are not the same, it is possible that the current
-shared goal is already achieved. The event will be unexpected (line 10) if the
-current shared goal is not achieved and the current event does not refer to the
-same goal. However, if the current goal is achieved, it is important to see
-whether its parent is also achieved (line 12). This step is important because
-the event can be expected if the new goal contributes to the parent of the
-recently achieved goal. Therefore, if the parent goal in the hierarchical plan
-is not achieved, the contribution of the associated goal to the current event
-can help us to decide whether the event is expected (lines 12 to 16). However,
-if the parent goal is already achieved, the new goal can contribute (as a child)
-to the recently achieved shared goal, i.e., $\mathit{g}_{t}$, which is also
-expected (line 19). On the contrary, if the new goal does not contribute to
-$\mathit{g}_{t}$, it might be a goal in another branch in the shared plan which
-has received focus and should be achieved. In such a case, again, the event will
-be expected; otherwise we consider the event unexpected (lines 21 to 24).
+First, the algorithm recognizes the goal associated with the current event, and
+finds the corresponding top level goal to the recognized one. Then, it continues
+to check the liveness of the recognized goal. A goal is live if all of its
+predecessors are \textsc{achieved}, and all its preconditions are not
+{unsatisfied}. Therefore, if the goal is live, the algorithm checks whether the
+interpretation of last event results in a necessary focus shift. Shifting the
+focus to a new goal is necessary when the former goal is achieved and a new goal
+is required. Consequently the new event is the \textsc{most-expected} one.
+However, even though the focus shift is not necessary, the new event can be
+considered as \textsc{expected}, since the corresponding goal is already live.
+In the other hand, when the recognized goal is not live (lines 10 to 13), the
+occurrence of the new event can be considered as an interrupt for the robot.
+Therefore, if the goal associated with the new interrupting event is in the
+current shared plan, there will be a path between the recognized goal
+($\mathit{g}_{t}$) and the top level goal ($\mathit{g}_{_{top}}$). In this case,
+the algorithm considers the new event as an \textsc{unexpected} one, since the
+corresponding goal is not live. However, if the recognized goal is not even in
+the shared plan, the algorithm considers that event as the
+\textsc{most-unexpected} one.
 
 \subsection{Controllability}
 
