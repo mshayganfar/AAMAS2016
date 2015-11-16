@@ -225,16 +225,16 @@ We have evaluated our proposed algorithms by conducting an online user study.
 
 \section{Introduction}
 Sousa in The Rationality of Emotion \cite{sousa:rationality-emotion}
-makes a good case for the claim that humans are capable of rationality largely
+makes the case for claiming that humans are capable of rationality largely
 because they are creatures with emotions. The idea of having robots or other
 intelligent agents living in a human environment has been a persistent dream
 from science fiction books to artificial intelligence and robotics laboratories.
-Collaborative robots are becoming an integral part of humans' environment to
-accomplish their industrial and household tasks. In these environments humans
-are involved in robots' operations and decision-making processes. This
-involvement of humans influences the efficiency of robots' interaction and
-performance, and makes them dependent on humans' cognitive abilities and mental
-states.
+Collaborative robots are expected to become an integral part of humans'
+environment to accomplish their industrial and household tasks. In these
+environments humans will be involved in robots' operations and decision-making
+processes. The involvement of humans influences the efficiency of robots'
+interaction and performance, and makes them dependent on humans' cognitive
+abilities and mental states.
 
 This work is part of a larger effort to build robots capable of generating and
 recognizing emotions in order to be better collaborators. In this paper, we
@@ -255,6 +255,7 @@ the results from our algorithms with humans' decisions we have conducted a user
 study using crowd sourcing; the results are provided in Section
 \ref{sec:user-study}.
 
+\vspace*{-2mm}
 \section{Related Work}
 
 Our work builds on the general notions of appraisal theory, but is focused on
@@ -279,10 +280,10 @@ SharedPlans theory \cite{grosz:plans-discourse}. However, our algorithms are
 also compatible with other collaboration theories, e.g., Joint Intentions theory
 \cite{cohen:teamwork}, or STEAM \cite{tambe:flexible-teamwork}. These theories
 have been extensively used to examine and describe teamwork and collaboration.
-Yet, they have never been combined, as they are in our work. We believe a
-systematic integration of collaboration theories and appraisal theory can help
-us describe the underlying collaboration processes leading to the existing
-collaboration structures.
+Yet, collaboration and emotion theories have never been combined, as they are in
+our work. We believe a systematic integration of collaboration theories and
+appraisal theory can help us describe the underlying collaboration processes
+leading to the existing collaboration structures.
 
 \vspace*{3mm}
 \section{Affective Motivational Collaboration Theory}
@@ -312,10 +313,10 @@ which a robot can form new intentions to cope with events.
 \end{figure}
 
 Our focus is on the mechanisms depicted as mental processes in Figure
-\ref{fig:cpm} along with the mental states. Each mechanism includes one our
+\ref{fig:cpm} along with the mental states. Each mechanism includes one or
 more processes in our architecture. For instance, the \textit{Collaboration}
 mechanism includes processes such as \textit{Focus Shifting} and
-\textit{Constraint Management}, or as we discuss in Section
+\textit{Constraint Management}, while as we discuss in Section
 \ref{sec:appraisal-process} the \textit{Appraisal} mechanism includes processes
 to compute the values for different appraisal variables. The \textit{mental
 states} includes self's (robot's) beliefs, intentions, motives, goals and
@@ -401,7 +402,7 @@ determined by the corresponding beliefs about the effects of achieving or not
 achieving the associated goal. The \textit{urgency} of a motive defines how much
 time the self has to acknowledge and address that motive before it is too late.
 The \textit{intensity} of a motive determines how actively and vigorously that
-motive can help the self to pursue the goal if adopted; rather than abandoning
+motive can help the self to pursue the goal if adopted, rather than abandoning
 the goal and ultimately the collaboration. The \textit{failure disruptiveness}
 attribute of a motive determines how disruptive failure is to achieving the
 corresponding goal.
@@ -416,7 +417,7 @@ instrumental support and procrastination. Intentions possess a set of
 attributes, i.e., \textit{Temporal Status, Direct Experience, Certainty,
 Ambivalence, Affective-Deliberative Consistency} which moderate the consistency
 between intention and behavior \cite{cooke:intention-behavior-consistency}. The
-details about these attributes are out of this paper's context.
+details about these attributes are beyond the scope of this paper.
 
 \subsubsection{Goal:}
 
@@ -425,8 +426,8 @@ according to the current private and shared goal content and structure, i.e.,
 the \textit{Specificity, Proximity} and \textit{Difficulty} of the goal. Goals
 direct the formation of intentions to take appropriate corresponding actions
 during collaboration. Goals also drive the Motivation mechanism to generate
-required motive(s). The details about goal's attributes are also out of this
-paper's context.
+required motive(s). The details about goal's attributes are beyond the scope of
+this paper.
 
 \subsubsection{Emotion Instance:}
 
@@ -458,7 +459,7 @@ measurement tool problem:
 \end{description}
 
 \vspace*{-1mm}
-As shown, the robot in turn $t$, acknowledges the astronaut's frustration and
+As shown, the robot in turn $t$ acknowledges the astronaut's frustration and
 appropriately responds to her problem.
 
 \section{Collaboration}
@@ -536,7 +537,7 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   \item \textit{getResponsible($g_t$)} returns responsible agents of the given
   goal. In a dyadic collaboration, both of the agents can be partly responsible
   for a nonprimitive goal, while each is responsible for one or more primitive
-  goal. For instance, both the robot and the astronaut are responsible for the
+  goals. For instance, both the robot and the astronaut are responsible for the
   nonprimitive goal of ``Install Solar Panels'', whereas it is only the
   astronaut who is responsible for the primitive goal of ``Prepare Measurement
   Tool''.
@@ -631,7 +632,8 @@ recognized goal. We use three of the belief attributes discussed in Section
 \end{itemize}
 
 We also use two of the motive attributes discussed in Section
-\ref{sec:motive} to compute the motive related part of the utility:
+\ref{sec:motive} to compute the motive related part of the utility
+($\mathcal{U}$):
 
 \begin{itemize}
   \item \textit{Urgency}: There are two factors impacting the urgency of
@@ -655,21 +657,14 @@ The significance of an event in a collaborative environment is based not
 only on the utility of the event, but it is also influenced by the perceived
 emotion of the human collaborator. The human's emotion influences the decision
 about the utility of the event in form of a threshold value $\tau_{t}$ (see
-Algorithm \ref{alg:relevance}). For instance, a positive expressed emotion of
+Algorithm \ref{alg:relevance}). For instance, a positively expressed emotion of
 the human reduces the threshold value which consequently makes the robot find an
 event relevant with even a slightly positive utility. This threshold value
 ($\tau_{t}$) is currently determined based on whether the valence of the
 human's perceived emotion is positive (e.g., happiness) or negative (e.g.,
-anger). This approach will be replaced at a later date using a Fuzzy Logic
-system on a modified three-dimensional space of the somatic markers (to support
-some of the social emotions) associated with the human's expressed emotion as
-they are described in \cite{breazeal:sociable-robot}. In this space every
-emotion can be mapped to a vector of three values,  i.e., \textit{Arousal,
-Valence} and \textit{Stance}. The details about this process is out of this
-paper's context. Finally, we make our decision about the relevance of an event
-with respect to the human's emotional state. Consequently, an event can be
-considered \textit{irrelevant} even though the utility has a relatively positive
-value.
+anger). Consequently, an event can be considered \textit{irrelevant} even though
+the utility has a relatively positive value. Relevance is thus decided based on
+the human's emotional state.
 
 \subsection{Desirability}
 
@@ -858,7 +853,6 @@ the algorithm considers the new event as an \textsc{unexpected} one, since the
 corresponding goal is not live. However, if the recognized goal is not even in
 the shared plan, the algorithm considers the event as \textsc{most-unexpected}.
 
-\vspace*{-2mm}
 \subsection{Controllability}
 
 Controllability is the extent to which an event can be influenced, and it is
@@ -890,9 +884,9 @@ event.
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{ }$
 			\Statex
 			\If {$(\mathcal{U} \geq \tau_t)$}
-				\State \Return {{\fontsize{8}{8}\selectfont CONTROLLABLE}}
+				\State \Return {{\fontsize{7}{8}\selectfont CONTROLLABLE}}
 			\Else
-				\State \Return {{\fontsize{8}{8}\selectfont UNCONTROLLABLE}}
+				\State \Return {{\fontsize{7}{8}\selectfont UNCONTROLLABLE}}
 			\EndIf
 		\EndFunction
 	\end{algorithmic}
@@ -933,33 +927,32 @@ Algorithm \ref{alg:relevance}. This comparison leads to our decision about the
 controllability of an event (lines 8 to 11 in Algorithm
 \ref{alg:controllability}).
 
-\renewcommand\thealgorithm{4\alph{algorithm}}
-\setcounter{algorithm}{0}
+% \renewcommand\thealgorithm{4\alph{algorithm}}
+% \setcounter{algorithm}{0}
+% 
+% \begin{algorithm}
+% 	\caption{(Get Agency Ratio)}
+% 	\label{alg:agency}
+% 	\begin{algorithmic}[1]
+% 		\Function{GetAgencyRatio}{Event $\varepsilon_t$}
+% 			\Statex
+% 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
+% 			\Statex
+% 			\State $\mathcal{M}_{t} \gets \textit{getActiveMotive}{(\mathit{g}_{t})}$
+% 			\Statex
+% 			\If {$(\mathcal{M}_{t} \neq \emptyset)$}
+% 				\If {$(\mathcal{M}_{t}\cdot type = $
+% 				{{\fontsize{8}{8}\selectfont INTERNAL}}$)$} \State \Return {1.0}
+% 				\Else
+% 					\State \Return {0.0}
+% 				\EndIf
+% 			\Else
+% 				\State \Return {0.0}
+% 			\EndIf
+% 		\EndFunction 
+% 	\end{algorithmic}
+% \end{algorithm}
 
-\begin{algorithm}
-	\caption{(Get Agency Ratio)}
-	\label{alg:agency}
-	\begin{algorithmic}[1]
-		\Function{GetAgencyRatio}{Event $\varepsilon_t$}
-			\Statex
-			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
-			\State $\mathcal{M}_{t} \gets \textit{getActiveMotive}{(\mathit{g}_{t})}$
-			\Statex
-			\If {$(\mathcal{M}_{t} \neq \emptyset)$}
-				\If {$(\mathcal{M}_{t}\cdot type = $
-				{{\fontsize{8}{8}\selectfont INTERNAL}}$)$} \State \Return {1.0}
-				\Else
-					\State \Return {0.0}
-				\EndIf
-			\Else
-				\State \Return {0.0}
-			\EndIf
-		\EndFunction 
-	\end{algorithmic}
-\end{algorithm}
-
-\vspace*{-3mm}
 Agency is the capacity of an individual to act independently in any given
 environment. In a collaborative environment collaborators are sometimes required
 to act independently of each other. Hence, they need to have some internal motives
@@ -974,32 +967,32 @@ consider the minimum agency value (i.e., $\alpha=0.0$) for no motives or
 external motives only. Note that the process of forming new internal motives is
 out of this paper's context.
 
-\renewcommand\thealgorithm{4\alph{algorithm}}
-\setcounter{algorithm}{1}
-
-\begin{algorithm}
-	\caption{(Get Autonomy Ratio)}
-	\label{alg:autonomy}
-	\begin{algorithmic}[1]
-		\Function{GetAutonomyRatio}{Event $\varepsilon_t$}
-			\Statex
-			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
-			\State $\Phi_{\mathit{g}} \gets
-			\textit{extractContributingGoals}{(\mathit{g}_{t})}$
-			\Statex
-			\ForAll {$\phi_{\mathit{g}}^i \in \Phi_{\mathit{g}}$}
-				\If {$(\textit{getResponsible}{(\phi_{\mathit{g}}^i)} =$
-				{\fontsize{8}{8}\selectfont SELF})} 
-					\State $count_{self} \gets count_{self} + 1$
-				\EndIf
-			\EndFor
-			\Statex
-			\State \Return 
-			${count_{self} \mathbin{/} {{\Phi_{\mathit{g}}}.total()}}$
-		\EndFunction 
-	\end{algorithmic}
-\end{algorithm}
+% \renewcommand\thealgorithm{4\alph{algorithm}}
+% \setcounter{algorithm}{1}
+% 
+% \begin{algorithm}
+% 	\caption{(Get Autonomy Ratio)}
+% 	\label{alg:autonomy}
+% 	\begin{algorithmic}[1]
+% 		\Function{GetAutonomyRatio}{Event $\varepsilon_t$}
+% 			\Statex
+% 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
+% 			\Statex
+% 			\State $\Phi_{\mathit{g}} \gets
+% 			\textit{extractContributingGoals}{(\mathit{g}_{t})}$
+% 			\Statex
+% 			\ForAll {$\phi_{\mathit{g}}^i \in \Phi_{\mathit{g}}$}
+% 				\If {$(\textit{getResponsible}{(\phi_{\mathit{g}}^i)} =$
+% 				{\fontsize{8}{8}\selectfont SELF})} 
+% 					\State $count_{self} \gets count_{self} + 1$
+% 				\EndIf
+% 			\EndFor
+% 			\Statex
+% 			\State \Return 
+% 			${count_{self} \mathbin{/} {{\Phi_{\mathit{g}}}.total()}}$
+% 		\EndFunction 
+% 	\end{algorithmic}
+% \end{algorithm}
 
 Autonomy is the ability to make decisions without the influence of others.
 Autonomy implies acting on one's own and being responsible for that. In a
@@ -1017,31 +1010,31 @@ $(0 \leq \beta \leq 1)$. However, if the associated goal of the current event
 corresponds to a primitive task the value of $\beta$ would be 0 or 1. In
 general, higher autonomy leads to a more positive value of controllability.
 
-\renewcommand\thealgorithm{4\alph{algorithm}}
-\setcounter{algorithm}{2}
-
-\begin{algorithm}
-	\caption{(Get Successfull Predecessors Ratio)}
-	\label{alg:predecessors}
-	\begin{algorithmic}[1]
-		\Function{GetSucPredecessorsRatio}{Event $\varepsilon_t$}
-			\Statex
-			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
-			\State $\Theta{\mathit{g}} \gets
-			\textit{extractPredecessors}{(\mathit{g}_{t})}$
-			\Statex
-			\ForAll {$\theta_{\mathit{g}}^i \in \Theta_{\mathit{g}}$}
-				\If {$(\textit{isAchieved}{(\theta_{\mathit{g}}^i)})$}
-					\State $count_{achieved} \gets count_{achieved} + 1$
-				\EndIf
-			\EndFor
-			\Statex
-			\State \Return
-			${count_{achieved} \mathbin{/} {\Theta{\mathit{g}}.total()}}$
-		\EndFunction 
-	\end{algorithmic}
-\end{algorithm}
+% \renewcommand\thealgorithm{4\alph{algorithm}}
+% \setcounter{algorithm}{2}
+% 
+% \begin{algorithm}
+% 	\caption{(Get Successful Predecessors Ratio)}
+% 	\label{alg:predecessors}
+% 	\begin{algorithmic}[1]
+% 		\Function{GetSucPredecessorsRatio}{Event $\varepsilon_t$}
+% 			\Statex
+% 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
+% 			\Statex
+% 			\State $\Theta{\mathit{g}} \gets
+% 			\textit{extractPredecessors}{(\mathit{g}_{t})}$
+% 			\Statex
+% 			\ForAll {$\theta_{\mathit{g}}^i \in \Theta_{\mathit{g}}$}
+% 				\If {$(\textit{isAchieved}{(\theta_{\mathit{g}}^i)})$}
+% 					\State $count_{achieved} \gets count_{achieved} + 1$
+% 				\EndIf
+% 			\EndFor
+% 			\Statex
+% 			\State \Return
+% 			${count_{achieved} \mathbin{/} {\Theta{\mathit{g}}.total()}}$
+% 		\EndFunction 
+% 	\end{algorithmic}
+% \end{algorithm}
 
 The structure of a shared plan accommodates the order of the required
 predecessors of a goal. Predecessors of a goal, $g$, are other goals that
@@ -1056,31 +1049,31 @@ $\lambda$. On the contrary, failure of all of the predecessors will lead to
 $\lambda=0$. Therefore, higher $\lambda$ value positively impacts the value of
 controllability for the current event.
 
-\renewcommand\thealgorithm{4\alph{algorithm}}
-\setcounter{algorithm}{3}
-
-\begin{algorithm}
-	\caption{(Get Available Input Ratio)}
-	\label{alg:inputs}
-	\begin{algorithmic}[1]
-		\Function{GetAvailableInputRatio}{Event $\varepsilon_t$}
-			\Statex
-			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
-			\State $\mathcal{X}_{\mathit{g}} \gets
-			\textit{extractInputs}{(\mathit{g}_{t})}$
-			\Statex
-			\ForAll {$\chi_{\mathit{g}}^i \in \mathcal{X}_{\mathit{g}}$}
-				\If {$(\textit{IsAvailable}{(\chi_{\mathit{g}}^i)})$}
-					\State $count_{available} \gets count_{available} + 1$
-				\EndIf
-			\EndFor
-			\Statex
-			\State \Return
-			${count_{available} \mathbin{/} \mathcal{X}_{\mathit{g}}.total()}$
-		\EndFunction 
-	\end{algorithmic}
-\end{algorithm}
+% \renewcommand\thealgorithm{4\alph{algorithm}}
+% \setcounter{algorithm}{3}
+% 
+% \begin{algorithm}
+% 	\caption{(Get Available Input Ratio)}
+% 	\label{alg:inputs}
+% 	\begin{algorithmic}[1]
+% 		\Function{GetAvailableInputRatio}{Event $\varepsilon_t$}
+% 			\Statex
+% 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
+% 			\Statex
+% 			\State $\mathcal{X}_{\mathit{g}} \gets
+% 			\textit{extractInputs}{(\mathit{g}_{t})}$
+% 			\Statex
+% 			\ForAll {$\chi_{\mathit{g}}^i \in \mathcal{X}_{\mathit{g}}$}
+% 				\If {$(\textit{IsAvailable}{(\chi_{\mathit{g}}^i)})$}
+% 					\State $count_{available} \gets count_{available} + 1$
+% 				\EndIf
+% 			\EndFor
+% 			\Statex
+% 			\State \Return
+% 			${count_{available} \mathbin{/} \mathcal{X}_{\mathit{g}}.total()}$
+% 		\EndFunction 
+% 	\end{algorithmic}
+% \end{algorithm}
 
 Finally, inputs of a task are the required elements that the collaborators use
 to achieve the specified goal of the task. These inputs are also part of the
@@ -1094,9 +1087,22 @@ to the other factors in the controllability process, the closer the value of
 $\mu$ gets to 1, the more positive impact it has on the overall controllability
 value of the event.
 
+In summary, the output of these four appraisal processes serves as critical
+input for the other mechanisms of the Affective Motivational Collaboration
+Framework, shown in Figure \ref{fig:cpm}. By providing adequate interpretation
+of events in the collaborative environment, the appraisal mechanism enables the
+robot to carry out proper collaborative behaviors.
+
 \vspace*{-3mm}
 \section{Evaluation}
 \label{sec:user-study}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=\textwidth,height=6cm]{figure/taskModel-croped.pdf}
+  \caption{Collaboration Task Model for the Evaluation.}
+  \label{fig:taskModel}
+\end{figure*}
 
 We developed our user study to test our hypothesis that humans will provide
 similar answers as our algorithms to questions related to different factors used
@@ -1113,29 +1119,71 @@ wrong answers to our sanity questions. We also eliminated subjects with an
 answering time less than 2 minutes. The final number of accepted subjects in
 each group is provided in Table \ref{tbl:statistics}.
 
-To minimize the background knowledge necessary, we used a simple domestic
-example of preparing a peanut butter and jelly sandwich, and a hard boiled egg
-sandwich for a hiking trip. We provided clear textual and graphical instructions
-for all four questionnaires. The instructions focused on a hypothetical
-collaboration between the test subject and an imaginary friend, Mary; their goal
-was to prepare two sandwiches. We also provided a brief description as well as a
-simple example for each appraisal variable, e.g., \textit{relevance}, at the end
-of the corresponding instructions. We prepared four different online
-questionnaires for the appraisal variables: \textit{relevance, desirability,
-expectedness} and \textit{controllability}. All these questions were designed
-based on different factors that we use in our algorithms (see Section
-\ref{sec:appraisal-process}). Each question provided three options. One option
-provided a distinct alternative; another option was used to provide a dichotomy
-with the first alternative, and a third option was used to check whether the
-subjects perceived the other two options as equal. Figure \ref{fig:qs} shows an
-example question from one of our questionnaires.
+To minimize the background knowledge necessary for our test subjects, we used a
+simple domestic example of preparing a peanut butter and jelly sandwich, and a
+hard boiled egg sandwich for a hiking trip. We provided clear textual and
+graphical instructions for all four questionnaires. The instructions presented
+a sequence of hypothetical collaborative tasks to be carried out by the test
+subject and an imaginary friend, Mary, in order to accomplish their goal of
+preparing two sandwiches. Figure \ref{fig:taskModel} shows the corresponding
+task model for these instructions. Test questions introduced specific situations
+related to the shared plan; these situations included, among others, blocked
+tasks, and failure or achievement of a shared goal provided in the instruction.
+Each question provided three possible answers. One option provided a distinct
+alternative; another option was used to provide a dichotomy with the first
+alternative, and a third option was used to check whether the subjects perceived
+the other two options as equal. We also provided a brief description as well as
+a simple example for each appraisal variable, e.g., \textit{relevance}, at the
+end of the corresponding instructions. Using this approach, we prepared four
+different online questionnaires for the appraisal variables: \textit{relevance,
+desirability, expectedness} and \textit{controllability}. Note that the
+collaboration structure and the instructions were the same for all four
+questionnaires.
+
+Each question was designed based on different factors that we use in our
+algorithms (see Section \ref{sec:appraisal-process}). Here, we present one
+example question from each questionnaire, and describe how the question relates
+to a specific factor within the corresponding algorithm. The input for our
+algorithms was the task model depicted in Figure \ref{fig:taskModel}. 
+
+Figure \ref{fig:qs1} shows the example question from the expectedness
+questionnaire. In this example, with respect to Algorithm
+\ref{alg:expectedness}, option A is more expected because the task related to
+this option provides the next available task in the focus stack (see the task
+model in Figure \ref{fig:taskModel}). Although the task in option B is part of
+the existing task model, it is considered as unexpected by our algorithm, since
+it is not live in the plan. We provided option C to determine whether the human
+subjects will similarly differentiate between these two options. This question
+was presented to the human subjects to determine whether their decision for the
+expectedness of this event is similar to the output of the expectedness
+algorithm. For this question, the human decision was 97\% similar to the
+algorithm's output. Average results for the expectedness questionnaire are
+presented in Table \ref{tbl:statistics}.
 
 \begin{figure}[tbh]
   \centering
-  \includegraphics[width=0.425\textwidth]{figure/question-sample-croped.pdf}
+  \includegraphics[width=0.48\textwidth]{figure/question-sample-croped.pdf}
   \caption{{\fontsize{9}{9}\selectfont An example question from the expectedness
   questionnaire.}}
-  \label{fig:qs}
+  \label{fig:qs1}
+\end{figure}
+
+Figure \ref{fig:qs2} shows an example question from the controllability
+questionnaire. The algorithm's output is option B, and is determined by
+Algorithm \ref{alg:controllability}, similarly to the expectedness example
+above. In this example, option B is more controllable than option A, because the
+self over total ratio of the responsibility of the predecessors of the given
+task (see Algorithm \ref{alg:controllability}) is higher than the ratio in
+option A; i.e., self is responsible to spread peanut butter on one slice of
+bread and strawberry jam on another slice of bread. In this question, the humans
+decision was 90\% in agreement with the algorithm's output.
+
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
+  \caption{{\fontsize{9}{9}\selectfont An example question from the
+  controllability questionnaire.}}
+  \label{fig:qs2}
 \end{figure}
 
 We conducted the user study to compare the results with the implemented
@@ -1181,21 +1229,22 @@ Desirability} & {\fontsize{7.5}{8}\selectfont 35} &
 \end{table}
 
 The results indicate that our algorithms provide a sufficiently accurate
-representation of human's appraisal. The \textit{p}-values obtained based on a
-one-tailed z-test (see Table \ref{tbl:statistics}) show the probability of
-human subjects' data being generated from a random set. The very small
-\textit{p}-values indicate that the data set is not random; in fact, the high
-percentage of similarity shows it is strongly inclined towards the four
-appraisal algorithms.
+representation of human's appraisal. Our hypothesis in our evaluation was that
+our algorithms would correctly predict the judgements of humans on doing these
+tasks. Our results indicate that people largely performed as our hypothesis
+predicted. The \textit{p}-values obtained based on a one-tailed z-test (see
+Table \ref{tbl:statistics}) show the probability of human subjects' data being
+generated from a random set. The very small \textit{p}-values indicate that the
+data set is not random; in fact, the high percentage of similarity shows that
+the four appraisal algorithms predicted the human judgements.
 
-These results support our hypothesis that the appraisal algorithms are accurate
-representations of humans' underlying appraisal processes during collaboration.
-However, if human subjects thought exactly the same as our algorithms' decision
+While these results support our hypothesis, they are not a perfect prediction.
+However, if human subjects judged exactly the same as our algorithms' decision
 processes, the average percentage of similarity to our result would be 100\%. We
 believe the difference between these two results could be because of several
 reasons, including: a) the fact that we conducted our study online and had less
-control on our subjects, b) our algorithms might require further granularity, c)
-the difference between decision making processes of individuals, which can be
+control on our subjects, b) our algorithms may require further granularity, or
+c) the difference between decision making processes of individuals, which can be
 affected by other factors such as personality, gender, and culture. While it
 maybe possible to achieve a higher level of agreement between humans and the
 algorithms results, these results indicate that the current algorithms are

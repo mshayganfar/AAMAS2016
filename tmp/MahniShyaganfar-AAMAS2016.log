@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  14 NOV 2015 17:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  16 NOV 2015 11:54
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -616,14 +616,11 @@ File: omsaer.fd 1999/12/27
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 197.
 
-Overfull \hbox (4.08873pt too wide) in paragraph at lines 288--288
+Overfull \hbox (4.08873pt too wide) in paragraph at lines 289--289
 []\secfnt AFFECTIVE MO-TI-VA-TIONAL COL-LAB-
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -632,10 +629,10 @@ File: figure/theory-general-croped.pdf Graphic file (type pdf)
 
 <use figure/theory-general-croped.pdf>
 Package pdftex.def Info: figure/theory-general-croped.pdf used on input line 30
-7.
+8.
 (pdftex.def)             Requested size: 226.79846pt x 155.92795pt.
  [2 <./figure/theory-general-croped.pdf>]
-Overfull \hbox (4.34155pt too wide) in paragraph at lines 411--420
+Overfull \hbox (4.34155pt too wide) in paragraph at lines 412--421
 \T1/aer/m/it/9 pe-ri-ence, Cer-tainty, Am-biva-lence, Affective-Deliberative Co
 n-
  []
@@ -645,112 +642,172 @@ File: figure/collaborationStructure-croped.pdf Graphic file (type pdf)
 
 <use figure/collaborationStructure-croped.pdf>
 Package pdftex.def Info: figure/collaborationStructure-croped.pdf used on input
- line 478.
+ line 479.
 (pdftex.def)             Requested size: 238.89551pt x 128.52684pt.
 
-Overfull \hbox (1.0211pt too wide) in paragraph at lines 497--501
+Overfull \hbox (1.0211pt too wide) in paragraph at lines 498--502
 [][]\T1/aer/m/it/9 currGoalStatus($\OML/cmm/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer
 /m/n/9 re-turns the cur-rent goal sta-tus whe-
  []
 
 
-Overfull \hbox (2.6596pt too wide) in paragraph at lines 508--511
+Overfull \hbox (2.6596pt too wide) in paragraph at lines 509--512
 [][]\T1/aer/m/it/9 isNeccessaryFocusShift($\OML/cmm/m/it/9 g[]$\T1/aer/m/it/9 )
  \T1/aer/m/n/9 re-turns \T1/aer/m/it/9 true \T1/aer/m/n/9 if the given goal
  []
 
 [3 <./figure/collaborationStructure-croped.pdf>]
-Overfull \hbox (8.70683pt too wide) in paragraph at lines 531--533
+Overfull \hbox (8.70683pt too wide) in paragraph at lines 532--534
 [][]\T1/aer/m/it/9 isAchieved($\OML/cmm/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer/m/n
 /9 re-turns whether the given goal is achieved,
  []
 
 
-Overfull \hbox (8.05876pt too wide) in paragraph at lines 536--543
+Overfull \hbox (8.05876pt too wide) in paragraph at lines 537--544
 [][]\T1/aer/m/it/9 getResponsible($\OML/cmm/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer
 /m/n/9 re-turns re-spon-si-ble agents of the given
  []
 
 [4]
-Underfull \hbox (badness 2512) in paragraph at lines 702--707
+Underfull \hbox (badness 2512) in paragraph at lines 697--702
 [] \T1/aer/bx/n/9 else if \T1/aer/m/n/8 (\T1/aer/m/it/8 topLevelGoalStatus($\OM
 L/cmm/m/it/8 g[]$\T1/aer/m/it/8 ) \T1/aer/m/n/9 = \T1/aer/m/n/7 BLOCKED\T1/aer/
 m/n/9 ) \T1/aer/bx/n/8 or
  []
 
 
-Underfull \hbox (badness 3068) in paragraph at lines 708--713
+Underfull \hbox (badness 3068) in paragraph at lines 703--708
 [] \T1/aer/bx/n/9 else if \T1/aer/m/n/8 (\T1/aer/m/it/8 topLevelGoalStatus($\OM
 L/cmm/m/it/8 g[]$\T1/aer/m/it/8 ) \T1/aer/m/n/9 = \T1/aer/m/n/7 PEND-ING\T1/aer
 /m/n/9 ) \T1/aer/bx/n/8 or
  []
 
 
-Underfull \hbox (badness 1137) in paragraph at lines 720--725
+Underfull \hbox (badness 1137) in paragraph at lines 715--720
 [] \T1/aer/bx/n/9 else if \T1/aer/m/n/9 (\T1/aer/m/it/9 currGoalStatus($\OML/cm
 m/m/it/9 g[]$\T1/aer/m/it/9 ) \T1/aer/m/n/9 = \T1/aer/m/n/7 BLOCKED\T1/aer/m/n/
 9 ) \T1/aer/bx/n/8 or
  []
 
-[5] [6] [7]
-Overfull \hbox (3.52548pt too wide) in paragraph at lines 1101--1115
+[5] [6]
+
+LaTeX Warning: Reference `alg:agency' on page \thepage  undefined on input line
+ 917.
+
+
+LaTeX Warning: Reference `alg:inputs' on page \thepage  undefined on input line
+ 918.
+
+
+LaTeX Warning: Reference `alg:agency' on page \thepage  undefined on input line
+ 962.
+
+
+LaTeX Warning: Reference `alg:autonomy' on page \thepage  undefined on input li
+ne 1006.
+
+
+LaTeX Warning: Reference `alg:predecessors' on page \thepage  undefined on inpu
+t line 1042.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+LaTeX Warning: Reference `alg:inputs' on page \thepage  undefined on input line
+ 1080.
+
+<figure/taskModel-croped.pdf, id=82, 554.07pt x 182.6825pt>
+File: figure/taskModel-croped.pdf Graphic file (type pdf)
+
+<use figure/taskModel-croped.pdf>
+Package pdftex.def Info: figure/taskModel-croped.pdf used on input line 1102.
+(pdftex.def)             Requested size: 504.00159pt x 170.72363pt.
+
+Overfull \hbox (3.52548pt too wide) in paragraph at lines 1107--1121
 \T1/aer/m/n/9 study us-ing an on-line crowd-sourc-ing web-site -- Crowd-Flower[
 ].
  []
 
-<figure/question-sample-croped.pdf, id=87, 282.05376pt x 170.6375pt>
+[7] <figure/question-sample-croped.pdf, id=87, 305.14pt x 143.53625pt>
 File: figure/question-sample-croped.pdf Graphic file (type pdf)
 
 <use figure/question-sample-croped.pdf>
 Package pdftex.def Info: figure/question-sample-croped.pdf used on input line 1
-135.
-(pdftex.def)             Requested size: 214.20154pt x 129.5895pt.
+165.
+(pdftex.def)             Requested size: 241.91785pt x 113.80194pt.
 
-Overfull \hbox (6.98329pt too wide) in paragraph at lines 1141--1154
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 1165--1167
+ [][][] 
+ []
+
+<figure/question-sample2-croped.pdf, id=88, 305.14pt x 143.53625pt>
+File: figure/question-sample2-croped.pdf Graphic file (type pdf)
+
+<use figure/question-sample2-croped.pdf>
+Package pdftex.def Info: figure/question-sample2-croped.pdf used on input line 
+1183.
+(pdftex.def)             Requested size: 241.91785pt x 113.80194pt.
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 1183--1185
+ [][][] 
+ []
+
+
+Overfull \hbox (6.98329pt too wide) in paragraph at lines 1189--1202
 \T1/aer/m/n/9 the \T1/aer/m/it/9 ex-pect-ed-ness \T1/aer/m/n/9 al-go-rithm (n=3
 3) av-er-aged 78.5% (s=12.0%),
  []
 
-(./MahniShyaganfar-AAMAS2016.bbl [8 <./figure/question-sample-croped.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[8 <./figure/taskModel-croped.pdf> <./figure/question-sample-croped.pdf
 
-) [9]
-(./MahniShyaganfar-AAMAS2016.aux) ) 
+pdfTeX warning: /usr/bin/pdflatex (file ./figure/question-sample-croped.pdf): P
+DF inclusion: multiple pdfs with page group included in a single page
+> <./figure/question-sample2-croped.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./figure/question-sample2-croped.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+>] (./MahniShyaganfar-AAMAS2016.bbl) [9] (./MahniShyaganfar-AAMAS2016.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 12572 strings out of 493304
- 236088 string characters out of 6139871
- 306103 words of memory out of 5000000
- 15686 multiletter control sequences out of 15000+600000
+ 12578 strings out of 493304
+ 236335 string characters out of 6139871
+ 304079 words of memory out of 5000000
+ 15690 multiletter control sequences out of 15000+600000
  82210 words of font info for 114 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,59p,467b,340s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvi
-ps/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helv
-etic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on MahniShyaganfar-AAMAS2016.pdf (9 pages, 410337 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on MahniShyaganfar-AAMAS2016.pdf (9 pages, 437737 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
+ 223 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 28 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
