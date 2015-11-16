@@ -49,6 +49,14 @@ H.-R. Kim and D.-S. Kwon.
 \newblock {\em Journal of Intelligent and Robotic Systems}, 60(2):263--283,
   2010.
 
+\bibitem{rich:focused-unfocused-users}
+N.~Lesh, C.~Rich, and C.~L. Sidner.
+\newblock Collaborating with focused and unfocused users under imperfect
+  communication.
+\newblock In M.~Bauer, P.~J. Gmytrasiewicz, and J.~Vassileva, editors, {\em
+  User Modeling 2001}, volume 2109, pages 64--73. Springer Berlin Heidelberg,
+  2001.
+
 \bibitem{marinier:emotion-reinforcement}
 R.~P. {Marinier III} and J.~E. Laird.
 \newblock Emotion-driven reinforcement learning.
@@ -58,6 +66,12 @@ R.~P. {Marinier III} and J.~E. Laird.
 S.~C. Marsella and J.~Gratch.
 \newblock {EMA}: A process model of appraisal dynamics.
 \newblock {\em Cognitive Systems Research}, 10(1):70--90, March 2009.
+
+\bibitem{marsella:computational}
+S.~C. Marsella, J.~Gratch, and P.~Petta.
+\newblock Computational models of emotion.
+\newblock In {\em Blueprint for Affective Computing (Series in Affective
+  Science)}. Oxford University Press, Oxford, 2010.
 
 \bibitem{scott:modeling-empathy-agent}
 S.~W. McQuiggan and J.~C. Lester.
@@ -85,6 +99,12 @@ P.~S. Rosenbloom, J.~Gratch, and V.~Ustun.
 \newblock In J.~Bieger, B.~Goertzel, and A.~Potapov, editors, {\em Artificial
   General Intelligence}, volume 9205 of {\em Lecture Notes in Computer
   Science}, pages 142--151. Springer International Publishing, 2015.
+
+\bibitem{scherer:sequential-appraisal-process}
+K.~R. Scherer.
+\newblock On the sequential nature of appraisal processes: Indirect evidence
+  from a recognition task.
+\newblock {\em Cognition \& Emotion}, 13(6):763--793, 1999.
 
 \bibitem{scherer:appraisal-processes}
 K.~R. Scherer, A.~Schorr, and T.~Johnstone.
