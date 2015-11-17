@@ -1,5 +1,5 @@
 #TeXlipse project settings
-#Thu Nov 05 10:35:29 EST 2015
+#Tue Nov 17 12:09:44 EST 2015
 markTmpDer=true
 builderNum=2
 outputDir=
@@ -7,7 +7,7 @@ makeIndSty=
 bibrefDir=
 outputFormat=pdf
 tempDir=tmp
-mainTexFile=MahniShyaganfar-AAMAS2016.tex
+mainTexFile=MahniShayganfar-AAMAS2016.tex
 outputFile=MahniShayganfar-AAMAS2016.pdf
 langSpell=en
 markDer=true

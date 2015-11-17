@@ -444,8 +444,8 @@ measurement tool problem:
 \end{description}
 
 \vspace*{-1mm}
-In this scenario, the robot appraises the problem with the measurement tool as a
-\textit{relevant, undesirable, unexpected}, but \textit{controllable} one.
+In this scenario, the robot appraises the problem with the measurement tool as
+a \textit{relevant, undesirable, unexpected}, but \textit{controllable} one.
 Consequently, the coping mechanism first acknowledges the astronaut's negative
 valenced emotion (i.e., frustration), then provides a new plan to continue the
 collaboration.
@@ -1144,16 +1144,16 @@ preparing two sandwiches. Figure \ref{fig:taskModel} shows the corresponding
 task model for these instructions. Test questions introduced specific situations
 related to the shared plan; these situations included, among others, blocked
 tasks, and failure or achievement of a shared goal provided in the instruction.
-Each question provided three possible answers. One option provided a distinct
-alternative; another option was used to provide a dichotomy with the first
-alternative, and a third option was used to check whether the subjects perceived
-the other two options as equal. We also provided a brief description as well as
-a simple example for each appraisal variable, e.g., \textit{relevance}, at the
-end of the corresponding instructions. Using this approach, we prepared four
-different online questionnaires for the appraisal variables: \textit{relevance,
-desirability, expectedness} and \textit{controllability}. Note that the
-collaboration structure and the instructions were the same for all four
-questionnaires.
+Each question provided three possible answers (which were counterbalanced in
+the questionnaire). One option provided a distinct alternative; another option
+was used to provide a dichotomy with the first alternative, and a third option
+was used to check whether the subjects perceived the other two options as equal.
+We also provided a brief description as well as a simple example for each
+appraisal variable, e.g., \textit{relevance}, at the end of the corresponding
+instructions. Using this approach, we prepared four different online
+questionnaires for the appraisal variables: \textit{relevance, desirability,
+expectedness} and \textit{controllability}. Note that the collaboration
+structure and the instructions were the same for all four questionnaires.
 
 \begin{table}[htbp]
 \centering
@@ -1185,11 +1185,11 @@ Desirability} & {\fontsize{7.5}{8}\selectfont 35} &
 \end{table}
 
 Each question was designed based on different factors that we use in our
-algorithms (see Section \ref{sec:appraisal-process}). Here, we present two
-example questions from expectedness and controllability questionnaires, and
-describe how each question relates to a specific factor within the corresponding
-algorithm. The input for our algorithms was the task model depicted in Figure
-\ref{fig:taskModel}.
+algorithms (see Section \ref{sec:appraisal-process}). Here, we present three
+example questions from expectedness, controllability, and desirability
+questionnaires, and describe how each question relates to a specific factor
+within the corresponding algorithm. The input for our algorithms was the task
+model depicted in Figure \ref{fig:taskModel}.
 
 \begin{figure}[tbh]
   \centering
@@ -1235,12 +1235,19 @@ decision was 90\% in agreement with the algorithm's output.
 
 \begin{figure}[tbh]
   \centering
-  \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
+  \includegraphics[width=0.48\textwidth]{figure/question-sample3-croped.pdf}
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Desirability Question.}}
-  \label{fig:qs2}
+  \label{fig:qs3}
   \vspace*{-2mm}
 \end{figure}
+
+Figure \ref{fig:qs3} shows an example question from the desirability
+questionnaire. The output based on the Algorithm \ref{alg:desirability}
+(desirability) is option C, since in both option A and option B, the focus goal
+has been achieved successfully. Therefore, in this example, both options A and B
+are desirable. The humans decision was 77\% in agreement with the algorithm's
+output in this question.
 
 We conducted the user study to compare the results with the implemented
 algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
@@ -1311,7 +1318,7 @@ reflect the views of the National Science Foundation.}
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 \bibliographystyle{abbrv}
-\bibliography{mshayganfar.bib}  % sigproc.bib is the name of the Bibliography in
+\bibliography{mshayganfar}  % sigproc.bib is the name of the Bibliography in
 % this case You must have a proper ".bib" file
 %  and remember to run:
 % latex bibtex latex latex
