@@ -838,30 +838,23 @@ goal. The robot will also be able to respond to unexpected but relevant events.
 
 In Algorithm \ref{alg:expectedness} we provide the process of the expectedness
 based on the shared plan and status of the shared goal. The key point in this
-algorithm is the status of the current shared goal ($\mathit{g}_{t}$) and its
-relationship with the top level goal ($\mathit{g}_{_{top}}$). The algorithm
-receives the current event ($\varepsilon_t$) from input, and decides whether the
-current event is expected.
+algorithm is the status of the current shared goal ($\mathit{g}_{t}$) that is
+associated with the event $\varepsilon_t$ and its relationship with the top
+level goal ($\mathit{g}_{_{top}}$).
 
-First, the algorithm recognizes the goal associated with the current event, and
-finds the corresponding top level goal to the recognized one. Then, it continues
-to check the liveness of the recognized goal. The intuition behind this case is
-that humans are more expected to finish the sub-task they are working on before
-starting a new one \cite{rich:focused-unfocused-users}. Therefore, if the goal
-is live, the algorithm checks whether the interpretation of the last event
-results in a necessary focus shift. Shifting the focus to a new goal is
-necessary when the former goal is achieved and a new goal is required.
-Consequently the new event is the \textsc{most-expected} one. However, even if
-the focus shift is not necessary, the new event can be considered as
-\textsc{expected}, since the corresponding goal is already live. On the other
-hand, when the recognized goal is not live (lines 10 to 13), the occurrence of
-the new event can be considered as an interruption for the robot. Therefore, if
-the goal associated with the new interrupting event is in the current shared
-plan, there will be a path between the recognized goal ($\mathit{g}_{t}$) and
-the top level goal ($\mathit{g}_{_{top}}$). In this case, the algorithm
-considers the new event as an \textsc{unexpected} one, since the corresponding
-goal is not live. However, if the recognized goal is not even in the shared
-plan, the algorithm considers the event as \textsc{most-unexpected}.
+The intuition captured here is that one expects the current goal to be finished
+before undertaking another activity, but the goals that are the next focus of
+attention are also to be expected \cite{rich:focused-unfocused-users}.
+Therefore, if the goal is live, the algorithm checks whether the goal has not
+changed, or the interpretation of the last event results in a necessary focus
+shift. Shifting the focus to a new goal is necessary when the former goal is
+achieved and a new goal is required. Consequently the new event is the
+\textsc{most-expected} one. However, even if the focus shift is not necessary,
+the new event can be considered as \textsc{expected}, since the corresponding
+goal is already live. For goals that have not yet been started (that is, are not
+live), the algorithm must determine how unexpected it would be to do one now; if
+the goal is at least in the plan, i.e., on the path to the top level goal, it is
+just \textsc{unexpected} while any others are \textsc{most-unexpected}.
 
 \subsection{Controllability}
 
@@ -931,7 +924,7 @@ implementing other mechanisms in the overall architecture. After computing the
 value of the utility, we compare this value to an emotional threshold similar to
 what we discussed in Algorithm \ref{alg:relevance}. This comparison leads to our
 decision about the controllability of an event (lines 8 to 11 in Algorithm
-\ref{alg:controllability}).
+\ref{alg:controllability}).\\
 
 % \renewcommand\thealgorithm{4\alph{algorithm}}
 % \setcounter{algorithm}{0}
@@ -1190,7 +1183,6 @@ model depicted in Figure \ref{fig:taskModel}.
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Expectedness Question.}}
   \label{fig:qs1}
-  \vspace*{-2mm}
 \end{figure}
 
 Figure \ref{fig:qs1} shows the example question from the expectedness
@@ -1213,7 +1205,6 @@ questionnaire are presented in Table \ref{tbl:statistics}.
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Controllability Question.}}
   \label{fig:qs2}
-  \vspace*{-2mm}
 \end{figure}
 
 Figure \ref{fig:qs2} shows an example question from the controllability
@@ -1232,7 +1223,6 @@ decision was 90\% in agreement with the algorithm's output.
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Desirability Question.}}
   \label{fig:qs3}
-  \vspace*{-2mm}
 \end{figure}
 
 Figure \ref{fig:qs3} shows an example question from the desirability
@@ -1267,7 +1257,6 @@ subjects' data being generated from a random set. The very small
 percentage of similarity shows that the four appraisal algorithms predicted the
 human judgements.
 
-\vspace*{-5mm}
 \section{Conclusion}
 While these results support our hypothesis, they are not a perfect prediction.
 We believe the difference between these two results could be due to several
