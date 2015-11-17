@@ -188,7 +188,7 @@ part of a new overall computational model for implementing collaborative robots
 and agents. We build primarily on the \textit{cognitive appraisal} theory of
 emotions and the \textit{SharedPlans} theory of collaboration to investigate the
 structure, fundamental processes and functions of emotions in a collaboration.
-We have evaluated our proposed algorithms by conducting an online user study.
+We have evaluated our implemented algorithms by conducting an online user study.
 \end{abstract}
 
 % Note that the category section should be completed after reference to the ACM Computing Classification Scheme available at
@@ -201,7 +201,7 @@ We have evaluated our proposed algorithms by conducting an online user study.
 
 %General terms should be selected from the following 16 terms: Algorithms, Management, Measurement, Documentation, Performance, Design, Economics, Reliability, Experimentation, Security, Human Factors, Standardization, Languages, Theory, Legal Aspects, Verification.
 
-\terms{Algorithms, Design, Experimentation, Human Factors, Theory, Verification}
+\terms{Algorithms, Experimentation, Human Factors, Theory}
 
 %Keywords are your own choice of terms you would like the paper to be indexed by.
 
@@ -338,7 +338,7 @@ motives in this paper, since they are used in our appraisal algorithms. We
 briefly provide the way we compute the attributes' values, due to the limited
 space.
 
-\subsubsection{Belief:}
+\subsubsection{Belief}
 \label{sec:belief}
 
 \textit{Beliefs} are a crucial part of the mental states. We have two different
@@ -366,7 +366,7 @@ attribute that pertains to how easily the self becomes aware of a belief. The
 \textit{persistence} of a belief refers to how resistant the belief is to
 changes.
 
-\subsubsection{Motive:}
+\subsubsection{Motive}
 \label{sec:motive}
 
 \textit{Motives} are mental constructs which can initiate, direct and maintain
@@ -392,7 +392,7 @@ the goal and ultimately the collaboration. The \textit{failure disruptiveness}
 attribute of a motive determines how disruptive failure is to achieving the
 corresponding goal.
 
-\subsubsection{Intention:}
+\subsubsection{Intention}
 
 \textit{Intentions} are mental constructs directed at goals and future actions.
 They play an essential role in taking actions according to the collaboration
@@ -404,7 +404,7 @@ Ambivalence, Affective-Deliberative Consistency} which moderate the consistency
 between intention and behavior \cite{cooke:intention-behavior-consistency}. The
 details about these attributes are beyond the scope of this paper.
 
-\subsubsection{Goal:}
+\subsubsection{Goal}
 
 \textit{Goals} help the robot to create and update its collaboration plan
 according to the current private and shared goal content and structure, i.e.,
@@ -414,7 +414,7 @@ during collaboration. Goals also drive the Motivation mechanism to generate
 required motive(s). The details about goal's attributes are beyond the scope of
 this paper.
 
-\subsubsection{Emotion Instance:}
+\subsubsection{Emotion Instance}
 
 \textit{Emotions} in mental states are emotion instances that are elicited by
 the Appraisal mechanism, e.g., \textit{Joy, Anger, Hope, Worry}. These emotion
@@ -444,9 +444,13 @@ measurement tool problem:
 \end{description}
 
 \vspace*{-1mm}
-Note, the robot in turn $t$ acknowledges the astronaut's frustration and
-appropriately responds to her problem.
+In this scenario, the robot appraises the problem with the measurement tool as a
+\textit{relevant, undesirable, unexpected}, but \textit{controllable} one.
+Consequently, the coping mechanism first acknowledges the astronaut's negative
+valenced emotion (i.e., frustration), then provides a new plan to continue the
+collaboration.
 
+\vspace*{-3mm}
 \section{Collaboration}
 
 The Collaboration mechanism constructs a hierarchy of goals associated with
@@ -459,9 +463,11 @@ successful). Collaboration also keeps track of the focus of attention, which
 determines the salient objects, properties and relations at each point, and
 shifts the focus of attention during the interaction.
 
+\vspace*{-2mm}
 \begin{figure}[tbh]
   \centering
   \includegraphics[width=0.474\textwidth]{figure/collaborationStructure-croped.pdf}
+  \vspace*{-6mm}
   \caption{{\fontsize{9}{9}\selectfont Collaboration structure (shared plan).}}
   \label{fig:cs}
   \vspace*{-2mm}
@@ -498,9 +504,13 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   the given goal are \textsc{achieved} and all the preconditions of the goal are
   \textsc{satisfied}; otherwise returns \textit{false}.
   
-  \item \textit{isNecessaryFocusShift($g_t$)} returns \textit{true} if the given
-  goal is a new focus (top of the stack) and the previous focus was achieved;
-  otherwise returns \textit{false} \cite{rich:focused-unfocused-users}.
+  \item \textit{isFocusShift($g_t$)} returns \textit{true} if the given
+  goal is not the previous focus (top of the stack); otherwise returns
+  \textit{false}.
+  
+  \item \textit{isNecessaryFocusShift($g_t$)} returns \textit{true} if the
+  status of the previous focus was \textsc{achieved}; otherwise returns
+  \textit{false} \cite{rich:focused-unfocused-users}.
   
   \item \textit{isPath($g_1$, $g_2$)} returns \textit{true} if there is a path
   between $g_1$ and $g_2$ in a plan tree structure; otherwise returns
@@ -532,8 +542,8 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   i.e., whether all the postconditions of the given goal are \textsc{satisfied}.
   
   \item \textit{isFocused($g_t$)} returns whether the focus is on given
-  goal now. The focus is on the goal ``Prepare Measurement Tool''. The focused
-  goal is the goal that the robot currently is pursuing.
+  goal now. In this example, the focus is on the goal ``Prepare Measurement
+  Tool''. The focused goal is the goal that the robot is currently pursuing.
   
   \item \textit{getResponsible($g_t$)} returns responsible agents of the given
   goal. In a dyadic collaboration, both of the agents can be partly responsible
@@ -628,7 +638,7 @@ recognized goal. We use three of the belief attributes discussed in Section
   \item \textit{Saliency}: Beliefs related to the goal at the top of the focus
   stack are more salient than beliefs related to any other goal in the plan,
   whether those goals are already \textsc{achieved} or \textsc{failed}, or they
-  will be pursued to achieve in the future.
+  will be pursued in the future.
   \item \textit{Persistence}: The recurrence of a belief over the passage of
   time (turns) increases the persistence of the belief. Beliefs occuring only in
   one turn have the lowest value of persistence.
@@ -661,17 +671,17 @@ weighted averaging function which results in an overall value between 0 and 1.
 The significance of an event in a collaborative environment is based not
 only on the utility of the event, but it is also influenced by the perceived
 emotion of the human collaborator. The human's emotion influences the decision
-about the utility of the event in form of a threshold value $\tau_{t}$ (see
+about the utility of the event in the form of a threshold value $\tau_{t}$ (see
 Algorithm \ref{alg:relevance}). For instance, a positively expressed emotion of
 the human reduces the threshold value which consequently makes the robot find an
 event relevant with even a slightly positive utility. This threshold value
 ($\tau_{t}$) is currently determined based on whether the valence of the
 human's perceived emotion is positive (e.g., happiness) or negative (e.g.,
-anger). Consequently, an event can be considered \textit{irrelevant} even though
-the utility has a relatively positive value. Relevance is thus decided based on
-the human's emotional state.
+anger). Consequently, an event can be considered \textsc{irrelevant} even though
+the utility has a relatively positive value, because relevance is influenced by
+the human's perceived emotional state.
 
-\vspace*{-3mm}
+\vspace*{2mm}
 \subsection{Desirability}
 
 Desirability characterizes the value of an event to the robot in terms of
@@ -706,15 +716,17 @@ algorithm checks the ambiguity of the associated goal with the current event
 (line 3). An \textsc{ambiguous} goal is a goal which is not recognized in the
 robot's plan, and it is undesirable for a collaborative robot. Then, the
 algorithm checks the status of the collaboration's top level goal (lines 5 to
-11), and if the top level goal is still \textsc{inprogress} or it is
+13), and if the top level goal is still \textsc{inprogress} or it is
 \textsc{pending}, it continues by checking the status of the current shared goal
-(lines 12 to 19). If the top level shared goal is \textsc{achieved} (i.e.,
+(lines 14 to 23). If the top level shared goal is \textsc{achieved} (i.e.,
 \textsc{satisfied} postcondition), the robot interprets the event as a
 \textsc{most-desirable} one. However, if the top level goal is \textsc{failed}
 (i.e., \textsc{unsatisfied} postcondition), the event will be considered as
 \textsc{most-undesirable} by the robot.
 
+\vspace*{2mm}
 \begin{algorithm}
+	\vspace*{2mm}
 	\caption{(Desirability)}
 	\label{alg:desirability}
 	\begin{algorithmic}[1]
@@ -733,15 +745,15 @@ algorithm checks the status of the collaboration's top level goal (lines 5 to
 			{\fontsize{7}{8}\selectfont FAILED})} 
 			\State \Return {{\fontsize{7}{8}\selectfont MOST-UNDESIRABLE}}
 			\ElsIf {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)}} =
-			{\fontsize{7}{8}\selectfont BLOCKED}) \OR
+			{\fontsize{7}{8}\selectfont BLOCKED}) \OR\\
 			\hspace{1mm}{\fontsize{8}{9}\selectfont
-			\hspace*{5mm}(\textit{topLevelGoalStatus($g_{t}$)}} =
+			\hspace*{4mm}(\textit{topLevelGoalStatus($g_{t}$)}} =
 			{\fontsize{7}{8}\selectfont INAPPLICABLE})}
 			\State \Return {{\fontsize{7}{8}\selectfont UNDESIRABLE}} 
 			\ElsIf {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)}} =
-			{\fontsize{7}{8}\selectfont PENDING}) \OR
+			{\fontsize{7}{8}\selectfont PENDING}) \OR\\
 			\hspace{1mm}{\fontsize{8}{9}\selectfont
-			\hspace*{5mm}(\textit{topLevelGoalStatus($g_{t}$)}} =
+			\hspace*{4mm}(\textit{topLevelGoalStatus($g_{t}$)}} =
 			{\fontsize{7}{8}\selectfont INPROGRESS})}
 				\Statex
 				\If {{\fontsize{8}{9}\selectfont (\textit{currGoalStatus($g_{t}$)}} =
@@ -751,14 +763,14 @@ algorithm checks the status of the collaboration's top level goal (lines 5 to
 				FAILED})} 
 				\State \Return {{\fontsize{7}{8}\selectfont MOST-UNDESIRABLE}}
 				\ElsIf {(\textit{currGoalStatus($g_{t}$)} = {\fontsize{7}{8}\selectfont
-				BLOCKED}) \OR 
+				BLOCKED}) \OR \\
 				\hspace{1mm}{\fontsize{8}{9}\selectfont
-				\hspace*{10mm}(\textit{topLevelGoalStatus($g_{t}$)}} =
+				\hspace*{9mm}(\textit{topLevelGoalStatus($g_{t}$)}} =
 				{\fontsize{7}{8}\selectfont INAPPLICABLE})} 
 				\State \Return {{\fontsize{7}{8}\selectfont UNDESIRABLE}}
 				\ElsIf {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)}} =
-				{\fontsize{7}{8}\selectfont PENDING}) \OR \hspace{1mm} 
-				\hspace*{10mm}(\textit{currGoalStatus($g_{t}$)} =
+				{\fontsize{7}{8}\selectfont PENDING}) \OR \\ \hspace{1mm} 
+				\hspace*{8mm}(\textit{currGoalStatus($g_{t}$)} =
 				{\fontsize{7}{8}\selectfont INPROGRESS})} 
 				\State \Return {{\fontsize{7}{8}\selectfont NEUTRAL}}
 				\EndIf
@@ -766,13 +778,12 @@ algorithm checks the status of the collaboration's top level goal (lines 5 to
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
-\vspace*{-2mm}
 
 The algorithm continues in the case of a \textsc{blocked} or
 \textsc{inapplicable} status of the top level goal. A goal is \textsc{blocked}
 if any of the required goals or recursively through the parent goal is not done
 and therefore this goal is \textsc{blocked} and cannot become live. And, a
-goal is \textsc{inapplicable} if either any of its predecessors are not
+goal is \textsc{inapplicable} if any of its predecessors are not
 \textsc{achieved}, and/or its preconditions are not \textsc{satisfied}. In
 either of these cases, the event will be marked as \textsc{undesirable}. In case
 neither of these cases are true, the algorithm checks whether the status of the
@@ -784,16 +795,22 @@ cases, the algorithm continues to check the status of the current (focused) goal
 in the same way. However, in both desirable and undesirable conditions the
 desirability value will possess a lower value of intensity.
 
-\vspace*{-2mm}
+\vspace*{2mm}
 \subsection{Expectedness}
 
 Expectedness is the extent to which the truth value of a state could have been
 predicted from causal interpretation of an event
 \cite{marsella:ema-process-model}. In the collaboration context the expectedness
-of an event measures the congruency of the event with respect to the existing
-knowledge about the shared goal. Therefore, expected events are those of which
-beliefs about them are congruent to the status of the collaboration since their
-associated goals are expected with respect to the shared plan.
+of an event evaluates the congruency of the event with respect to the existing
+knowledge about the shared goal. Thus, expectedness underlies a collaborative
+robot's attention. Congruent beliefs in a robot's mental state will lead to more
+consistent and effective outcomes of the processes in the overall architecture.
+The collaboration mechanism uses expectedness to maintain the robot's attention
+and subsequently its mental state with respect to the shared goal. Reciprocally,
+the appraisal mechanism uses the underlying information of the collaboration
+structure to evaluate the expectedness of an event. Therefore, a collaborative
+robot uses expectedness to maintain its own mental state towards the shared
+goal. The robot will also be able to respond to unexpected but relevant events.
 
 \begin{algorithm}
 	\caption{(Expectedness)}
@@ -805,8 +822,9 @@ associated goals are expected with respect to the shared plan.
 			\State $\mathit{g}_{top} \gets \textit{getTopLevelGoal}{(\mathit{g}_{t})}$
 			\Statex
 			\If {$(\textit{isLive}{(\mathit{g}_{t})})$}
-				\If {$(\textit{isNeccessaryFocusShift}{(\mathit{g}_{t})})$}
-					\State \Return {\fontsize{7}{8}\selectfont MOST-EXPECTED}
+				\If {$(\neg \textit{isFocusShift}{(\mathit{g}_{t})} \OR$ \\
+				\hspace*{13mm}$\textit{isNeccessaryFocusShift}{(\mathit{g}_{t})})$}
+				\State \Return {\fontsize{7}{8}\selectfont MOST-EXPECTED}
 				\Else
 					\State \Return {\fontsize{7}{8}\selectfont EXPECTED}
 				\EndIf
@@ -820,18 +838,7 @@ associated goals are expected with respect to the shared plan.
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
-
-Expectedness underlies a collaborative robot's attention by evaluating the
-congruence of events with respect to the structure of an existing shared plan.
-Congruent beliefs in a robot's mental state will lead to more consistent and
-effective outcomes of the processes in the overall architecture. Therefore,
-a collaborative robot uses expectedness to maintain its own mental state towards
-the shared goal. The robot will also be able to respond to unexpected but
-relevant events. As a result, the collaboration mechanism uses expectedness to
-maintain the robot's attention and subsequently its mental state with respect to
-the shared goal. In parallel, the appraisal mechanism uses the underlying
-information of the collaboration structure to evaluate the expectedness of an
-event.
+\vspace*{2mm}
 
 In Algorithm \ref{alg:expectedness} we provide the process of the expectedness
 based on the shared plan and status of the shared goal. The key point in this
@@ -842,24 +849,25 @@ current event is expected.
 
 First, the algorithm recognizes the goal associated with the current event, and
 finds the corresponding top level goal to the recognized one. Then, it continues
-to check the liveness of the recognized goal. A goal is live if all of its
-predecessors are \textsc{achieved}, and all its preconditions are not
-{unsatisfied}. Therefore, if the goal is live, the algorithm checks whether the
-interpretation of the last event results in a necessary focus shift. Shifting
-the focus to a new goal is necessary when the former goal is achieved and a new
-goal is required. Consequently the new event is the \textsc{most-expected} one.
-However, even if the focus shift is not necessary, the new event can be
-considered as \textsc{expected}, since the corresponding goal is already live.
-On the other hand, when the recognized goal is not live (lines 10 to 13), the
-occurrence of the new event can be considered as an interruption for the robot.
-Therefore, if the goal associated with the new interrupting event is in the
-current shared plan, there will be a path between the recognized goal
-($\mathit{g}_{t}$) and the top level goal ($\mathit{g}_{_{top}}$). In this case,
-the algorithm considers the new event as an \textsc{unexpected} one, since the
-corresponding goal is not live. However, if the recognized goal is not even in
-the shared plan, the algorithm considers the event as \textsc{most-unexpected}.
+to check the liveness of the recognized goal. The intuition behind this case is
+that humans are more expected to finish the sub-task they are working on before
+starting a new one \cite{rich:focused-unfocused-users}. Therefore, if the goal
+is live, the algorithm checks whether the interpretation of the last event
+results in a necessary focus shift. Shifting the focus to a new goal is
+necessary when the former goal is achieved and a new goal is required.
+Consequently the new event is the \textsc{most-expected} one. However, even if
+the focus shift is not necessary, the new event can be considered as
+\textsc{expected}, since the corresponding goal is already live. On the other
+hand, when the recognized goal is not live (lines 10 to 13), the occurrence of
+the new event can be considered as an interruption for the robot. Therefore, if
+the goal associated with the new interrupting event is in the current shared
+plan, there will be a path between the recognized goal ($\mathit{g}_{t}$) and
+the top level goal ($\mathit{g}_{_{top}}$). In this case, the algorithm
+considers the new event as an \textsc{unexpected} one, since the corresponding
+goal is not live. However, if the recognized goal is not even in the shared
+plan, the algorithm considers the event as \textsc{most-unexpected}.
 
-\vspace*{2mm}
+\vspace*{4mm}
 \subsection{Controllability}
 
 Controllability is the extent to which an event can be influenced, and it is
@@ -902,11 +910,11 @@ event.
 
 Controllability is also important for the overall architecture. For instance,
 the robot can choose to ask or negotiate about a collaborative task which is
-not controllable; it can cause the robot to interpret or predict the other's
-emotional state (e.g., anger if the task is blocked, i.e., uncontrollable for
-the other), or form a new motive to establish an alternative goal for the
-current uncontrollable event. In general, other mechanisms in the architecture
-use the appraisal process of controllability in their decision making processes;
+not controllable, or the robot can interpret or predict the other's emotional
+state (e.g., anger if the task is blocked, i.e., uncontrollable for the other),
+or form a new motive to establish an alternative goal for the current
+uncontrollable event. In general, other mechanisms in the architecture use the
+appraisal process of controllability in their decision making processes;
 meanwhile controllability uses the information from the collaboration structure,
 e.g., successful predecessors of a goal.
 
@@ -970,7 +978,7 @@ Algorithm \ref{alg:controllability} (i.e., $\alpha=1.0$) if the robot's mental
 state possesses an internal motive towards the recognized goal; otherwise we
 consider the minimum agency value (i.e., $\alpha=0.0$) for no motives or
 external motives only. Note that the process of forming new internal motives is
-out of this paper's context.
+beyond scope of this paper.
 
 % \renewcommand\thealgorithm{4\alph{algorithm}}
 % \setcounter{algorithm}{1}
@@ -1006,7 +1014,7 @@ their capabilities. Therefore, each collaborator is responsible for the
 delegated task and the corresponding goal. In Algorithm
 \ref{alg:controllability}, $\beta$ denotes the value of autonomy with regard to
 the event ($\varepsilon_t$). This value is the ratio of the number of the
-contributing goals to $\mathit{g}_{t}$ for which the robot is responsible over
+goals contributing to $\mathit{g}_{t}$ for which the robot is responsible over
 the total number of contributing goals to $\mathit{g}_{t}$. If the goal
 associated with the current event corresponds to a nonprimitive goal, the
 algorithm checks the responsible agent for each primitive goal contributing to
@@ -1051,7 +1059,7 @@ predecessors of the same goal. This ratio (denoted as $\lambda$ in Algorithm
 controllability of an event. If all of the predecessors of the given goal are
 already achieved, then $\lambda=1$ which is the maximum value for $\lambda$. On
 the contrary, failure of all of the predecessors will lead to $\lambda=0$.
-Therefore, higher $\lambda$ value positively impacts the value of
+Therefore, a higher $\lambda$ value positively impacts the value of
 controllability for the current event.
 
 % \renewcommand\thealgorithm{4\alph{algorithm}}
@@ -1103,10 +1111,12 @@ robot to carry out proper collaborative behaviors.
 
 \begin{figure*}
   \centering
+  \vspace*{-5mm}
   \includegraphics[width=16cm,height=5.25cm]{figure/taskModel-croped.pdf}
+  \vspace*{-3mm}
   \caption{Collaboration Task Model for the Evaluation.}
   \label{fig:taskModel}
-  \vspace*{-5mm}
+  \vspace*{-3mm}
 \end{figure*}
 
 We developed our user study to test our hypothesis that humans will provide
@@ -1145,72 +1155,10 @@ desirability, expectedness} and \textit{controllability}. Note that the
 collaboration structure and the instructions were the same for all four
 questionnaires.
 
-Each question was designed based on different factors that we use in our
-algorithms (see Section \ref{sec:appraisal-process}). Here, we present two
-example questions from expectedness and controllability questionnaires, and
-describe how each question relates to a specific factor within the corresponding
-algorithm. The input for our algorithms was the task model depicted in Figure
-\ref{fig:taskModel}.
-
-Figure \ref{fig:qs1} shows the example question from the expectedness
-questionnaire. In this example, with respect to Algorithm
-\ref{alg:expectedness} (line 6), option A is more expected because the task
-related to this option provides the next available task in the focus stack (see
-the task model in Figure \ref{fig:taskModel}). Although the task in option B is
-part of the existing task model, it is considered as unexpected by our
-algorithm, since it is not live in the plan. We provided option C to determine
-whether the human subjects will similarly differentiate between these two
-options. This question was presented to the human subjects to determine whether
-their decision for the expectedness of this event is similar to the output of
-the expectedness algorithm. For this question, the human decision was 97\%
-similar to the algorithm's output. Average results for the expectedness
-questionnaire are presented in Table \ref{tbl:statistics}.
-
-\begin{figure}[tbh]
-  \centering
-  \includegraphics[width=0.48\textwidth]{figure/question-sample-croped.pdf}
-  \caption{{\fontsize{9}{9}\selectfont An example question from the expectedness
-  questionnaire.}}
-  \label{fig:qs1}
-  \vspace*{-3mm}
-\end{figure}
-
-Figure \ref{fig:qs2} shows an example question from the controllability
-questionnaire. The algorithm's output is option B, and is determined by
-Algorithm \ref{alg:controllability}, similarly to the expectedness example
-above. In this example, option B is more controllable than option A, because the
-self over total ratio of the responsibility of the predecessors of the given
-task (see Algorithm \ref{alg:controllability}) is higher than the ratio in
-option A; i.e., self is responsible to spread peanut butter on one slice of
-bread and strawberry jam on another slice of bread. In this question, the humans
-decision was 90\% in agreement with the algorithm's output.
-
-\begin{figure}[tbh]
-  \centering
-  \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
-  \caption{{\fontsize{9}{9}\selectfont An example question from the
-  controllability questionnaire.}}
-  \label{fig:qs2}
-  \vspace*{-3mm}
-\end{figure}
-
-We conducted the user study to compare the results with the implemented
-algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
-each question had 3 answers. Therefore, a totally random distribution would
-result in 33\% agreement with our algorithms results. However, the average
-ratio indicating similarity between human subjects decisions and the output of
-our algorithms is significantly higher than 33\%. The total number of subjects'
-answers similar to a) the \textit{relevance} algorithm (n=29) averaged 71.3\%
-(s=10.7\%), b) the \textit{desirability} algorithm (n=35) averaged 77.8\%
-(s=15.0\%), c) the \textit{expectedness} algorithm (n=33) averaged 78.5\%
-(s=12.0\%), and d) the \textit{controllability} algorithm (n=33) averaged 74.3\%
-(s=15.8\%). It is worth noting that the human subjects agreed 100\% on some
-questions, while one some other questions there was a much lower level of
-agreement.
-
-\begin{table}
+\begin{table}[htbp]
 \centering
-\caption{Results From Our User Study}
+\vspace*{-6mm}
+\caption{Evaluation Results}
 \begin{tabular}{|c|c|c|c|c|} \hline
 {\fontsize{7.5}{8}\selectfont appraisal variables} &
 {\fontsize{7.5}{8}\selectfont \# of subjects} & {\fontsize{8}{8}\selectfont
@@ -1232,9 +1180,81 @@ Desirability} & {\fontsize{7.5}{8}\selectfont 35} &
 0.158} & {\fontsize{7.5}{8}\selectfont <0.001}\\
 \hline
 \end{tabular}
+\vspace*{-3mm}
 \label{tbl:statistics}
-\vspace*{-4mm}
 \end{table}
+
+Each question was designed based on different factors that we use in our
+algorithms (see Section \ref{sec:appraisal-process}). Here, we present two
+example questions from expectedness and controllability questionnaires, and
+describe how each question relates to a specific factor within the corresponding
+algorithm. The input for our algorithms was the task model depicted in Figure
+\ref{fig:taskModel}.
+
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[width=0.48\textwidth]{figure/question-sample-croped.pdf}
+  \vspace*{-7mm}
+  \caption{{\fontsize{9}{9}\selectfont Example Expectedness Question.}}
+  \label{fig:qs1}
+  \vspace*{-2mm}
+\end{figure}
+
+Figure \ref{fig:qs1} shows the example question from the expectedness
+questionnaire. In this example, with respect to Algorithm
+\ref{alg:expectedness} (line 6), option A is more expected because the task
+related to this option provides the next available task in the focus stack (see
+the task model in Figure \ref{fig:taskModel}). Although the task in option B is
+part of the existing task model, it is considered as unexpected by our
+algorithm, since it is not live in the plan. We provided option C to determine
+whether the human subjects will similarly differentiate between these two
+options. This question was presented to the human subjects to determine whether
+their decision for the expectedness of this event is similar to the output of
+the expectedness algorithm. For this question, the human decision was 97\%
+similar to the algorithm's output. Average results for the expectedness
+questionnaire are presented in Table \ref{tbl:statistics}.
+
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
+  \vspace*{-7mm}
+  \caption{{\fontsize{9}{9}\selectfont Example Controllability Question.}}
+  \label{fig:qs2}
+  \vspace*{-2mm}
+\end{figure}
+
+Figure \ref{fig:qs2} shows an example question from the controllability
+questionnaire. The algorithm's output is option B, and is determined by
+Algorithm \ref{alg:controllability}, similarly to the expectedness example
+above. In this example, option B is more controllable than option A, because the
+self over total ratio of the responsibility of the predecessors of the given
+task (see Algorithm \ref{alg:controllability}) is higher than the ratio in
+option A; i.e., self is responsible to spread peanut butter on one slice of
+bread and strawberry jam on another slice of bread. In this question, the humans
+decision was 90\% in agreement with the algorithm's output.
+
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
+  \vspace*{-7mm}
+  \caption{{\fontsize{9}{9}\selectfont Example Desirability Question.}}
+  \label{fig:qs2}
+  \vspace*{-2mm}
+\end{figure}
+
+We conducted the user study to compare the results with the implemented
+algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
+each question had 3 answers. Therefore, a totally random distribution would
+result in 33\% agreement with our algorithms results. However, the average
+ratio indicating similarity between human subjects decisions and the output of
+our algorithms is significantly higher than 33\%. The total number of subjects'
+answers similar to a) the \textit{relevance} algorithm (n=29) averaged 71.3\%
+(s=10.7\%), b) the \textit{desirability} algorithm (n=35) averaged 77.8\%
+(s=15.0\%), c) the \textit{expectedness} algorithm (n=33) averaged 78.5\%
+(s=12.0\%), and d) the \textit{controllability} algorithm (n=33) averaged 74.3\%
+(s=15.8\%). It is worth noting that the human subjects agreed 100\% on some
+questions, while one some other questions there was a much lower level of
+agreement.
 
 The results indicate that our algorithms provide appraisal variable outputs
 sufficiently similar to the decisions of human's appraisal. Our hypothesis in
@@ -1247,17 +1267,20 @@ subjects' data being generated from a random set. The very small
 percentage of similarity shows that the four appraisal algorithms predicted the
 human judgements.
 
+\vspace*{-2mm}
+\section{Conclusion}
 While these results support our hypothesis, they are not a perfect prediction.
-However, if human subjects judged exactly the same as our algorithms' decision
-processes, the average percentage of similarity to our result would be 100\%. We
-believe the difference between these two results could be because of several
-reasons, including: a) the fact that we conducted our study online and had less
-control on our subjects, b) our algorithms may require further granularity, or
-c) the difference between decision making processes of individuals, which can be
-affected by other factors such as personality, gender, and culture. While it
-maybe possible to achieve a higher level of agreement between humans and the
-algorithms results, these results indicate that the current algorithms are
-adequate to be used in collaboration context.
+We believe the difference between these two results could be due to several
+reasons, including: a) the fact that we conducted our study online and had
+little control on our subjects, b) our algorithms may require further
+granularity, or c) the difference between decision making processes of
+individuals, which can be affected by other factors such as personality, gender,
+and culture. While it may be possible to achieve a higher level of agreement
+between humans and the algorithms results, these results indicate that the
+current algorithms are adequate to be used in a collaboration context. In our
+future work, we will implement the remaining mechanisms in Affective
+Motivational Collaboration framework and carry out an end-to-end user study to
+verify the behavior of a collaborative robot using our architecture.
 
 % end the environment with {table*}, NOTE not {table}!
 
@@ -1268,20 +1291,13 @@ adequate to be used in collaboration context.
 
 %\end{document}
 
-
-
-
-
 %Acknowledgements are optional
-% \section*{Acknowledgments}
-% This work is supported by the National Science Foundation under award
-% IIS-1012083. Any opinions, findings, and conclusions expressed in this material
-% are those of the authors and do not necessarily reflect the views of the
-% National Science Foundation.
-
-
-
-
+\vspace*{-3mm}
+\section*{Acknowledgments}
+{\fontsize{8.2}{9}\selectfont This work is supported by the National Science
+Foundation under award IIS-1012083. Any opinions, findings, and conclusions
+expressed in this material are those of the authors and do not necessarily
+reflect the views of the National Science Foundation.}
 
 %
 %APPENDICES are optional
@@ -1295,8 +1311,8 @@ adequate to be used in collaboration context.
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 \bibliographystyle{abbrv}
-\bibliography{mshayganfar.bib}  % sigproc.bib is the name of the Bibliography in this case
-% You must have a proper ".bib" file
+\bibliography{mshayganfar.bib}  % sigproc.bib is the name of the Bibliography in
+% this case You must have a proper ".bib" file
 %  and remember to run:
 % latex bibtex latex latex
 % to resolve all references
