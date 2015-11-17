@@ -201,7 +201,7 @@ We have evaluated our implemented algorithms by conducting an online user study.
 
 %General terms should be selected from the following 16 terms: Algorithms, Management, Measurement, Documentation, Performance, Design, Economics, Reliability, Experimentation, Security, Human Factors, Standardization, Languages, Theory, Legal Aspects, Verification.
 
-\terms{Algorithms, Experimentation, Human Factors, Theory}
+\terms{Algorithms, Theory, Experimentation, Human Factors}
 
 %Keywords are your own choice of terms you would like the paper to be indexed by.
 
@@ -857,6 +857,7 @@ the goal is at least in the plan, i.e., on the path to the top level goal, it is
 just \textsc{unexpected} while any others are \textsc{most-unexpected}.
 
 \subsection{Controllability}
+\label{sec:controllability}
 
 Controllability is the extent to which an event can be influenced, and it is
 associated with a robot's ability to cope with an appraised event
@@ -1092,6 +1093,7 @@ Framework, shown in Figure \ref{fig:cpm}. By providing adequate interpretation
 of events in the collaborative environment, the appraisal mechanism enables the
 robot to carry out proper collaborative behaviors.
 
+  \vspace{-2mm}
 \section{Evaluation}
 \label{sec:user-study}
 
@@ -1102,23 +1104,28 @@ robot to carry out proper collaborative behaviors.
   \vspace*{-3mm}
   \caption{Collaboration Task Model for the Evaluation.}
   \label{fig:taskModel}
-  \vspace*{-3mm}
+  \vspace*{-5mm}
 \end{figure*}
 
 We developed our user study to test our hypothesis that humans will provide
 similar answers as our algorithms to questions related to different factors used
 to compute four appraisal variables. We conducted a between subject user study
 using an online crowdsourcing website --
-CrowdFlower\footnote{http://www.crowdflower.com}. Each group originally had 40
-subjects. To increase the quality of our subjects' answers, we limited the
-visibility of our questionnaires to a few English speaking countries, i.e.,
-United States, Britain, and Australia. We also limited our subject pools to
-those that have acquired the highest confidence level on the crowdsourcing
-website. Our questionnaires included 2 or 3 test questions (depending on the
-length) to check the sanity of the answers. We eliminated subjects providing
-wrong answers to our sanity questions. We also eliminated subjects with an
-answering time less than 2 minutes. The final number of accepted subjects in
-each group is provided in Table \ref{tbl:statistics}.
+CrowdFlower\footnote{http://www.crowdflower.com}. We had one group of
+subjects for each questionnaire corresponding to an appraisal variable.
+There were 12 questions (including 2 test questions) in controllability and
+expectedness questionnaires, 14 questions (including 2 test questions) in
+desirability questionnaire, and 22 questions (including 3 test questions) in
+relevance questionnaire. Each group originally had 40 subjects. To increase the
+quality of our subjects' answers, we limited the visibility of our
+questionnaires to a few English speaking countries, i.e., United States,
+Britain, and Australia. We also limited our subject pools to those that have
+acquired the highest confidence level on the crowdsourcing website. Our
+questionnaires included 2 or 3 test questions (depending on the length) to check
+the sanity of the answers. We eliminated subjects providing wrong answers to our
+sanity questions. We also eliminated subjects with an answering time less than 2
+minutes. The final number of accepted subjects in each group is provided in
+Table \ref{tbl:statistics}.
 
 \begin{table}[htbp]
 \centering
@@ -1178,11 +1185,13 @@ within the corresponding algorithm. The input for our algorithms was the task
 model depicted in Figure \ref{fig:taskModel}.
 
 \begin{figure}[tbh]
+  \vspace{-2mm}
   \centering
   \includegraphics[width=0.48\textwidth]{figure/question-sample-croped.pdf}
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Expectedness Question.}}
   \label{fig:qs1}
+  \vspace{-3mm}
 \end{figure}
 
 Figure \ref{fig:qs1} shows the example question from the expectedness
@@ -1200,29 +1209,34 @@ similar to the algorithm's output. Average results for the expectedness
 questionnaire are presented in Table \ref{tbl:statistics}.
 
 \begin{figure}[tbh]
+  \vspace{-2mm}
   \centering
   \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Controllability Question.}}
   \label{fig:qs2}
+  \vspace{-3mm}
 \end{figure}
 
 Figure \ref{fig:qs2} shows an example question from the controllability
 questionnaire. The algorithm's output is option B, and is determined by
-Algorithm \ref{alg:controllability}, similarly to the expectedness example
-above. In this example, option B is more controllable than option A, because the
-self over total ratio of the responsibility of the predecessors of the given
-task (see Algorithm \ref{alg:controllability}) is higher than the ratio in
-option A; i.e., self is responsible to spread peanut butter on one slice of
-bread and strawberry jam on another slice of bread. In this question, the humans
-decision was 90\% in agreement with the algorithm's output.
+Algorithm \ref{alg:controllability} (line 3), similarly to the expectedness
+example above. In this example, option B is more controllable than option A,
+because the self over total ratio of the responsibility of the predecessors of
+the given task (see \textit{Autonomy} in Section \ref{sec:controllability}) is
+higher than the ratio in option A; i.e., self is responsible to spread peanut
+butter on one slice of bread and strawberry jam on another slice of bread. In
+this question, the humans decision was 90\% in agreement with the algorithm's
+output.
 
 \begin{figure}[tbh]
+  \vspace{-2mm}
   \centering
   \includegraphics[width=0.48\textwidth]{figure/question-sample3-croped.pdf}
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Desirability Question.}}
   \label{fig:qs3}
+  \vspace{-3mm}
 \end{figure}
 
 Figure \ref{fig:qs3} shows an example question from the desirability
@@ -1257,6 +1271,7 @@ subjects' data being generated from a random set. The very small
 percentage of similarity shows that the four appraisal algorithms predicted the
 human judgements.
 
+\vspace{-3mm}
 \section{Conclusion}
 While these results support our hypothesis, they are not a perfect prediction.
 We believe the difference between these two results could be due to several
