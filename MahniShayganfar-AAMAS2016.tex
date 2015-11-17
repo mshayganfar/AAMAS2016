@@ -220,15 +220,15 @@ processes. The involvement of humans influences the efficiency of robots'
 interaction and performance, and makes them dependent on humans' cognitive
 abilities and mental states.
 
-This work is part of a larger effort to build robots capable of generating and
-recognizing emotions in order to be better collaborators. In this paper, we
-report on the specific problem of appraising events within a collaborative
-interaction. Our contribution is to ground general appraisal concepts in the
-specific context and structure of collaboration. This work is part of the
-development of \textit{Affective Motivational Collaboration Theory} which is
-built on the foundations of the \textit{SharedPlans} theory of collaboration
-\cite{grosz:plans-discourse} and the \textit{cognitive appraisal} theory of
-emotions \cite{gratch:domain-independent}.
+This work is implemented as part of a larger effort to build robots capable of
+generating and recognizing emotions in order to be better collaborators. In this
+paper, we report on the specific problem of appraising events within a
+collaborative interaction. Our contribution is to ground general appraisal
+concepts in the specific context and structure of collaboration. This work is
+part of the development of \textit{Affective Motivational Collaboration Theory}
+which is built on the foundations of the \textit{SharedPlans} theory of
+collaboration \cite{grosz:plans-discourse} and the \textit{cognitive appraisal}
+theory of emotions \cite{gratch:domain-independent}.
 
 After discussing related works, we briefly introduce the Affective Motivational
 Collaboration Theory, focusing on the collaboration and appraisal mechanisms as
@@ -661,7 +661,7 @@ recognized goal. We use three of the belief attributes discussed in Section
   to achieve), or achievement of the directing goal removes an existing impasse.
 \end{itemize}
 
-\vspace*{-1mm}
+\vspace*{-2mm}
 We compute the utility of an event based on these five attributes. The value of
 each attribute is between 0 and 1, and we consider the same weight for each
 attribute. These weights can be learned or modified when our framework is fully
@@ -681,7 +681,7 @@ anger). Consequently, an event can be considered \textsc{irrelevant} even though
 the utility has a relatively positive value, because relevance is influenced by
 the human's perceived emotional state.
 
-\vspace*{-2mm}
+\vspace*{-1mm}
 \subsection{Desirability}
 
 Desirability characterizes the value of an event to the robot in terms of
@@ -739,6 +739,7 @@ been started yet. \textsc{Achieved} current goals mark an event
 \textsc{Pending} or \textsc{inprogress} current goals mark their associated
 events as \textsc{neutral}.
 
+\vspace*{-1mm}
 \begin{algorithm}
 	\caption{(Desirability)}
 	\label{alg:desirability}
@@ -792,7 +793,7 @@ events as \textsc{neutral}.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-4mm}
+\vspace*{-6mm}
 \subsection{Expectedness}
 
 Expectedness is the extent to which the truth value of a state could have been
@@ -925,7 +926,7 @@ implementing other mechanisms in the overall architecture. After computing the
 value of the utility, we compare this value to an emotional threshold similar to
 what we discussed in Algorithm \ref{alg:relevance}. This comparison leads to our
 decision about the controllability of an event (lines 8 to 11 in Algorithm
-\ref{alg:controllability}).\\
+\ref{alg:controllability}).
 
 % \renewcommand\thealgorithm{4\alph{algorithm}}
 % \setcounter{algorithm}{0}
@@ -1104,7 +1105,7 @@ robot to carry out proper collaborative behaviors.
   \vspace*{-3mm}
   \caption{Collaboration Task Model for the Evaluation.}
   \label{fig:taskModel}
-  \vspace*{-5mm}
+  \vspace*{-4mm}
 \end{figure*}
 
 We developed our user study to test our hypothesis that humans will provide
@@ -1185,13 +1186,13 @@ within the corresponding algorithm. The input for our algorithms was the task
 model depicted in Figure \ref{fig:taskModel}.
 
 \begin{figure}[tbh]
-  \vspace{-2mm}
+  \vspace{-1mm}
   \centering
   \includegraphics[width=0.48\textwidth]{figure/question-sample-croped.pdf}
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Expectedness Question.}}
   \label{fig:qs1}
-  \vspace{-3mm}
+  \vspace{-2mm}
 \end{figure}
 
 Figure \ref{fig:qs1} shows the example question from the expectedness
@@ -1209,13 +1210,13 @@ similar to the algorithm's output. Average results for the expectedness
 questionnaire are presented in Table \ref{tbl:statistics}.
 
 \begin{figure}[tbh]
-  \vspace{-2mm}
+  \vspace{-1mm}
   \centering
   \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Controllability Question.}}
   \label{fig:qs2}
-  \vspace{-3mm}
+  \vspace{-2mm}
 \end{figure}
 
 Figure \ref{fig:qs2} shows an example question from the controllability
@@ -1230,13 +1231,13 @@ this question, the humans decision was 90\% in agreement with the algorithm's
 output.
 
 \begin{figure}[tbh]
-  \vspace{-2mm}
+  \vspace{-1mm}
   \centering
   \includegraphics[width=0.48\textwidth]{figure/question-sample3-croped.pdf}
   \vspace*{-7mm}
   \caption{{\fontsize{9}{9}\selectfont Example Desirability Question.}}
   \label{fig:qs3}
-  \vspace{-3mm}
+  \vspace{-2mm}
 \end{figure}
 
 Figure \ref{fig:qs3} shows an example question from the desirability
