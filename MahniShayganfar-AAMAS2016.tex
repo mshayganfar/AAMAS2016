@@ -109,13 +109,13 @@
 % e-mail address with \email.
 % 1st. author
 \alignauthor
-Paper 24
-% Mahni Shayganfar, Charles Rich, Candace L. Sidner\\
-% Worcester Polytechnic Institute\\
-% Computer Science Department\\
-% 100 Institute Road\\
-% Worcester, Massachusetts 01609\\
-% mshayganfar $|$ rich $|$ sidner @wpi.edu
+% Paper 24
+Mahni Shayganfar, Charles Rich, Candace L. Sidner\\
+Worcester Polytechnic Institute\\
+Computer Science Department\\
+100 Institute Road\\
+Worcester, Massachusetts 01609\\
+mshayganfar $|$ rich $|$ sidner @wpi.edu
 }
 
 %\and  % use '\and' if you need 'another row' of author names
@@ -445,7 +445,7 @@ measurement tool problem:
 
 \vspace*{-1mm}
 In this scenario, the robot appraises the problem with the measurement tool as
-a \textit{relevant, undesirable, unexpected}, but \textit{controllable} one.
+a \textit{relevant, undesirable, unexpected}, but \textit{controllable} event.
 Consequently, the coping mechanism first acknowledges the astronaut's negative
 valenced emotion (i.e., frustration), then provides a new plan to continue the
 collaboration.
@@ -490,7 +490,7 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   or \textsc{in progress}.
   In our example, ``Install Solar Panels'' is the top level goal.
   
-  \item \textit{currGoalStatus($g_t$)} returns the current goal status whe\-ther
+  \item \textit{currGoalStatus($g_t$)} returns the current goal status whether
   it is \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
   progress}. In our example, ``Prepare Measurement Tool'' is the current
   (focused) goal.
@@ -630,18 +630,18 @@ recognized goal. We use three of the belief attributes discussed in Section
 \vspace*{-2mm}
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.2mm}
-  \item \textit{Strength}: The extent to which the pre and post conditions of a
+  \item \textit{Strength}: The extent to which the pre and postconditions of a
   goal and its predecessors and/or contributing goals are \textsc{satisfied} or
   \textsc{unsatisfied} makes a belief about the goal stronger.
-  Respectively, an \textsc{unknown} pre and post condition status of a goal and
+  Respectively, an \textsc{unknown} pre and postcondition status of a goal and
   its predecessors and/or contributing goals forms beliefs with lower strength.
   \item \textit{Saliency}: Beliefs related to the goal at the top of the focus
   stack are more salient than beliefs related to any other goal in the plan,
   whether those goals are already \textsc{achieved} or \textsc{failed}, or they
   will be pursued in the future.
   \item \textit{Persistence}: The recurrence of a belief over the passage of
-  time (turns) increases the persistence of the belief. Beliefs occuring only in
-  one turn have the lowest value of persistence.
+  time (turns) increases the persistence of the belief. Beliefs occurring only
+  in one turn have the lowest value of persistence.
 \end{itemize}
 
 \noindent We also use two of the motive attributes discussed in Section
@@ -708,34 +708,32 @@ collaboration's point of view.
 Algorithm \ref{alg:desirability} provides a process in which the desirability of
 an event is computed with regard to the status of the shared goal; i.e., it
 operates based on whether and how the event changes the status of the current
-shared goal. It distinguishes between top level goal and current goal because
-top level goal's change of status attains higher positive or negative value of
-desirability. For instance, failure of the top level goal (e.g., installing
-solar panel) is more undesirable than failure of a primitive goal (e.g.,
-measuring the quality of the installed panel).
+shared goal. It distinguishes between the top level goal and the current goal
+because the top level goal's change of status attains a higher positive or
+negative value of desirability. For instance, failure of the top level goal
+(e.g., installing solar panel) is more undesirable than failure of a primitive
+goal (e.g., measuring the quality of the installed panel).
 
-An \textsc{ambiguous} goal is the goal associated with the current event
+An \textsc{ambiguous} goal is a goal associated with the current event
 ($\varepsilon_t$) which is not recognized in the robot's plan; therefore it is
-\textsc{undesirable} for a collaborative robot. A top level goal is dependent
-upon its status as \textsc{achieved} (i.e., \textsc{satisfied} postcondition) to
-consider the event \textsc{most-desirable}. When the goal has status of being
-\textsc{failed} (i.e., \textsc{unsatisfied} postcondition) or
-\textsc{blocked}, the associated event has the \textsc{most-undesirable} or
-\textsc{undesireable} values respectively. A goal is \textsc{blocked} if any of
-the required goals or goals recursively through the parent goal are not done. An
-\textsc{inapplicable}\footnote{{\fontsize{7.4}{9}\selectfont A goal is
-\textsc{inapplicable} if any of its predecessors are not \textsc{achieved},
-and/or its preconditions are not \textsc{satisfied}.}} goal is also considered
-as \textsc{undesirable}. For \textsc{pending} and
-\textsc{inprogress}\footnote{{\fontsize{7.4}{9}\selectfont Only a non-primitive
-goal can have \textsc{inprogress} status, if it has been started but is not yet
-completed.}} top level goals, the status of the current goal associated with the
-top level goal determines the status of the event $\varepsilon_t$. A goal can be
-\textsc{pending} if it is live, or if it is a non-primitive goal that has not
-been started yet. \textsc{Achieved} current goals mark an event
-($\varepsilon_t$) as \textsc{desireable}, while \textsc{failed} or
-\textsc{blocked} goals render the event associated with them as
-\textsc{most-undesireable} and \textsc{undesirable} respectively.
+\textsc{undesirable} for a collaborative robot. A top level goal' status must be
+\textsc{achieved} (i.e., \textsc{satisfied} postcondition) to consider the event
+\textsc{most-desirable}. When the goal's status is \textsc{failed} (i.e.,
+\textsc{unsatisfied} postcondition) or \textsc{blocked}, the associated event
+has the \textsc{most-undesirable} or \textsc{undesirable} values respectively.
+A goal is \textsc{blocked} if any of the required goals or goals recursively
+through the parent goal are not \textsc{achieved}. An \textsc{inapplicable} goal
+is also considered as \textsc{undesirable}. A goal is \textsc{inapplicable} if
+any of its predecessors are not \textsc{achieved}, and/or its preconditions are
+not \textsc{satisfied}. For \textsc{pending} and \textsc{inprogress} top level
+goals, the status of the current goal associated with the top level goal
+determines the status of the event $\varepsilon_t$. Only a non-primitive goal
+can have \textsc{inprogress} status, if it has been started but is not yet
+completed. A goal can be \textsc{pending} if it is live, or if it is a
+non-primitive goal that has not been started yet. \textsc{Achieved} current
+goals mark an event ($\varepsilon_t$) as \textsc{desirable}, while
+\textsc{failed} or \textsc{blocked} current goals render the event associated
+with them as \textsc{most-undesirable} and \textsc{undesirable} respectively.
 \textsc{Pending} or \textsc{inprogress} current goals mark their associated
 events as \textsc{neutral}.
 
@@ -793,7 +791,7 @@ events as \textsc{neutral}.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-6mm}
+\vspace*{-2mm}
 \subsection{Expectedness}
 
 Expectedness is the extent to which the truth value of a state could have been
@@ -837,11 +835,11 @@ goal. The robot will also be able to respond to unexpected but relevant events.
 	\end{algorithmic}
 \end{algorithm}
 
-In Algorithm \ref{alg:expectedness} we provide the process of the expectedness
-based on the shared plan and status of the shared goal. The key point in this
-algorithm is the status of the current shared goal ($\mathit{g}_{t}$) that is
-associated with the event $\varepsilon_t$ and its relationship with the top
-level goal ($\mathit{g}_{_{top}}$).
+In Algorithm \ref{alg:expectedness} we provide the process of computing the
+expectedness based on the shared plan and status of the shared goal. The key
+point in this algorithm is the status of the current shared goal
+($\mathit{g}_{t}$) that is associated with the event $\varepsilon_t$ and its
+relationship with the top level goal ($\mathit{g}_{_{top}}$).
 
 The intuition captured here is that one expects the current goal to be finished
 before undertaking another activity, but the goals that are the next focus of
@@ -853,9 +851,10 @@ achieved and a new goal is required. Consequently the new event is the
 \textsc{most-expected} one. However, even if the focus shift is not necessary,
 the new event can be considered as \textsc{expected}, since the corresponding
 goal is already live. For goals that have not yet been started (that is, are not
-live), the algorithm must determine how unexpected it would be to do one now; if
-the goal is at least in the plan, i.e., on the path to the top level goal, it is
-just \textsc{unexpected} while any others are \textsc{most-unexpected}.
+live), the algorithm must determine how unexpected it would be to pursue one
+now; if the goal is at least in the plan, i.e., on the path to the top level
+goal, it is just \textsc{unexpected} while any others are
+\textsc{most-unexpected}.
 
 \subsection{Controllability}
 \label{sec:controllability}
@@ -1094,7 +1093,7 @@ Framework, shown in Figure \ref{fig:cpm}. By providing adequate interpretation
 of events in the collaborative environment, the appraisal mechanism enables the
 robot to carry out proper collaborative behaviors.
 
-  \vspace{-2mm}
+\vspace{-2mm}
 \section{Evaluation}
 \label{sec:user-study}
 
@@ -1114,11 +1113,11 @@ to compute four appraisal variables. We conducted a between subject user study
 using an online crowdsourcing website --
 CrowdFlower\footnote{http://www.crowdflower.com}. We had one group of
 subjects for each questionnaire corresponding to an appraisal variable.
-There were 12 questions (including 2 test questions) in controllability and
+There were 12 questions (including 2 test questions) in the controllability and
 expectedness questionnaires, 14 questions (including 2 test questions) in
-desirability questionnaire, and 22 questions (including 3 test questions) in
-relevance questionnaire. Each group originally had 40 subjects. To increase the
-quality of our subjects' answers, we limited the visibility of our
+the desirability questionnaire, and 22 questions (including 3 test questions) in
+the relevance questionnaire. Each group originally had 40 subjects. To increase
+the quality of our subjects' answers, we limited the visibility of our
 questionnaires to a few English speaking countries, i.e., United States,
 Britain, and Australia. We also limited our subject pools to those that have
 acquired the highest confidence level on the crowdsourcing website. Our
@@ -1180,7 +1179,7 @@ structure and the instructions were the same for all four questionnaires.
 
 Each question was designed based on different factors that we use in our
 algorithms (see Section \ref{sec:appraisal-process}). Here, we present three
-example questions from expectedness, controllability, and desirability
+example questions from the expectedness, controllability, and desirability
 questionnaires, and describe how each question relates to a specific factor
 within the corresponding algorithm. The input for our algorithms was the task
 model depicted in Figure \ref{fig:taskModel}.
@@ -1270,7 +1269,7 @@ one-tailed z-test (see Table \ref{tbl:statistics}) show the probability of human
 subjects' data being generated from a random set. The very small
 \textit{p}-values indicate that the data set is not random; in fact, the high
 percentage of similarity shows that the four appraisal algorithms predicted the
-human judgements.
+human judgments.
 
 \vspace{-3mm}
 \section{Conclusion}
